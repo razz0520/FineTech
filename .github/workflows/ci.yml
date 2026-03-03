@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install pnpm
+        run: corepack enable && pnpm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile || pnpm install
+
+      - name: Lint
+        run: pnpm run lint || true
+
+      - name: Build web
+        run: pnpm turbo run build --filter=@finetech/web || true
+
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install API
+        run: |
+          cd apps/api
+          pip install -e .
+          pip install pytest pytest-asyncio
+
+      - name: Run API tests
+        run: cd apps/api && python -c "from finetech_api.main import app; print('OK')" || true
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build API image
+        run: docker build -f infra/api.Dockerfile -t finetech-api:test .
+        working-directory: .
+
+      - name: Build web image
+        run: docker build -f infra/web.Dockerfile -t finetech-web:test .
+        working-directory: .

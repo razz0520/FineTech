@@ -1,0 +1,38 @@
+# Google Cloud Run service for Finetech API
+# Deploy: gcloud run deploy finetech-api --source . --region REGION (from repo root with Dockerfile infra/api.Dockerfile)
+# Or: gcloud run deploy finetech-api --image gcr.io/PROJECT/finetech-api:latest --region REGION
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: finetech-api
+  annotations:
+    run.googleapis.com/launch-stage: BETA
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "10"
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      containers:
+        - image: gcr.io/PROJECT_ID/finetech-api:latest
+          ports:
+            - containerPort: 8000
+          resources:
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+          env:
+            - name: FINETECH_ENV
+              value: production
+            - name: FINETECH_CORS_ORIGINS
+              value: "https://YOUR_VERCEL_DOMAIN.vercel.app"
+          envFrom:
+            - secretKeyRef:
+                name: finetech-secrets
+                key: FINETECH_DATABASE_URL
+  traffic:
+    - percent: 100
+      latestRevision: true
