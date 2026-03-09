@@ -1,33 +1,6 @@
-
-> finetech-monorepo@0.1.0 dev C:\Users\ASUS\FineTech
-> turbo run dev
-
-ΓÇó turbo 2.8.14
-  x Found `pipeline` field instead of `tasks`.
-    ,-[turbo.json:3:15]
-  2 |       "$schema": "https://turbo.build/schema.json",
-  3 | ,->   "pipeline": {
-  4 | |       "dev": {
-  5 | |         "cache": false,
-  6 | |         "dependsOn": ["^dev"]
-  7 | |       },
-  8 | |       "build": {
-  9 | |         "dependsOn": ["^build"],
- 10 | |         "outputs": [".next/**", "dist/**", "build/**"]
- 11 | |       },
- 12 | |       "lint": {
- 13 | |         "outputs": []
- 14 | |       },
- 15 | |       "test": {
- 16 | |         "outputs": ["coverage/**"]
- 17 | |       },
- 18 | |       "format": {
- 19 | |         "outputs": []
- 20 | |       }
- 21 | |->   }
-    : `---- Rename `pipeline` field to `tasks`
- 22 |     }
-    `----
-  help: Changed in 2.0: `pipeline` has been renamed to `tasks`.
-
-ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.
+ΓÇëWARNΓÇë Unsupported engine: wanted: {"node":"20.x"} (current: {"node":"v22.20.0","pnpm":"9.0.0"})
+Scope: all 5 workspace projects
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Progress: resolved 214, reused 199, downloaded 0, added 0
+ΓÇëWARNΓÇë 2 deprecated subdependencies found: glob@7.2.3, inflight@1.0.6
+Already up to date
