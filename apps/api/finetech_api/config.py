@@ -1,3 +1,4 @@
+from typing import Any
 import json
 from functools import lru_cache
 from pydantic import AnyUrl, field_validator
@@ -7,14 +8,14 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     env: str = "development"
     database_url: AnyUrl | str = "postgresql+asyncpg://postgres:postgres@localhost:5432/finetech"
-    cors_origins: list[str] = [
+    cors_origins: Any = [
         "http://localhost:3000",
         "https://fine-tech-web.vercel.app",
     ]
 
     @field_validator("cors_origins", mode="before")
     @classmethod
-    def assemble_cors_origins(cls, v: str | list[str]) -> list[str]:
+    def assemble_cors_origins(cls, v: Any) -> list[str]:
         if isinstance(v, str):
             if not v:
                 return []
