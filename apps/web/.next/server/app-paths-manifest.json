@@ -1,13 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/(app)/advisor/page": "app/(app)/advisor/page.js",
-  "/(app)/learn/quiz/[quizId]/page": "app/(app)/learn/quiz/[quizId]/page.js",
   "/(app)/dashboard/page": "app/(app)/dashboard/page.js",
-  "/(app)/learn/lesson/[lessonId]/page": "app/(app)/learn/lesson/[lessonId]/page.js",
-  "/(app)/learn/page": "app/(app)/learn/page.js",
-  "/(app)/learn/[courseId]/page": "app/(app)/learn/[courseId]/page.js",
+  "/(app)/advisor/page": "app/(app)/advisor/page.js",
+  "/auth/siwe/page": "app/auth/siwe/page.js",
   "/(app)/portfolio/page": "app/(app)/portfolio/page.js",
-  "/(marketing)/page": "app/(marketing)/page.js",
-  "/(app)/playground/page": "app/(app)/playground/page.js",
-  "/auth/siwe/page": "app/auth/siwe/page.js"
+  "/(app)/playground/page": "app/(app)/playground/page.js"
 }

@@ -143,7 +143,9 @@ export default function PortfolioPage() {
       <div className="glass-card p-5">
         <div className="flex flex-wrap gap-4 items-end">
           <label className="flex flex-col gap-1.5">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Portfolio</span>
+            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">
+              Portfolio
+            </span>
             <select
               value={selected ?? ""}
               onChange={(e) => setSelected(e.target.value || null)}
@@ -197,9 +199,7 @@ export default function PortfolioPage() {
                           borderRadius: "12px",
                         }}
                       />
-                      <Legend
-                        wrapperStyle={{ fontSize: "12px", color: "#94a3b8" }}
-                      />
+                      <Legend wrapperStyle={{ fontSize: "12px", color: "#94a3b8" }} />
                     </PieChart>
                   </ResponsiveContainer>
                 ) : (
@@ -211,7 +211,9 @@ export default function PortfolioPage() {
               <div className="mt-3 pt-3 border-t border-white/5">
                 <p className="text-xs text-slate-400">
                   Total value:{" "}
-                  <span className="text-white font-semibold text-sm">${detail.total_value.toFixed(2)}</span>
+                  <span className="text-white font-semibold text-sm">
+                    ${detail.total_value.toFixed(2)}
+                  </span>
                 </p>
               </div>
             </div>

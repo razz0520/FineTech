@@ -13,7 +13,16 @@ const STAT_CARDS = [
     title: "Enrolled Courses",
     subtitle: "active enrollments",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
       </svg>
@@ -25,7 +34,16 @@ const STAT_CARDS = [
     title: "XP Points",
     subtitle: "from quizzes & activities",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
       </svg>
     ),
@@ -36,7 +54,16 @@ const STAT_CARDS = [
     title: "Portfolio Value",
     subtitle: "first portfolio total",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <line x1="12" y1="1" x2="12" y2="23" />
         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
       </svg>
@@ -48,7 +75,16 @@ const STAT_CARDS = [
     title: "News Articles",
     subtitle: "recent headlines",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1" />
         <path d="M21 12a9 9 0 0 0-9-9" />
         <path d="M21 12H12V3" />
@@ -64,7 +100,16 @@ const QUICK_LINKS = [
     title: "Learn",
     description: "Browse courses, lessons, and quizzes to build financial literacy.",
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
       </svg>
@@ -75,7 +120,16 @@ const QUICK_LINKS = [
     title: "Prediction Playground",
     description: "Run LSTM+attention forecasts with explainable AI narratives.",
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
       </svg>
     ),
@@ -85,7 +139,16 @@ const QUICK_LINKS = [
     title: "Portfolio",
     description: "Manage paper-trading portfolios with allocation and risk analytics.",
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
         <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
       </svg>
@@ -95,9 +158,21 @@ const QUICK_LINKS = [
 
 const COLOR_MAP: Record<string, { iconBg: string; iconText: string; topBorder: string }> = {
   cyan: { iconBg: "bg-cyan-500/10", iconText: "text-cyan-400", topBorder: "border-t-cyan-500/50" },
-  emerald: { iconBg: "bg-emerald-500/10", iconText: "text-emerald-400", topBorder: "border-t-emerald-500/50" },
-  violet: { iconBg: "bg-violet-500/10", iconText: "text-violet-400", topBorder: "border-t-violet-500/50" },
-  amber: { iconBg: "bg-amber-500/10", iconText: "text-amber-400", topBorder: "border-t-amber-500/50" },
+  emerald: {
+    iconBg: "bg-emerald-500/10",
+    iconText: "text-emerald-400",
+    topBorder: "border-t-emerald-500/50",
+  },
+  violet: {
+    iconBg: "bg-violet-500/10",
+    iconText: "text-violet-400",
+    topBorder: "border-t-violet-500/50",
+  },
+  amber: {
+    iconBg: "bg-amber-500/10",
+    iconText: "text-amber-400",
+    topBorder: "border-t-amber-500/50",
+  },
 };
 
 export default function DashboardPage() {
@@ -182,10 +257,7 @@ export default function DashboardPage() {
         {STAT_CARDS.map((card) => {
           const colors = COLOR_MAP[card.color];
           return (
-            <div
-              key={card.key}
-              className={`glass-card p-5 border-t-2 ${colors.topBorder}`}
-            >
+            <div key={card.key} className={`glass-card p-5 border-t-2 ${colors.topBorder}`}>
               <div className="flex items-start justify-between mb-3">
                 <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">
                   {card.title}
@@ -194,7 +266,9 @@ export default function DashboardPage() {
                   <span className={colors.iconText}>{card.icon}</span>
                 </div>
               </div>
-              <p className={`text-2xl font-bold ${loading ? "animate-pulse text-slate-600" : "text-white"}`}>
+              <p
+                className={`text-2xl font-bold ${loading ? "animate-pulse text-slate-600" : "text-white"}`}
+              >
                 {values[card.key]}
               </p>
               <p className="text-xs text-slate-500 mt-1">{card.subtitle}</p>

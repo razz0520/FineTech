@@ -98,14 +98,22 @@ export default function AdvisorPage() {
           {messages.length === 0 && (
             <div className="h-full flex flex-col items-center justify-center text-center py-10">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 flex items-center justify-center mb-4">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-cyan-400" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className="text-cyan-400"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M12 2a8 8 0 0 0-8 8c0 3.4 2.1 6.3 5 7.4V20a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-2.6c2.9-1.1 5-4 5-7.4a8 8 0 0 0-8-8z" />
                   <line x1="10" y1="22" x2="14" y2="22" />
                 </svg>
               </div>
-              <p className="text-sm text-slate-300 font-medium mb-1">
-                Financial Advisor Ready
-              </p>
+              <p className="text-sm text-slate-300 font-medium mb-1">Financial Advisor Ready</p>
               <p className="text-xs text-slate-500 max-w-xs">
                 Ask about investing strategies, risk management, or get insights on your portfolio.
               </p>
@@ -147,9 +155,18 @@ export default function AdvisorPage() {
           {loading && (
             <div className="flex justify-start">
               <div className="bg-white/[0.03] border border-white/5 rounded-2xl px-4 py-3 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: "0ms" }} />
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: "150ms" }} />
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: "300ms" }} />
+                <span
+                  className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce"
+                  style={{ animationDelay: "0ms" }}
+                />
+                <span
+                  className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce"
+                  style={{ animationDelay: "150ms" }}
+                />
+                <span
+                  className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce"
+                  style={{ animationDelay: "300ms" }}
+                />
               </div>
             </div>
           )}
@@ -169,12 +186,17 @@ export default function AdvisorPage() {
             placeholder="Ask a financial question…"
             className="input-glass flex-1"
           />
-          <button
-            type="submit"
-            disabled={loading}
-            className="btn-primary px-5"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <button type="submit" disabled={loading} className="btn-primary px-5">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <line x1="22" y1="2" x2="11" y2="13" />
               <polygon points="22 2 15 22 11 13 2 9 22 2" />
             </svg>

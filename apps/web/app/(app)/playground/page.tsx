@@ -170,7 +170,9 @@ export default function PlaygroundPage() {
       <div className="glass-card p-5">
         <div className="flex flex-wrap gap-4 items-end">
           <label className="flex flex-col gap-1.5">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Symbol</span>
+            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">
+              Symbol
+            </span>
             <select
               value={symbol}
               onChange={(e) => setSymbol(e.target.value)}
@@ -184,7 +186,9 @@ export default function PlaygroundPage() {
             </select>
           </label>
           <label className="flex flex-col gap-1.5">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Horizon</span>
+            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">
+              Horizon
+            </span>
             <input
               type="number"
               min={1}
@@ -203,8 +207,20 @@ export default function PlaygroundPage() {
             {loading ? (
               <span className="flex items-center gap-2">
                 <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
                 </svg>
                 Running…
               </span>
@@ -229,7 +245,12 @@ export default function PlaygroundPage() {
                 <LineChart data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.08)" />
                   <XAxis dataKey="date" stroke="#475569" fontSize={10} tickLine={false} />
-                  <YAxis stroke="#475569" fontSize={10} tickLine={false} domain={["auto", "auto"]} />
+                  <YAxis
+                    stroke="#475569"
+                    fontSize={10}
+                    tickLine={false}
+                    domain={["auto", "auto"]}
+                  />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "rgba(15,23,42,0.9)",
@@ -239,7 +260,14 @@ export default function PlaygroundPage() {
                     }}
                   />
                   <Legend />
-                  <Line type="monotone" dataKey="close" stroke="#06b6d4" strokeWidth={2} name="Close" dot={false} />
+                  <Line
+                    type="monotone"
+                    dataKey="close"
+                    stroke="#06b6d4"
+                    strokeWidth={2}
+                    name="Close"
+                    dot={false}
+                  />
                 </LineChart>
               </ResponsiveContainer>
             ) : (
@@ -259,8 +287,21 @@ export default function PlaygroundPage() {
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={attentionData} layout="vertical" margin={{ left: 40 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.08)" />
-                  <XAxis type="number" domain={[0, 1]} stroke="#475569" fontSize={10} tickLine={false} />
-                  <YAxis type="category" dataKey="name" stroke="#475569" fontSize={10} width={50} tickLine={false} />
+                  <XAxis
+                    type="number"
+                    domain={[0, 1]}
+                    stroke="#475569"
+                    fontSize={10}
+                    tickLine={false}
+                  />
+                  <YAxis
+                    type="category"
+                    dataKey="name"
+                    stroke="#475569"
+                    fontSize={10}
+                    width={50}
+                    tickLine={false}
+                  />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "rgba(15,23,42,0.9)",
@@ -289,15 +330,29 @@ export default function PlaygroundPage() {
             Prediction Result
           </h3>
           <div className="flex items-center gap-4">
-            <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${prediction.direction === "up" ? "bg-emerald-500/10 text-emerald-400" : "bg-rose-500/10 text-rose-400"}`}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                className={prediction.direction === "up" ? "" : "rotate-180"}>
+            <div
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${prediction.direction === "up" ? "bg-emerald-500/10 text-emerald-400" : "bg-rose-500/10 text-rose-400"}`}
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={prediction.direction === "up" ? "" : "rotate-180"}
+              >
                 <polyline points="18 15 12 9 6 15" />
               </svg>
               <span className="text-sm font-semibold capitalize">{prediction.direction}</span>
             </div>
             <span className="text-sm text-slate-300">
-              Predicted return: <span className="font-mono font-semibold text-white">{prediction.predicted_return.toFixed(4)}</span>
+              Predicted return:{" "}
+              <span className="font-mono font-semibold text-white">
+                {prediction.predicted_return.toFixed(4)}
+              </span>
             </span>
           </div>
         </div>
