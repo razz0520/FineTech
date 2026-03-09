@@ -19,7 +19,7 @@ import { API_BASE } from "@/lib/api";
 const DEV_USER_ID = process.env.NEXT_PUBLIC_DEV_USER_ID || "00000000-0000-0000-0000-000000000001";
 const headers = { "X-User-Id": DEV_USER_ID };
 
-const COLORS = ["#34d399", "#818cf8", "#f472b6", "#fbbf24", "#94a3b8"];
+const COLORS = ["#06b6d4", "#8b5cf6", "#f472b6", "#fbbf24", "#10b981"];
 
 export default function PortfolioPage() {
   const [portfolios, setPortfolios] = useState<
@@ -128,40 +128,51 @@ export default function PortfolioPage() {
     })) ?? [];
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-xl font-semibold tracking-tight">Portfolio analyzer</h2>
-      <p className="text-sm text-slate-300">
-        Paper-trading portfolios with allocation, performance, and risk metrics.
-      </p>
+    <div className="space-y-8 animate-fade-in">
+      {/* Header */}
+      <div>
+        <h2 className="text-2xl font-bold tracking-tight">
+          <span className="gradient-text">Portfolio Analyzer</span>
+        </h2>
+        <p className="text-sm text-slate-400 mt-1.5">
+          Paper-trading portfolios with allocation, performance, and risk metrics.
+        </p>
+      </div>
 
-      <div className="flex flex-wrap gap-4 items-center">
-        <select
-          value={selected ?? ""}
-          onChange={(e) => setSelected(e.target.value || null)}
-          className="rounded border border-slate-700 bg-slate-900 text-white px-3 py-2 text-sm"
-        >
-          <option value="">Select portfolio</option>
-          {portfolios.map((p) => (
-            <option key={p.id} value={p.id}>
-              {p.name}
-            </option>
-          ))}
-        </select>
-        <button
-          type="button"
-          onClick={createPortfolio}
-          className="rounded bg-slate-700 px-4 py-2 text-sm text-white hover:bg-slate-600"
-        >
-          New portfolio
-        </button>
+      {/* Portfolio selector */}
+      <div className="glass-card p-5">
+        <div className="flex flex-wrap gap-4 items-end">
+          <label className="flex flex-col gap-1.5">
+            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Portfolio</span>
+            <select
+              value={selected ?? ""}
+              onChange={(e) => setSelected(e.target.value || null)}
+              className="input-glass min-w-[200px]"
+            >
+              <option value="">Select portfolio</option>
+              {portfolios.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button type="button" onClick={createPortfolio} className="btn-primary">
+            + New Portfolio
+          </button>
+        </div>
       </div>
 
       {detail && (
         <>
+          {/* Charts row */}
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
-              <h3 className="text-sm font-medium mb-2">Allocation</h3>
-              <div className="h-48">
+            {/* Allocation */}
+            <div className="glass-card p-5">
+              <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
+                Allocation
+              </h3>
+              <div className="h-52">
                 {allocationData.length > 0 ? (
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
@@ -171,49 +182,83 @@ export default function PortfolioPage() {
                         nameKey="name"
                         cx="50%"
                         cy="50%"
-                        outerRadius={60}
+                        outerRadius={70}
                         label={(e) => e.name}
+                        strokeWidth={0}
                       >
                         {allocationData.map((_, i) => (
                           <Cell key={i} fill={COLORS[i % COLORS.length]} />
                         ))}
                       </Pie>
-                      <Tooltip />
-                      <Legend />
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: "rgba(15,23,42,0.9)",
+                          border: "1px solid rgba(148,163,184,0.1)",
+                          borderRadius: "12px",
+                        }}
+                      />
+                      <Legend
+                        wrapperStyle={{ fontSize: "12px", color: "#94a3b8" }}
+                      />
                     </PieChart>
                   </ResponsiveContainer>
                 ) : (
-                  <p className="text-slate-500 text-sm">No positions. Add a trade below.</p>
+                  <div className="h-full flex items-center justify-center">
+                    <p className="text-slate-500 text-sm">No positions. Add a trade below.</p>
+                  </div>
                 )}
               </div>
-              <p className="text-sm mt-2">Total value: ${detail.total_value.toFixed(2)}</p>
+              <div className="mt-3 pt-3 border-t border-white/5">
+                <p className="text-xs text-slate-400">
+                  Total value:{" "}
+                  <span className="text-white font-semibold text-sm">${detail.total_value.toFixed(2)}</span>
+                </p>
+              </div>
             </div>
-            <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
-              <h3 className="text-sm font-medium mb-2">Risk metrics</h3>
-              <ul className="text-sm space-y-1">
-                <li>Sharpe ratio: {risk?.sharpe_ratio ?? "—"}</li>
-                <li>
-                  VaR (95%): {risk?.var_95 != null ? (risk.var_95 * 100).toFixed(2) + "%" : "—"}
-                </li>
-                <li>Volatility: {risk?.volatility ?? "—"}</li>
-              </ul>
+
+            {/* Risk metrics */}
+            <div className="glass-card p-5">
+              <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
+                Risk Metrics
+              </h3>
+              <div className="space-y-4">
+                <RiskMetric
+                  label="Sharpe Ratio"
+                  value={risk?.sharpe_ratio != null ? risk.sharpe_ratio.toFixed(2) : "—"}
+                  color="cyan"
+                />
+                <RiskMetric
+                  label="VaR (95%)"
+                  value={risk?.var_95 != null ? (risk.var_95 * 100).toFixed(2) + "%" : "—"}
+                  color="violet"
+                />
+                <RiskMetric
+                  label="Volatility"
+                  value={risk?.volatility != null ? risk.volatility.toFixed(4) : "—"}
+                  color="amber"
+                />
+              </div>
             </div>
           </div>
 
+          {/* Equity curve */}
           {snapshots.length > 1 && (
-            <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
-              <h3 className="text-sm font-medium mb-2">Equity curve</h3>
-              <div className="h-48">
+            <div className="glass-card p-5">
+              <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
+                Equity Curve
+              </h3>
+              <div className="h-52">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={snapshots}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                    <XAxis dataKey="date" stroke="#94a3b8" fontSize={10} />
-                    <YAxis stroke="#94a3b8" fontSize={10} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.08)" />
+                    <XAxis dataKey="date" stroke="#475569" fontSize={10} tickLine={false} />
+                    <YAxis stroke="#475569" fontSize={10} tickLine={false} />
                     <Line
                       type="monotone"
                       dataKey="total_value"
-                      stroke="#34d399"
+                      stroke="#10b981"
                       dot={false}
+                      strokeWidth={2}
                       name="Value"
                     />
                   </LineChart>
@@ -222,49 +267,81 @@ export default function PortfolioPage() {
             </div>
           )}
 
-          <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
-            <h3 className="text-sm font-medium mb-2">Simulated trade</h3>
-            <div className="flex flex-wrap gap-2 items-end">
-              <input
-                placeholder="Symbol"
-                value={symbol}
-                onChange={(e) => setSymbol(e.target.value)}
-                className="rounded border border-slate-700 bg-slate-900 text-white px-2 py-1.5 text-sm w-24"
-              />
-              <select
-                value={side}
-                onChange={(e) => setSide(e.target.value as "buy" | "sell")}
-                className="rounded border border-slate-700 bg-slate-900 text-white px-2 py-1.5 text-sm"
-              >
-                <option value="buy">Buy</option>
-                <option value="sell">Sell</option>
-              </select>
-              <input
-                type="number"
-                placeholder="Qty"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-                className="rounded border border-slate-700 bg-slate-900 text-white px-2 py-1.5 text-sm w-20"
-              />
-              <input
-                type="number"
-                placeholder="Price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                className="rounded border border-slate-700 bg-slate-900 text-white px-2 py-1.5 text-sm w-24"
-              />
+          {/* Trade form */}
+          <div className="glass-card p-5">
+            <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
+              Simulated Trade
+            </h3>
+            <div className="flex flex-wrap gap-3 items-end">
+              <label className="flex flex-col gap-1">
+                <span className="text-[10px] text-slate-500 uppercase">Symbol</span>
+                <input
+                  placeholder="AAPL"
+                  value={symbol}
+                  onChange={(e) => setSymbol(e.target.value)}
+                  className="input-glass w-24"
+                />
+              </label>
+              <label className="flex flex-col gap-1">
+                <span className="text-[10px] text-slate-500 uppercase">Side</span>
+                <select
+                  value={side}
+                  onChange={(e) => setSide(e.target.value as "buy" | "sell")}
+                  className="input-glass"
+                >
+                  <option value="buy">Buy</option>
+                  <option value="sell">Sell</option>
+                </select>
+              </label>
+              <label className="flex flex-col gap-1">
+                <span className="text-[10px] text-slate-500 uppercase">Qty</span>
+                <input
+                  type="number"
+                  placeholder="10"
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                  className="input-glass w-20"
+                />
+              </label>
+              <label className="flex flex-col gap-1">
+                <span className="text-[10px] text-slate-500 uppercase">Price</span>
+                <input
+                  type="number"
+                  placeholder="150.00"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  className="input-glass w-24"
+                />
+              </label>
               <button
                 type="button"
                 onClick={submitTrade}
                 disabled={submitting}
-                className="rounded bg-emerald-600 px-4 py-1.5 text-sm text-white hover:bg-emerald-700 disabled:opacity-50"
+                className="btn-primary"
               >
-                {submitting ? "…" : "Execute"}
+                {submitting ? "…" : "Execute Trade"}
               </button>
             </div>
           </div>
         </>
       )}
+    </div>
+  );
+}
+
+function RiskMetric({ label, value, color }: { label: string; value: string; color: string }) {
+  const colorMap: Record<string, string> = {
+    cyan: "text-cyan-400 bg-cyan-500/10",
+    violet: "text-violet-400 bg-violet-500/10",
+    amber: "text-amber-400 bg-amber-500/10",
+  };
+  const cls = colorMap[color] || colorMap.cyan;
+  return (
+    <div className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+      <span className="text-sm text-slate-400">{label}</span>
+      <span className={`text-sm font-mono font-semibold px-2.5 py-0.5 rounded-lg ${cls}`}>
+        {value}
+      </span>
     </div>
   );
 }

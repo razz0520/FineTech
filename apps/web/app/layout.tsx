@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import "./globals.css";
 import { AppShell } from "@finetech/ui";
+import { SidebarNav } from "./sidebar-nav";
 
 export const metadata: Metadata = {
   title: "Finetech Platform",
@@ -15,29 +16,14 @@ export default function RootLayout(props: { children: React.ReactNode }) {
       <body>
         <AppShell title="Finetech">
           <div className="flex w-full">
-            <aside className="w-64 border-r border-slate-800 p-4 hidden md:block">
-              <nav className="space-y-2 text-sm">
-                <Link href="/dashboard" className="block text-slate-200 hover:text-white">
-                  Dashboard
-                </Link>
-                <Link href="/learn" className="block text-slate-200 hover:text-white">
-                  Learn
-                </Link>
-                <Link href="/playground" className="block text-slate-200 hover:text-white">
-                  Prediction Playground
-                </Link>
-                <Link href="/portfolio" className="block text-slate-200 hover:text-white">
-                  Portfolio
-                </Link>
-                <Link href="/advisor" className="block text-slate-200 hover:text-white">
-                  AI Advisor
-                </Link>
-                <Link href="/auth/siwe" className="block text-slate-200 hover:text-white">
-                  Sign in (SIWE)
-                </Link>
-              </nav>
+            {/* Desktop sidebar */}
+            <aside className="w-64 border-r border-white/5 hidden md:flex flex-col shrink-0 bg-slate-950/30 backdrop-blur-sm">
+              <SidebarNav />
             </aside>
-            <section className="flex-1 p-4 md:p-6">{props.children}</section>
+            {/* Main content */}
+            <section className="flex-1 p-5 md:p-8 min-h-0 overflow-y-auto max-w-7xl">
+              {props.children}
+            </section>
           </div>
         </AppShell>
       </body>
