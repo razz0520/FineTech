@@ -1,7 +1,6 @@
 from collections import defaultdict
 import time
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.requests import Request
 from fastapi.responses import JSONResponse
 import asyncio
@@ -25,14 +24,37 @@ def create_app() -> FastAPI:
         description="Backend for unified financial learning, prediction, and portfolio analytics.",
     )
 
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=False,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
+    # ---------- Manual CORS handler (replaces CORSMiddleware) ----------
+    # Starlette's CORSMiddleware was not reliably adding headers to
+    # preflight (OPTIONS) responses with custom headers like X-User-Id
+    # when deployed behind Cloudflare on Render.  This explicit handler
+    # guarantees the headers reach the browser on every single response.
 
+    @app.middleware("http")
+    async def cors_middleware(request: Request, call_next):
+        origin = request.headers.get("origin", "*")
+
+        # Preflight – answer immediately
+        if request.method == "OPTIONS":
+            return JSONResponse(
+                status_code=200,
+                content={"detail": "OK"},
+                headers={
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+                    "Access-Control-Allow-Headers": "*",
+                    "Access-Control-Max-Age": "86400",
+                },
+            )
+
+        # Normal request – forward then stamp headers
+        response = await call_next(request)
+        response.headers["Access-Control-Allow-Origin"] = "*"
+        response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "*"
+        return response
+
+    # ---------- Rate limiter ------------------------------------------------
     _rate_limit: dict[str, list[float]] = defaultdict(list)
 
     @app.middleware("http")
@@ -54,7 +76,7 @@ def create_app() -> FastAPI:
 
     @app.get("/version", tags=["system"])
     async def version() -> dict[str, str]:
-        return {"version": "0.1.1"}
+        return {"version": "0.1.2"}
 
     app.include_router(lms_router, prefix="/api")
     app.include_router(market.router, prefix="/api")
