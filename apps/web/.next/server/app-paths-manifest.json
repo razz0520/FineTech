@@ -1,0 +1,8 @@
+{
+  "/(app)/dashboard/page": "app/(app)/dashboard/page.js",
+  "/(app)/advisor/page": "app/(app)/advisor/page.js",
+  "/auth/siwe/page": "app/auth/siwe/page.js",
+  "/(app)/portfolio/page": "app/(app)/portfolio/page.js",
+  "/(app)/playground/page": "app/(app)/playground/page.js",
+  "/(app)/learn/page": "app/(app)/learn/page.js"
+}

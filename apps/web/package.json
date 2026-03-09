@@ -11,14 +11,14 @@
     "format": "prettier --check ."
   },
   "dependencies": {
-    "next": "15.0.0-canary",
+    "next": "^15.1.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "tailwindcss": "^3.4.0",
     "clsx": "^2.1.0",
     "recharts": "^2.12.0",
-    "@finetech/ui": "*",
-    "@finetech/types": "*"
+    "@finetech/ui": "workspace:*",
+    "@finetech/types": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
@@ -29,7 +29,7 @@
     "jest": "^29.7.0",
     "ts-jest": "^29.1.0",
     "eslint": "^9.0.0",
-    "eslint-config-next": "15.0.0-canary",
+    "eslint-config-next": "^15.1.0",
     "prettier": "^3.2.0",
     "typescript": "^5.6.0"
   }

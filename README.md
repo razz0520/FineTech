@@ -70,3 +70,4 @@ docker compose -f infra/docker-compose.yml up --build
 ## Disclaimer
 
 This platform is for education and paper-trading only. It does not provide execution, personalized financial advice, or real-money trading.
+# FineTech
