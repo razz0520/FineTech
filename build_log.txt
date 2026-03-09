@@ -7,7 +7,7 @@
 ΓÇó Packages in scope: @finetech/config, @finetech/types, @finetech/ui, @finetech/web
 ΓÇó Running build in 4 packages
 ΓÇó Remote caching disabled
-@finetech/web:build: cache miss, executing 9f0fc219a42b8938
+@finetech/web:build: cache miss, executing e4a0bc426a438abb
 @finetech/web:build: 
 @finetech/web:build: > @finetech/web@0.1.0 build C:\Users\ASUS\FineTech\apps\web
 @finetech/web:build: > next build
@@ -20,7 +20,7 @@
 @finetech/web:build: [1m[33mwarn[39m[22m - Pattern: `..\..\packages\ui\**\*.ts`
 @finetech/web:build: [1m[33mwarn[39m[22m - See our documentation for recommendations:
 @finetech/web:build: [1m[33mwarn[39m[22m - https://tailwindcss.com/docs/content-configuration#pattern-recommendations
-@finetech/web:build:  Γ£ô Compiled successfully in 3.6s
+@finetech/web:build:  Γ£ô Compiled successfully in 4.4s
 @finetech/web:build:    Linting and checking validity of types ...
 @finetech/web:build:    Collecting page data ...
 @finetech/web:build:    Generating static pages (0/10) ...
@@ -66,7 +66,7 @@
 
  Tasks:    0 successful, 1 total
 Cached:    0 cached, 1 total
-  Time:    34.719s 
+  Time:    36.258s 
 Failed:    @finetech/web#build
 
  ERROR  run failed: command  exited (1)

@@ -12,7 +12,7 @@ import {
   Legend,
 } from "recharts";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
+import { API_BASE } from "@/lib/api";
 
 function NewsWidget({ symbol }: { symbol: string }) {
   const [articles, setArticles] = useState<{ id: string; title: string; url: string | null }[]>([]);

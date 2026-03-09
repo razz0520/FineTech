@@ -6,7 +6,10 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     env: str = "development"
     database_url: AnyUrl | str = "postgresql+asyncpg://postgres:postgres@localhost:5432/finetech"
-    cors_origins: list[str] = ["http://localhost:3000"]
+    cors_origins: list[str] = [
+        "http://localhost:3000",
+        "https://fine-tech-web.vercel.app",
+    ]
 
     model_config = {"env_prefix": "FINETECH_", "env_file": ".env"}
 

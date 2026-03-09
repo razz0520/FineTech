@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
+import { API_BASE } from "@/lib/api";
 
 const SIWE_DOMAIN = typeof window !== "undefined" ? window.location.host : "localhost";
 const SIWE_ORIGIN =

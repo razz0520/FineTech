@@ -1,13 +1,13 @@
 {
   "/_not-found/page": "/_not-found",
   "/(app)/advisor/page": "/advisor",
-  "/(app)/dashboard/page": "/dashboard",
   "/(app)/learn/[courseId]/page": "/learn/[courseId]",
-  "/(app)/learn/quiz/[quizId]/page": "/learn/quiz/[quizId]",
-  "/(app)/learn/lesson/[lessonId]/page": "/learn/lesson/[lessonId]",
-  "/(marketing)/page": "/",
   "/(app)/portfolio/page": "/portfolio",
-  "/auth/siwe/page": "/auth/siwe",
+  "/(app)/dashboard/page": "/dashboard",
+  "/(app)/learn/lesson/[lessonId]/page": "/learn/lesson/[lessonId]",
   "/(app)/learn/page": "/learn",
-  "/(app)/playground/page": "/playground"
+  "/(app)/playground/page": "/playground",
+  "/auth/siwe/page": "/auth/siwe",
+  "/(marketing)/page": "/",
+  "/(app)/learn/quiz/[quizId]/page": "/learn/quiz/[quizId]"
 }
