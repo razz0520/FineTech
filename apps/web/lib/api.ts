@@ -7,7 +7,7 @@ export function apiUrl(path: string): string {
 
 export async function apiFetch<T>(
   path: string,
-  options?: RequestInit & { headers?: Record<string, string> }
+  options?: Omit<RequestInit, "headers"> & { headers?: Record<string, string> }
 ): Promise<T> {
   const url = apiUrl(path);
   const headers: Record<string, string> = {
