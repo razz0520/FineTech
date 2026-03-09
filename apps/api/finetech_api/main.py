@@ -28,7 +28,7 @@ def create_app() -> FastAPI:
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
-        allow_credentials=True,
+        allow_credentials=False,
         allow_methods=["*"],
         allow_headers=["*"],
     )
@@ -54,7 +54,7 @@ def create_app() -> FastAPI:
 
     @app.get("/version", tags=["system"])
     async def version() -> dict[str, str]:
-        return {"version": "0.1.0"}
+        return {"version": "0.1.1"}
 
     app.include_router(lms_router, prefix="/api")
     app.include_router(market.router, prefix="/api")
