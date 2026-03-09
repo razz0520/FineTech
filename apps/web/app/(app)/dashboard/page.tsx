@@ -19,7 +19,9 @@ export default function DashboardPage() {
         const [enrollResp, portfolioResp, pointsResp, newsResp] = await Promise.allSettled([
           fetch(`${API_BASE}/api/lms/me/enrollments`, { headers }).then((r) => r.json()),
           fetch(`${API_BASE}/api/portfolio/`, { headers }).then((r) => r.json()),
-          fetch(`${API_BASE}/api/lms/me/points-history?limit=200`, { headers }).then((r) => r.json()),
+          fetch(`${API_BASE}/api/lms/me/points-history?limit=200`, { headers }).then((r) =>
+            r.json(),
+          ),
           fetch(`${API_BASE}/api/news/latest?limit=50`).then((r) => r.json()),
         ]);
 
@@ -30,9 +32,9 @@ export default function DashboardPage() {
           const portfolios = portfolioResp.value as { id: string }[];
           if (portfolios.length > 0) {
             try {
-              const detail = await fetch(`${API_BASE}/api/portfolio/${portfolios[0].id}`, { headers }).then((r) =>
-                r.json()
-              );
+              const detail = await fetch(`${API_BASE}/api/portfolio/${portfolios[0].id}`, {
+                headers,
+              }).then((r) => r.json());
               setPortfolioValue(detail.total_value ?? 0);
             } catch {
               setPortfolioValue(0);
@@ -40,7 +42,10 @@ export default function DashboardPage() {
           }
         }
         if (pointsResp.status === "fulfilled" && Array.isArray(pointsResp.value)) {
-          const total = (pointsResp.value as { amount: number }[]).reduce((s, p) => s + p.amount, 0);
+          const total = (pointsResp.value as { amount: number }[]).reduce(
+            (s, p) => s + p.amount,
+            0,
+          );
           setTotalPoints(total);
         }
         if (newsResp.status === "fulfilled" && Array.isArray(newsResp.value)) {
@@ -77,7 +82,13 @@ export default function DashboardPage() {
         />
         <Card
           title="Portfolio value"
-          value={loading ? "…" : portfolioValue !== null ? `$${portfolioValue.toFixed(2)}` : "No portfolio"}
+          value={
+            loading
+              ? "…"
+              : portfolioValue !== null
+                ? `$${portfolioValue.toFixed(2)}`
+                : "No portfolio"
+          }
           subtitle="first portfolio total"
         />
         <Card

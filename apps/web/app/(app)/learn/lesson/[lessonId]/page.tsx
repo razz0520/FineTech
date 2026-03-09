@@ -19,18 +19,17 @@ async function getQuizIdForLesson(lessonId: string): Promise<string | null> {
   }
 }
 
-export default async function LessonPage({
-  params,
-}: {
-  params: Promise<{ lessonId: string }>;
-}) {
+export default async function LessonPage({ params }: { params: Promise<{ lessonId: string }> }) {
   const { lessonId } = await params;
   const [lesson, quizId] = await Promise.all([getLesson(lessonId), getQuizIdForLesson(lessonId)]);
   if (!lesson) notFound();
   return (
     <div className="space-y-6 max-w-3xl">
       <div>
-        <Link href={`/learn/${lesson.course_id}`} className="text-sm text-slate-400 hover:text-white">
+        <Link
+          href={`/learn/${lesson.course_id}`}
+          className="text-sm text-slate-400 hover:text-white"
+        >
           ← Back to course
         </Link>
         <h2 className="text-xl font-semibold tracking-tight mt-2">{lesson.title}</h2>

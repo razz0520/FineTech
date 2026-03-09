@@ -1,6 +1,82 @@
 ΓÇëWARNΓÇë Unsupported engine: wanted: {"node":"20.x"} (current: {"node":"v22.20.0","pnpm":"9.0.0"})
+ΓÇëWARNΓÇë using --force I sure hope you know what you are doing
 Scope: all 5 workspace projects
-Progress: resolved 0, reused 1, downloaded 0, added 0
-Progress: resolved 214, reused 199, downloaded 0, added 0
-ΓÇëWARNΓÇë 2 deprecated subdependencies found: glob@7.2.3, inflight@1.0.6
-Already up to date
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +663
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 663, reused 608, downloaded 0, added 118
+Progress: resolved 663, reused 609, downloaded 0, added 286
+Progress: resolved 663, reused 609, downloaded 0, added 430
+Progress: resolved 663, reused 609, downloaded 2, added 608
+Progress: resolved 663, reused 609, downloaded 2, added 609
+Progress: resolved 663, reused 609, downloaded 2, added 610
+ΓÇëWARNΓÇë GET https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-15.5.12.tgz error (ECONNRESET). Will retry in 10 seconds. 2 retries left.
+Progress: resolved 663, reused 609, downloaded 2, added 611
+ΓÇëWARNΓÇë GET https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-15.5.12.tgz error (ECONNRESET). Will retry in 10 seconds. 2 retries left.
+Progress: resolved 663, reused 609, downloaded 3, added 611
+Progress: resolved 663, reused 609, downloaded 3, added 612
+Progress: resolved 663, reused 609, downloaded 4, added 612
+Progress: resolved 663, reused 609, downloaded 4, added 613
+Progress: resolved 663, reused 609, downloaded 5, added 613
+Progress: resolved 663, reused 609, downloaded 5, added 614
+Progress: resolved 663, reused 609, downloaded 6, added 615
+Progress: resolved 663, reused 609, downloaded 7, added 615
+Progress: resolved 663, reused 609, downloaded 7, added 616
+Progress: resolved 663, reused 609, downloaded 8, added 616
+Progress: resolved 663, reused 609, downloaded 8, added 617
+Progress: resolved 663, reused 609, downloaded 9, added 617
+Progress: resolved 663, reused 609, downloaded 9, added 618
+Progress: resolved 663, reused 609, downloaded 10, added 619
+Progress: resolved 663, reused 609, downloaded 12, added 621
+Progress: resolved 663, reused 609, downloaded 13, added 621
+Progress: resolved 663, reused 609, downloaded 15, added 624
+Progress: resolved 663, reused 609, downloaded 16, added 625
+Progress: resolved 663, reused 609, downloaded 18, added 627
+Progress: resolved 663, reused 609, downloaded 19, added 627
+Progress: resolved 663, reused 609, downloaded 21, added 630
+Progress: resolved 663, reused 609, downloaded 22, added 630
+Progress: resolved 663, reused 609, downloaded 22, added 631
+Progress: resolved 663, reused 609, downloaded 23, added 632
+Progress: resolved 663, reused 609, downloaded 24, added 632
+Progress: resolved 663, reused 609, downloaded 25, added 634
+Progress: resolved 663, reused 609, downloaded 26, added 634
+Progress: resolved 663, reused 609, downloaded 26, added 635
+Progress: resolved 663, reused 609, downloaded 27, added 636
+Progress: resolved 663, reused 609, downloaded 28, added 637
+Progress: resolved 663, reused 609, downloaded 30, added 639
+Progress: resolved 663, reused 609, downloaded 31, added 639
+Progress: resolved 663, reused 609, downloaded 33, added 642
+Progress: resolved 663, reused 609, downloaded 34, added 642
+Progress: resolved 663, reused 609, downloaded 34, added 643
+Progress: resolved 663, reused 609, downloaded 36, added 645
+Progress: resolved 663, reused 609, downloaded 37, added 646
+Progress: resolved 663, reused 609, downloaded 42, added 651
+Progress: resolved 663, reused 609, downloaded 43, added 652
+Progress: resolved 663, reused 609, downloaded 44, added 653
+Progress: resolved 663, reused 609, downloaded 45, added 654
+Progress: resolved 663, reused 609, downloaded 46, added 655
+Progress: resolved 663, reused 609, downloaded 47, added 655
+Progress: resolved 663, reused 609, downloaded 47, added 656
+Progress: resolved 663, reused 609, downloaded 48, added 656
+Progress: resolved 663, reused 609, downloaded 48, added 657
+Progress: resolved 663, reused 609, downloaded 49, added 657
+Progress: resolved 663, reused 609, downloaded 49, added 658
+Progress: resolved 663, reused 609, downloaded 50, added 658
+Progress: resolved 663, reused 609, downloaded 50, added 659
+Progress: resolved 663, reused 609, downloaded 51, added 659
+Progress: resolved 663, reused 609, downloaded 51, added 660
+Progress: resolved 663, reused 609, downloaded 52, added 660
+Progress: resolved 663, reused 609, downloaded 53, added 662
+Progress: resolved 663, reused 609, downloaded 54, added 662
+Progress: resolved 663, reused 609, downloaded 54, added 663, done
+
+devDependencies:
++ eslint 9.39.4
++ eslint-config-prettier 10.1.8
++ eslint-plugin-prettier 5.5.5
++ prettier 3.8.1
++ turbo 2.8.14
++ typescript 5.9.3
+
+Done in 2m 24.8s

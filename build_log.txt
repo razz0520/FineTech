@@ -1,0 +1,73 @@
+ΓÇëWARNΓÇë Unsupported engine: wanted: {"node":"20.x"} (current: {"node":"v22.20.0","pnpm":"9.0.0"})
+
+> finetech-monorepo@0.1.0 build C:\Users\ASUS\FineTech
+> turbo run build
+
+ΓÇó turbo 2.8.14
+ΓÇó Packages in scope: @finetech/config, @finetech/types, @finetech/ui, @finetech/web
+ΓÇó Running build in 4 packages
+ΓÇó Remote caching disabled
+@finetech/web:build: cache miss, executing 9f0fc219a42b8938
+@finetech/web:build: 
+@finetech/web:build: > @finetech/web@0.1.0 build C:\Users\ASUS\FineTech\apps\web
+@finetech/web:build: > next build
+@finetech/web:build: 
+@finetech/web:build:    Γû▓ Next.js 15.5.12
+@finetech/web:build: 
+@finetech/web:build:    Creating an optimized production build ...
+@finetech/web:build: 
+@finetech/web:build: [1m[33mwarn[39m[22m - Your `content` configuration includes a pattern which looks like it's accidentally matching all of `node_modules` and can cause serious performance issues.
+@finetech/web:build: [1m[33mwarn[39m[22m - Pattern: `..\..\packages\ui\**\*.ts`
+@finetech/web:build: [1m[33mwarn[39m[22m - See our documentation for recommendations:
+@finetech/web:build: [1m[33mwarn[39m[22m - https://tailwindcss.com/docs/content-configuration#pattern-recommendations
+@finetech/web:build:  Γ£ô Compiled successfully in 3.6s
+@finetech/web:build:    Linting and checking validity of types ...
+@finetech/web:build:    Collecting page data ...
+@finetech/web:build:    Generating static pages (0/10) ...
+@finetech/web:build:    Generating static pages (2/10) 
+@finetech/web:build:    Generating static pages (4/10) 
+@finetech/web:build:    Generating static pages (7/10) 
+@finetech/web:build:  Γ£ô Generating static pages (10/10)
+@finetech/web:build:    Finalizing page optimization ...
+@finetech/web:build:    Collecting build traces ...
+@finetech/web:build:  ΓÜá Failed to copy traced files for C:\Users\ASUS\FineTech\apps\web\.next\server\pages\_app.js [Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\react@18.3.1\node_modules\react' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\apps\web\node_modules\react'] {
+@finetech/web:build:   errno: -4048,
+@finetech/web:build:   code: 'EPERM',
+@finetech/web:build:   syscall: 'symlink',
+@finetech/web:build:   path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\react@18.3.1\\node_modules\\react',
+@finetech/web:build:   dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\apps\\web\\node_modules\\react'
+@finetech/web:build: }
+@finetech/web:build:  ΓÜá Failed to copy traced files for C:\Users\ASUS\FineTech\apps\web\.next\server\pages\_error.js [Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\react@18.3.1\node_modules\react' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\node_modules\.pnpm\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\react'] {
+@finetech/web:build:   errno: -4048,
+@finetech/web:build:   code: 'EPERM',
+@finetech/web:build:   syscall: 'symlink',
+@finetech/web:build:   path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\react@18.3.1\\node_modules\\react',
+@finetech/web:build:   dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\node_modules\\.pnpm\\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\\node_modules\\react'
+@finetech/web:build: }
+@finetech/web:build:  ΓÜá Failed to copy traced files for C:\Users\ASUS\FineTech\apps\web\.next\server\pages\_document.js [Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\apps\web\node_modules\next'] {
+@finetech/web:build:   errno: -4048,
+@finetech/web:build:   code: 'EPERM',
+@finetech/web:build:   syscall: 'symlink',
+@finetech/web:build:   path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\\node_modules\\next',
+@finetech/web:build:   dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\apps\\web\\node_modules\\next'
+@finetech/web:build: }
+@finetech/web:build: 
+@finetech/web:build: > Build error occurred
+@finetech/web:build: [Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\@next+env@15.5.12\node_modules\@next\env' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\node_modules\.pnpm\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\@next\env'] {
+@finetech/web:build:   errno: -4048,
+@finetech/web:build:   code: 'EPERM',
+@finetech/web:build:   syscall: 'symlink',
+@finetech/web:build:   path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\@next+env@15.5.12\\node_modules\\@next\\env',
+@finetech/web:build:   dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\node_modules\\.pnpm\\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\\node_modules\\@next\\env'
+@finetech/web:build: }
+@finetech/web:build: ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.
+@finetech/web:build: ERROR: command finished with error: command (C:\Users\ASUS\FineTech\apps\web) C:\Users\ASUS\AppData\Local\pnpm\.tools\pnpm\9.0.0\bin\pnpm.CMD run build exited (1)
+@finetech/web#build: command (C:\Users\ASUS\FineTech\apps\web) C:\Users\ASUS\AppData\Local\pnpm\.tools\pnpm\9.0.0\bin\pnpm.CMD run build exited (1)
+
+ Tasks:    0 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    34.719s 
+Failed:    @finetech/web#build
+
+ ERROR  run failed: command  exited (1)
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.

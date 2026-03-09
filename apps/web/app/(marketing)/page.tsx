@@ -9,9 +9,18 @@ export default function MarketingPage() {
         simulated portfolios in one cohesive experience.
       </p>
       <div className="grid gap-4 md:grid-cols-3">
-        <FeatureCard title="Adaptive Learning" description="Structured lessons, quizzes, and gamified progress tracking to build financial literacy." />
-        <FeatureCard title="AI Prediction Playground" description="LSTM+attention forecasts with explainable AI narratives and visual attributions." />
-        <FeatureCard title="Portfolio Intelligence" description="Real-time analytics, risk metrics, and an AI advisor grounded in your data." />
+        <FeatureCard
+          title="Adaptive Learning"
+          description="Structured lessons, quizzes, and gamified progress tracking to build financial literacy."
+        />
+        <FeatureCard
+          title="AI Prediction Playground"
+          description="LSTM+attention forecasts with explainable AI narratives and visual attributions."
+        />
+        <FeatureCard
+          title="Portfolio Intelligence"
+          description="Real-time analytics, risk metrics, and an AI advisor grounded in your data."
+        />
       </div>
     </div>
   );
@@ -30,4 +39,3 @@ function FeatureCard({ title, description }: FeatureCardProps) {
     </div>
   );
 }
-

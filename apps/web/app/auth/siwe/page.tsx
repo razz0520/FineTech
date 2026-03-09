@@ -5,7 +5,8 @@ import { useState } from "react";
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
 
 const SIWE_DOMAIN = typeof window !== "undefined" ? window.location.host : "localhost";
-const SIWE_ORIGIN = typeof window !== "undefined" ? window.location.origin : "http://localhost:3000";
+const SIWE_ORIGIN =
+  typeof window !== "undefined" ? window.location.origin : "http://localhost:3000";
 
 export default function SiwePage() {
   const [address, setAddress] = useState("");
@@ -36,14 +37,15 @@ export default function SiwePage() {
       body: JSON.stringify({ address, message, signature, nonce }),
     });
     const data = await res.json();
-    setStatus(res.ok ? "Signed in successfully." : (data.detail || "Verification failed."));
+    setStatus(res.ok ? "Signed in successfully." : data.detail || "Verification failed.");
   };
 
   return (
     <div className="max-w-md mx-auto p-6 space-y-4">
       <h2 className="text-xl font-semibold">Sign in with Ethereum (SIWE)</h2>
       <p className="text-sm text-slate-400">
-        Enter your wallet address. You will be asked to sign a message in your wallet to prove ownership.
+        Enter your wallet address. You will be asked to sign a message in your wallet to prove
+        ownership.
       </p>
       <input
         type="text"

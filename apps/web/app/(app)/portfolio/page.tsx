@@ -1,7 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, LineChart, Line, XAxis, YAxis, CartesianGrid } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Legend,
+  Tooltip,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
 const DEV_USER_ID = process.env.NEXT_PUBLIC_DEV_USER_ID || "00000000-0000-0000-0000-000000000001";
@@ -10,13 +22,19 @@ const headers = { "X-User-Id": DEV_USER_ID };
 const COLORS = ["#34d399", "#818cf8", "#f472b6", "#fbbf24", "#94a3b8"];
 
 export default function PortfolioPage() {
-  const [portfolios, setPortfolios] = useState<{ id: string; name: string; base_currency: string }[]>([]);
+  const [portfolios, setPortfolios] = useState<
+    { id: string; name: string; base_currency: string }[]
+  >([]);
   const [selected, setSelected] = useState<string | null>(null);
   const [detail, setDetail] = useState<{
     positions: { symbol: string; quantity: number; cost_basis: number }[];
     total_value: number;
   } | null>(null);
-  const [risk, setRisk] = useState<{ sharpe_ratio: number | null; var_95: number | null; volatility: number | null } | null>(null);
+  const [risk, setRisk] = useState<{
+    sharpe_ratio: number | null;
+    var_95: number | null;
+    volatility: number | null;
+  } | null>(null);
   const [snapshots, setSnapshots] = useState<{ date: string; total_value: number }[]>([]);
   const [symbol, setSymbol] = useState("");
   const [side, setSide] = useState<"buy" | "sell">("buy");
@@ -29,7 +47,7 @@ export default function PortfolioPage() {
       .then((r) => r.json())
       .then((list: { id: string; name: string; base_currency: string }[]) => {
         setPortfolios(list);
-        if (list.length && !selected) setSelected(list[0].id);
+        setSelected((prev) => prev || (list.length ? list[0].id : null));
       })
       .catch(() => setPortfolios([]));
   }, []);
@@ -39,12 +57,21 @@ export default function PortfolioPage() {
     Promise.all([
       fetch(`${API_BASE}/api/portfolio/${selected}`, { headers }).then((r) => r.json()),
       fetch(`${API_BASE}/api/portfolio/${selected}/risk`, { headers }).then((r) => r.json()),
-      fetch(`${API_BASE}/api/portfolio/${selected}/snapshots?days=30`, { headers }).then((r) => r.json()),
+      fetch(`${API_BASE}/api/portfolio/${selected}/snapshots?days=30`, { headers }).then((r) =>
+        r.json(),
+      ),
     ])
       .then(([d, r, s]) => {
         setDetail(d);
         setRisk(r);
-        setSnapshots(Array.isArray(s) ? s.map((x: { date: string; total_value: number }) => ({ date: x.date, total_value: x.total_value })) : []);
+        setSnapshots(
+          Array.isArray(s)
+            ? s.map((x: { date: string; total_value: number }) => ({
+                date: x.date,
+                total_value: x.total_value,
+              }))
+            : [],
+        );
       })
       .catch(() => {
         setDetail(null);
@@ -73,7 +100,12 @@ export default function PortfolioPage() {
     fetch(`${API_BASE}/api/portfolio/${selected}/transaction`, {
       method: "POST",
       headers: { ...headers, "Content-Type": "application/json" },
-      body: JSON.stringify({ symbol: symbol.toUpperCase(), side, quantity: Number(quantity), price: Number(price) }),
+      body: JSON.stringify({
+        symbol: symbol.toUpperCase(),
+        side,
+        quantity: Number(quantity),
+        price: Number(price),
+      }),
     })
       .then(() => {
         setSymbol("");
@@ -133,7 +165,15 @@ export default function PortfolioPage() {
                 {allocationData.length > 0 ? (
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
-                      <Pie data={allocationData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={60} label={(e) => e.name}>
+                      <Pie
+                        data={allocationData}
+                        dataKey="value"
+                        nameKey="name"
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={60}
+                        label={(e) => e.name}
+                      >
                         {allocationData.map((_, i) => (
                           <Cell key={i} fill={COLORS[i % COLORS.length]} />
                         ))}
@@ -152,7 +192,9 @@ export default function PortfolioPage() {
               <h3 className="text-sm font-medium mb-2">Risk metrics</h3>
               <ul className="text-sm space-y-1">
                 <li>Sharpe ratio: {risk?.sharpe_ratio ?? "—"}</li>
-                <li>VaR (95%): {risk?.var_95 != null ? (risk.var_95 * 100).toFixed(2) + "%" : "—"}</li>
+                <li>
+                  VaR (95%): {risk?.var_95 != null ? (risk.var_95 * 100).toFixed(2) + "%" : "—"}
+                </li>
                 <li>Volatility: {risk?.volatility ?? "—"}</li>
               </ul>
             </div>
@@ -167,7 +209,13 @@ export default function PortfolioPage() {
                     <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                     <XAxis dataKey="date" stroke="#94a3b8" fontSize={10} />
                     <YAxis stroke="#94a3b8" fontSize={10} />
-                    <Line type="monotone" dataKey="total_value" stroke="#34d399" dot={false} name="Value" />
+                    <Line
+                      type="monotone"
+                      dataKey="total_value"
+                      stroke="#34d399"
+                      dot={false}
+                      name="Value"
+                    />
                   </LineChart>
                 </ResponsiveContainer>
               </div>

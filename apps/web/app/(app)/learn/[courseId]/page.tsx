@@ -27,11 +27,7 @@ async function getEnrollments(): Promise<Enrollment[]> {
   }
 }
 
-export default async function CoursePage({
-  params,
-}: {
-  params: Promise<{ courseId: string }>;
-}) {
+export default async function CoursePage({ params }: { params: Promise<{ courseId: string }> }) {
   const { courseId } = await params;
   const [course, lessons, enrollments] = await Promise.all([
     getCourse(courseId),

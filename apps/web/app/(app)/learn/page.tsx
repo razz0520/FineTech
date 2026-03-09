@@ -19,7 +19,9 @@ export default async function LearnPage() {
       </p>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {courses.length === 0 ? (
-          <p className="text-sm text-slate-400 col-span-full">No courses yet. Seed data via API or admin.</p>
+          <p className="text-sm text-slate-400 col-span-full">
+            No courses yet. Seed data via API or admin.
+          </p>
         ) : (
           courses.map((c) => (
             <Link
@@ -29,7 +31,9 @@ export default async function LearnPage() {
             >
               <h3 className="font-medium mb-1">{c.title}</h3>
               <p className="text-xs text-slate-400 line-clamp-2">{c.description || "—"}</p>
-              <span className="inline-block mt-2 text-xs text-slate-500 capitalize">{c.difficulty}</span>
+              <span className="inline-block mt-2 text-xs text-slate-500 capitalize">
+                {c.difficulty}
+              </span>
             </Link>
           ))
         )}

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+
 import "./globals.css";
 import { AppShell } from "@finetech/ui";
 
@@ -15,24 +17,24 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           <div className="flex w-full">
             <aside className="w-64 border-r border-slate-800 p-4 hidden md:block">
               <nav className="space-y-2 text-sm">
-                <a href="/dashboard" className="block text-slate-200 hover:text-white">
+                <Link href="/dashboard" className="block text-slate-200 hover:text-white">
                   Dashboard
-                </a>
-                <a href="/learn" className="block text-slate-200 hover:text-white">
+                </Link>
+                <Link href="/learn" className="block text-slate-200 hover:text-white">
                   Learn
-                </a>
-                <a href="/playground" className="block text-slate-200 hover:text-white">
+                </Link>
+                <Link href="/playground" className="block text-slate-200 hover:text-white">
                   Prediction Playground
-                </a>
-                <a href="/portfolio" className="block text-slate-200 hover:text-white">
+                </Link>
+                <Link href="/portfolio" className="block text-slate-200 hover:text-white">
                   Portfolio
-                </a>
-                <a href="/advisor" className="block text-slate-200 hover:text-white">
+                </Link>
+                <Link href="/advisor" className="block text-slate-200 hover:text-white">
                   AI Advisor
-                </a>
-                <a href="/auth/siwe" className="block text-slate-200 hover:text-white">
+                </Link>
+                <Link href="/auth/siwe" className="block text-slate-200 hover:text-white">
                   Sign in (SIWE)
-                </a>
+                </Link>
               </nav>
             </aside>
             <section className="flex-1 p-4 md:p-6">{props.children}</section>
@@ -42,4 +44,3 @@ export default function RootLayout(props: { children: React.ReactNode }) {
     </html>
   );
 }
-

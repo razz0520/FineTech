@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import {
   LineChart,
@@ -31,7 +30,12 @@ function NewsWidget({ symbol }: { symbol: string }) {
         {articles.map((a) => (
           <li key={a.id}>
             {a.url ? (
-              <a href={a.url} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white truncate block">
+              <a
+                href={a.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-300 hover:text-white truncate block"
+              >
                 {a.title}
               </a>
             ) : (
@@ -202,13 +206,24 @@ export default function PlaygroundPage() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                   <XAxis dataKey="date" stroke="#94a3b8" fontSize={10} />
                   <YAxis stroke="#94a3b8" fontSize={10} domain={["auto", "auto"]} />
-                  <Tooltip contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #334155" }} />
+                  <Tooltip
+                    contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #334155" }}
+                  />
                   <Legend />
-                  <Line type="monotone" dataKey="close" stroke="#34d399" strokeWidth={2} name="Close" dot={false} />
+                  <Line
+                    type="monotone"
+                    dataKey="close"
+                    stroke="#34d399"
+                    strokeWidth={2}
+                    name="Close"
+                    dot={false}
+                  />
                 </LineChart>
               </ResponsiveContainer>
             ) : (
-              <p className="text-slate-500 text-sm">No data. Start API and ensure market history is available.</p>
+              <p className="text-slate-500 text-sm">
+                No data. Start API and ensure market history is available.
+              </p>
             )}
           </div>
         </div>
@@ -222,13 +237,17 @@ export default function PlaygroundPage() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                   <XAxis type="number" domain={[0, 1]} stroke="#94a3b8" fontSize={10} />
                   <YAxis type="category" dataKey="name" stroke="#94a3b8" fontSize={10} width={50} />
-                  <Tooltip contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #334155" }} />
+                  <Tooltip
+                    contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #334155" }}
+                  />
                   <Line type="monotone" dataKey="weight" stroke="#818cf8" name="Attention" />
                 </LineChart>
               </ResponsiveContainer>
             </div>
           ) : (
-            <p className="text-slate-500 text-sm">Run prediction to see attention over timesteps.</p>
+            <p className="text-slate-500 text-sm">
+              Run prediction to see attention over timesteps.
+            </p>
           )}
         </div>
       </div>
@@ -237,7 +256,10 @@ export default function PlaygroundPage() {
         <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
           <h3 className="text-sm font-medium mb-2">Prediction</h3>
           <p className="text-sm">
-            Direction: <span className={prediction.direction === "up" ? "text-emerald-400" : "text-rose-400"}>{prediction.direction}</span>
+            Direction:{" "}
+            <span className={prediction.direction === "up" ? "text-emerald-400" : "text-rose-400"}>
+              {prediction.direction}
+            </span>
             {" · "}
             Predicted return: {prediction.predicted_return.toFixed(4)}
           </p>

@@ -28,7 +28,12 @@ export default function QuizPage() {
   const quizId = params.quizId as string;
   const [quiz, setQuiz] = useState<QuizData | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [submitted, setSubmitted] = useState<{ score: number; passed: boolean; correct: number; total: number } | null>(null);
+  const [submitted, setSubmitted] = useState<{
+    score: number;
+    passed: boolean;
+    correct: number;
+    total: number;
+  } | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -57,7 +62,12 @@ export default function QuizPage() {
       body: JSON.stringify({ attempt_data, answers: answersPayload }),
     });
     const data = await res.json();
-    setSubmitted({ score: data.score, passed: data.passed, correct: data.correct, total: data.total });
+    setSubmitted({
+      score: data.score,
+      passed: data.passed,
+      correct: data.correct,
+      total: data.total,
+    });
   };
 
   if (loading || !quiz) {

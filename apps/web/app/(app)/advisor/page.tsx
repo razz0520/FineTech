@@ -63,7 +63,8 @@ export default function AdvisorPage() {
     <div className="space-y-6 max-w-3xl">
       <h2 className="text-xl font-semibold tracking-tight">AI financial strategy advisor</h2>
       <p className="text-sm text-slate-300">
-        Ask questions about your portfolio and get educational, non-advice responses grounded in your data and the knowledge base.
+        Ask questions about your portfolio and get educational, non-advice responses grounded in
+        your data and the knowledge base.
       </p>
 
       <div className="flex gap-2 items-center">
@@ -85,7 +86,9 @@ export default function AdvisorPage() {
       <div className="rounded-lg border border-slate-800 bg-slate-900/40 flex flex-col min-h-[320px]">
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {messages.length === 0 && (
-            <p className="text-slate-500 text-sm">Ask a question about investing, risk, or your portfolio (educational only).</p>
+            <p className="text-slate-500 text-sm">
+              Ask a question about investing, risk, or your portfolio (educational only).
+            </p>
           )}
           {messages.map((m, i) => (
             <div key={i} className={m.role === "user" ? "text-right" : "text-left"}>
@@ -110,9 +113,7 @@ export default function AdvisorPage() {
               </div>
             </div>
           ))}
-          {loading && (
-            <p className="text-slate-500 text-sm">Thinking…</p>
-          )}
+          {loading && <p className="text-slate-500 text-sm">Thinking…</p>}
         </div>
         <form
           onSubmit={(e) => {

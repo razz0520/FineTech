@@ -1,0 +1,53 @@
+
+> @finetech/web@0.1.0 build C:\Users\ASUS\FineTech\apps\web
+> next build
+
+   ▲ Next.js 15.5.12
+
+   Creating an optimized production build ...
+
+[1m[33mwarn[39m[22m - Your `content` configuration includes a pattern which looks like it's accidentally matching all of `node_modules` and can cause serious performance issues.
+[1m[33mwarn[39m[22m - Pattern: `..\..\packages\ui\**\*.ts`
+[1m[33mwarn[39m[22m - See our documentation for recommendations:
+[1m[33mwarn[39m[22m - https://tailwindcss.com/docs/content-configuration#pattern-recommendations
+ ✓ Compiled successfully in 3.6s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/10) ...
+   Generating static pages (2/10) 
+   Generating static pages (4/10) 
+   Generating static pages (7/10) 
+ ✓ Generating static pages (10/10)
+   Finalizing page optimization ...
+   Collecting build traces ...
+ ⚠ Failed to copy traced files for C:\Users\ASUS\FineTech\apps\web\.next\server\pages\_app.js [Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\react@18.3.1\node_modules\react' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\apps\web\node_modules\react'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'symlink',
+  path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\react@18.3.1\\node_modules\\react',
+  dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\apps\\web\\node_modules\\react'
+}
+ ⚠ Failed to copy traced files for C:\Users\ASUS\FineTech\apps\web\.next\server\pages\_error.js [Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\react@18.3.1\node_modules\react' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\node_modules\.pnpm\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\react'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'symlink',
+  path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\react@18.3.1\\node_modules\\react',
+  dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\node_modules\\.pnpm\\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\\node_modules\\react'
+}
+ ⚠ Failed to copy traced files for C:\Users\ASUS\FineTech\apps\web\.next\server\pages\_document.js [Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\apps\web\node_modules\next'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'symlink',
+  path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\\node_modules\\next',
+  dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\apps\\web\\node_modules\\next'
+}
+
+> Build error occurred
+[Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\@next+env@15.5.12\node_modules\@next\env' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\node_modules\.pnpm\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\@next\env'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'symlink',
+  path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\@next+env@15.5.12\\node_modules\\@next\\env',
+  dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\node_modules\\.pnpm\\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\\node_modules\\@next\\env'
+}
+ ELIFECYCLE  Command failed with exit code 1.

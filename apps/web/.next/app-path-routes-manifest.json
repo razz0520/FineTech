@@ -1,0 +1,13 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/(app)/advisor/page": "/advisor",
+  "/(app)/dashboard/page": "/dashboard",
+  "/(app)/learn/[courseId]/page": "/learn/[courseId]",
+  "/(app)/learn/quiz/[quizId]/page": "/learn/quiz/[quizId]",
+  "/(app)/learn/lesson/[lessonId]/page": "/learn/lesson/[lessonId]",
+  "/(marketing)/page": "/",
+  "/(app)/portfolio/page": "/portfolio",
+  "/auth/siwe/page": "/auth/siwe",
+  "/(app)/learn/page": "/learn",
+  "/(app)/playground/page": "/playground"
+}
