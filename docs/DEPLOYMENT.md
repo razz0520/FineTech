@@ -25,6 +25,10 @@
 
 Vercel will auto-deploy on push to main.
 
+> [!TIP]
+> If you encounter `ERR_PNPM_OUTDATED_LOCKFILE` on Vercel, ensure you've run `pnpm install` locally and pushed the updated `pnpm-lock.yaml`. This often happens after adding new dependencies or type declarations to workspace packages.
+
+
 ### Option B: GitHub Actions
 
 1. Create a [Vercel token](https://vercel.com/account/tokens).
