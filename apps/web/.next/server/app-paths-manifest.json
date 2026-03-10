@@ -1,9 +1,5 @@
 {
   "/(app)/dashboard/page": "app/(app)/dashboard/page.js",
-  "/auth/signup/page": "app/auth/signup/page.js",
   "/auth/login/page": "app/auth/login/page.js",
-  "/(app)/advisor/page": "app/(app)/advisor/page.js",
-  "/(app)/playground/page": "app/(app)/playground/page.js",
-  "/(app)/portfolio/page": "app/(app)/portfolio/page.js",
-  "/(app)/learn/page": "app/(app)/learn/page.js"
+  "/auth/signup/page": "app/auth/signup/page.js"
 }
