@@ -91,15 +91,17 @@ export function mockExplain(series: number[]) {
 export function mockNarrative(series: number[]) {
   const pred = mockPrediction(series);
   const dir = pred.direction;
+  const attentionWeights = pred.attention_weights;
+  const maxWeight = Math.max(...attentionWeights);
+
   return {
     predicted_return: pred.predicted_return,
     attention_weights: pred.attention_weights,
-    narrative: `The model identifies a ${dir}ward trend based on recent price momentum. The most influential timesteps are in the last 3–5 trading sessions, suggesting short-term patterns are driving the forecast.`,
+    narrative: `[CALC] The attention mechanism assigned a peak weight of ${maxWeight.toFixed(2)} to the T-minus-2 price action, indicating a non-linear dependency. Predicted ${dir}ward delta is purely mechanical.`,
     bullet_points: [
-      `Recent ${dir === "up" ? "bullish" : "bearish"} momentum detected in closing prices.`,
-      "Attention is concentrated on the most recent trading sessions.",
-      `Predicted return: ${(pred.predicted_return * 100).toFixed(2)}% with moderate confidence.`,
-      "Consider combining this signal with fundamental analysis.",
+      `[OK] Temporal weights concentrated in session T-minus-2.`,
+      `[CALC] Predicted return volatility variance: ${pred.uncertainty.toFixed(4)}.`,
+      `[WARN] Nominal ${dir}ward trend ignores macro-economic liquidity constraints.`,
     ],
   };
 }
@@ -117,45 +119,57 @@ export function mockPortfolios(): MockPortfolio[] {
   return [
     {
       id: "demo-portfolio-1",
-      name: "Growth Portfolio",
+      name: "Operator Rahul Portfolio",
       base_currency: "USD",
       positions: [
-        { symbol: "AAPL", quantity: 50, cost_basis: 170.25 },
-        { symbol: "MSFT", quantity: 30, cost_basis: 380.5 },
-        { symbol: "GOOGL", quantity: 25, cost_basis: 155.0 },
-        { symbol: "AMZN", quantity: 20, cost_basis: 178.3 },
+        { symbol: "AAPL", quantity: 55, cost_basis: 187.5 },
+        { symbol: "MSFT", quantity: 18, cost_basis: 412.0 },
+        { symbol: "GOOGL", quantity: 22, cost_basis: 172.5 },
+        { symbol: "AMZN", quantity: 24, cost_basis: 191.0 },
       ],
-      total_value: 50 * 185 + 30 * 420 + 25 * 175 + 20 * 195,
+      total_value: 25730.5,
     },
   ];
 }
 
 export function mockRiskMetrics() {
   return {
-    sharpe_ratio: +(Math.random() * 2 + 0.5).toFixed(2),
-    var_95: +(Math.random() * 0.05 + 0.01).toFixed(4),
-    volatility: +(Math.random() * 0.02 + 0.005).toFixed(4),
+    sharpe_ratio: 2.81,
+    var_95: 0.0233,
+    volatility: 0.0185,
   };
 }
 
 export function mockSnapshots(days = 30) {
   const dates = dateRange(days);
-  const values = randomWalk(25000, days, 300);
+  const values = randomWalk(25730.5, days, 200);
   return dates.map((d, i) => ({ date: d, total_value: +values[i].toFixed(2) }));
 }
 
 /* ---------- News ---------- */
 export function mockNews(symbol?: string) {
   const pool = [
-    { id: "n1", title: `${symbol || "AAPL"} beats quarterly earnings estimates`, url: null },
-    { id: "n2", title: "Fed signals potential rate cut in coming months", url: null },
     {
-      id: "n3",
-      title: `${symbol || "Tech sector"} sees renewed investor interest amid AI expansion`,
+      id: "n1",
+      title: `[INIT] ${symbol || "AAPL"} quarterly variance report: -0.4% delta vs expectations`,
       url: null,
     },
-    { id: "n4", title: "Global markets rally on positive economic data", url: null },
-    { id: "n5", title: `Analysts upgrade ${symbol || "AAPL"} price target`, url: null },
+    { id: "n2", title: "[OK] Fed rate cycle transition: impact assessment pending", url: null },
+    {
+      id: "n3",
+      title: `[CALC] Tech sector concentration risk index: +2.4pts`,
+      url: null,
+    },
+    {
+      id: "n4",
+      title: "[INIT] Global liquidity flow analysis indicates capital flight to high-yield bonds",
+      url: null,
+    },
+    {
+      id: "n5",
+      title: `[WARN] Analyst downgrade cycle initiated for ${symbol || "AAPL"}`,
+      url: null,
+    },
   ];
   return pool;
 }
@@ -166,40 +180,38 @@ export function mockCourses() {
     {
       id: "c1",
       title: "Intro to Technical Analysis",
-      description:
-        "Learn candlestick patterns, support/resistance levels, and moving average strategies.",
+      description: "[BASE-LEVEL HYGIENE] Foundational patterns for basic operational competency.",
       difficulty: "beginner",
-      tags: ["technical-analysis"],
+      tags: ["hygiene"],
     },
     {
       id: "c2",
       title: "Portfolio Theory & Risk Management",
-      description: "Understand diversification, beta, Sharpe ratio, and Modern Portfolio Theory.",
+      description: "[CORE] Essential mechanics of risk-adjusted returns and delta-neutrality.",
       difficulty: "intermediate",
-      tags: ["portfolio", "risk"],
+      tags: ["risk"],
     },
     {
       id: "c3",
       title: "Machine Learning in Finance",
-      description: "Apply LSTM, random forests, and sentiment analysis to market prediction.",
+      description: "[PRIMARY TARGET] Optimized path for 12 LPA professional competence.",
       difficulty: "advanced",
-      tags: ["ml", "prediction"],
+      tags: ["professional-mastery"],
     },
     {
       id: "c4",
       title: "Options Trading Fundamentals",
-      description:
-        "Calls, puts, Greeks, and common options strategies for hedging and speculation.",
+      description: "[INTERMEDIATE] Leveraging volatility under structural constraints.",
       difficulty: "intermediate",
-      tags: ["options", "derivatives"],
+      tags: ["derivatives"],
     },
     {
       id: "c5",
       title: "Crypto & DeFi Essentials",
       description:
-        "Blockchain fundamentals, tokenomics, liquidity pools, and yield farming basics.",
+        "[BASE-LEVEL HYGIENE] Distributed ledger mechanics for system integrity awareness.",
       difficulty: "beginner",
-      tags: ["crypto", "defi"],
+      tags: ["hygiene"],
     },
   ];
 }
@@ -217,12 +229,12 @@ export function mockDashboardStats() {
 /* ---------- Advisor ---------- */
 const ADVISOR_RESPONSES: Record<string, string> = {
   diversif:
-    "Diversification is a risk management strategy that mixes a wide variety of investments within a portfolio. The rationale is that a diversified portfolio will, on average, yield higher returns and pose a lower risk than any individual investment. Consider spreading your holdings across different asset classes, sectors, and geographies.",
-  risk: "Risk management involves identifying, assessing, and controlling threats to your portfolio. Key metrics include Value-at-Risk (VaR), Sharpe ratio, and portfolio volatility. A well-balanced portfolio typically aims for a Sharpe ratio above 1.0 and limits individual position sizes to manage concentration risk.",
+    "[INIT] Diversification packet activated. Your current allocation exhibits high tech-sector correlation. Optimal strategy requires non-correlated assets: Commodities (Gold/Oil) or Real Estate REITs to offset sector exposure.",
+  risk: "[CALC] Risk metrics analyzed. Your VaR (Value-at-Risk) of 2.33% indicates a probabilistic floor, not a certainty. Under extreme market stress, tail-risk liquidation remains a non-zero dependency.",
   market:
-    "Market analysis can be approached through fundamental analysis (examining financial statements, industry conditions, and economic factors) or technical analysis (studying price patterns and trading volumes). Most professional investors combine both approaches for a more complete picture.",
+    "[OK] Market analysis protocol engaged. Fundamental valuations are lagging price action. Technical parameters indicate a RSI-based overbought condition. Professional performance requires cross-validated entry signals.",
   invest:
-    "The core principles of investing include: start early to benefit from compound returns, diversify across asset classes, maintain a long-term perspective, keep costs low, and regularly rebalance your portfolio. Dollar-cost averaging is an effective strategy to reduce timing risk.",
+    "[WARN] Investment philosophy insufficient. Nominal growth is a trailing indicator. Realized alpha requires disciplined capital allocation and strict adhereance to risk-management thresholds.",
 };
 
 export function mockAdvisorResponse(question: string): {
@@ -232,7 +244,7 @@ export function mockAdvisorResponse(question: string): {
 } {
   const q = question.toLowerCase();
   let answer =
-    "That's a great question about financial markets. Based on general financial principles, I'd recommend reviewing your overall investment strategy, considering your risk tolerance, time horizon, and financial goals. Diversification across asset classes is generally considered a foundational strategy for managing portfolio risk.";
+    "[INIT] Query received. Your current educational and financial velocity is insufficient for the 12 LPA target. Review 'Machine Learning in Finance' to reduce the performance gap.";
 
   for (const [key, resp] of Object.entries(ADVISOR_RESPONSES)) {
     if (q.includes(key)) {
@@ -243,11 +255,7 @@ export function mockAdvisorResponse(question: string): {
 
   return {
     answer,
-    citations: ["Source: Financial education content (demo mode)"],
-    suggestions: [
-      "Ask about portfolio diversification strategies",
-      "Learn about risk management metrics",
-      "Explore technical vs fundamental analysis",
-    ],
+    citations: ["[OK] Data sourced from internal audit and market telemetry."],
+    suggestions: ["How should I diversify?", "Explain risk metrics", "What is market analysis?"],
   };
 }

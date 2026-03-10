@@ -1,0 +1,62 @@
+
+> @finetech/web@0.1.0 build C:\Users\ASUS\FineTech\apps\web
+> next build
+
+   Γû▓ Next.js 15.5.12
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 2.8s
+   Linting and checking validity of types ...
+
+Failed to compile.
+
+./app/(app)/playground/page.tsx
+12:3  Error: 'Legend' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./app/(app)/portfolio/page.tsx
+3:31  Error: 'useCallback' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/reality-check.tsx
+1:14  Error: Delete `ΓÉì`  prettier/prettier
+2:1  Error: Delete `ΓÉì`  prettier/prettier
+3:47  Error: Delete `ΓÉì`  prettier/prettier
+4:1  Error: Delete `ΓÉì`  prettier/prettier
+5:39  Error: Delete `ΓÉì`  prettier/prettier
+6:1  Error: Replace `┬╖┬╖┬╖┬╖"/dashboard":┬╖"You┬╖are┬╖confusing┬╖nominal┬╖balance┬╖with┬╖actual┬╖wealth;┬╖without┬╖automated┬╖savings,┬╖your┬╖'net┬╖worth'┬╖is┬╖merely┬╖a┬╖transient┬╖accounting┬╖error.",ΓÉì` with `┬╖┬╖"/dashboard":ΓÅÄ┬╖┬╖┬╖┬╖"You┬╖are┬╖confusing┬╖nominal┬╖balance┬╖with┬╖actual┬╖wealth;┬╖without┬╖automated┬╖savings,┬╖your┬╖'net┬╖worth'┬╖is┬╖merely┬╖a┬╖transient┬╖accounting┬╖error.",`  prettier/prettier
+7:1  Error: Replace `┬╖┬╖┬╖┬╖"/learn":┬╖"Theoretical┬╖knowledge┬╖without┬╖capital┬╖deployment┬╖is┬╖just┬╖entertainment;┬╖your┬╖1250┬╖XP┬╖is┬╖worth┬╖exactly┬╖$0┬╖in┬╖a┬╖liquidity┬╖crisis.",ΓÉì` with `┬╖┬╖"/learn":ΓÅÄ┬╖┬╖┬╖┬╖"Theoretical┬╖knowledge┬╖without┬╖capital┬╖deployment┬╖is┬╖just┬╖entertainment;┬╖your┬╖1250┬╖XP┬╖is┬╖worth┬╖exactly┬╖$0┬╖in┬╖a┬╖liquidity┬╖crisis.",`  prettier/prettier
+8:1  Error: Replace `┬╖┬╖┬╖┬╖"/playground":┬╖"A┬╖predictive┬╖model┬╖with┬╖0.82┬╖confidence┬╖is┬╖still┬╖a┬╖coin┬╖flip┬╖in┬╖a┬╖black-swan┬╖event;┬╖the┬╖market┬╖does┬╖not┬╖care┬╖about┬╖your┬╖'Attention┬╖Weights'.",ΓÉì` with `┬╖┬╖"/playground":ΓÅÄ┬╖┬╖┬╖┬╖"A┬╖predictive┬╖model┬╖with┬╖0.82┬╖confidence┬╖is┬╖still┬╖a┬╖coin┬╖flip┬╖in┬╖a┬╖black-swan┬╖event;┬╖the┬╖market┬╖does┬╖not┬╖care┬╖about┬╖your┬╖'Attention┬╖Weights'.",`  prettier/prettier
+9:1  Error: Replace `┬╖┬╖┬╖┬╖"/portfolio":┬╖"Your┬╖Tech┬╖Concentration┬╖Risk┬╖is┬╖at┬╖100%.┬╖Diversification┬╖is┬╖the┬╖only┬╖free┬╖lunch,┬╖and┬╖you┬╖are┬╖currently┬╖starving┬╖by┬╖choice.",ΓÉì` with `┬╖┬╖"/portfolio":ΓÅÄ┬╖┬╖┬╖┬╖"Your┬╖Tech┬╖Concentration┬╖Risk┬╖is┬╖at┬╖100%.┬╖Diversification┬╖is┬╖the┬╖only┬╖free┬╖lunch,┬╖and┬╖you┬╖are┬╖currently┬╖starving┬╖by┬╖choice.",`  prettier/prettier
+10:1  Error: Replace `┬╖┬╖┬╖┬╖"/advisor":┬╖"Seeking┬╖advice┬╖is┬╖a┬╖signal┬╖of┬╖uncertainty.┬╖In┬╖high-stakes┬╖finance,┬╖uncertainty┬╖is┬╖the┬╖primary┬╖driver┬╖of┬╖liquidation.",ΓÉì` with `┬╖┬╖"/advisor":ΓÅÄ┬╖┬╖┬╖┬╖"Seeking┬╖advice┬╖is┬╖a┬╖signal┬╖of┬╖uncertainty.┬╖In┬╖high-stakes┬╖finance,┬╖uncertainty┬╖is┬╖the┬╖primary┬╖driver┬╖of┬╖liquidation.",`  prettier/prettier
+11:3  Error: Replace `┬╖┬╖"default":┬╖"The┬╖spreadsheet┬╖does┬╖not┬╖lie,┬╖but┬╖your┬╖perception┬╖does.┬╖Performance┬╖is┬╖the┬╖only┬╖metric┬╖that┬╖survives┬╖the┬╖audit."ΓÉì` with `default:ΓÅÄ┬╖┬╖┬╖┬╖"The┬╖spreadsheet┬╖does┬╖not┬╖lie,┬╖but┬╖your┬╖perception┬╖does.┬╖Performance┬╖is┬╖the┬╖only┬╖metric┬╖that┬╖survives┬╖the┬╖audit.",`  prettier/prettier
+12:3  Error: Delete `ΓÉì`  prettier/prettier
+13:1  Error: Delete `ΓÉì`  prettier/prettier
+14:42  Error: Delete `ΓÉì`  prettier/prettier
+15:1  Error: Replace `┬╖┬╖┬╖┬╖const┬╖pathname┬╖=┬╖usePathname();ΓÉì` with `┬╖┬╖const┬╖pathname┬╖=┬╖usePathname();`  prettier/prettier
+16:1  Error: Replace `┬╖┬╖┬╖┬╖const┬╖truth┬╖=┬╖DATA[pathname]┬╖||┬╖DATA.default;ΓÉì` with `┬╖┬╖const┬╖truth┬╖=┬╖DATA[pathname]┬╖||┬╖DATA.default;`  prettier/prettier
+17:1  Error: Delete `ΓÉì`  prettier/prettier
+18:1  Error: Replace `┬╖┬╖┬╖┬╖return┬╖(ΓÉì` with `┬╖┬╖return┬╖(`  prettier/prettier
+19:5  Error: Replace `┬╖┬╖┬╖┬╖<div┬╖className="mt-12┬╖pt-8┬╖border-t┬╖border-white/5┬╖animate-fade-in">ΓÉì` with `<div┬╖className="mt-12┬╖pt-8┬╖border-t┬╖border-white/5┬╖animate-fade-in">`  prettier/prettier
+20:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<h3┬╖className="text-[10px]┬╖font-bold┬╖text-slate-500┬╖uppercase┬╖tracking-[0.2em]┬╖mb-4">ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖<h3┬╖className="text-[10px]┬╖font-bold┬╖text-slate-500┬╖uppercase┬╖tracking-[0.2em]┬╖mb-4">`  prettier/prettier
+21:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖[CALC]┬╖Strategic┬╖Reality┬╖CheckΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖[CALC]┬╖Strategic┬╖Reality┬╖Check`  prettier/prettier
+22:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖</h3>ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖</h3>`  prettier/prettier
+23:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<div┬╖className="glass-panel┬╖p-6┬╖rounded-2xl┬╖border-rose-500/10┬╖bg-rose-500/5┬╖group┬╖hover:bg-rose-500/10┬╖transition-all┬╖duration-500">ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖<div┬╖className="glass-panel┬╖p-6┬╖rounded-2xl┬╖border-rose-500/10┬╖bg-rose-500/5┬╖group┬╖hover:bg-rose-500/10┬╖transition-all┬╖duration-500">`  prettier/prettier
+24:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<p┬╖className="text-sm┬╖font-mono┬╖text-slate-400┬╖leading-relaxed┬╖italic┬╖group-hover:text-slate-300┬╖transition-colors">ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<p┬╖className="text-sm┬╖font-mono┬╖text-slate-400┬╖leading-relaxed┬╖italic┬╖group-hover:text-slate-300┬╖transition-colors">`  prettier/prettier
+25:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖"{truth}"ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖"{truth}"`  prettier/prettier
+25:21  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+25:29  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+26:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖</p>ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖</p>`  prettier/prettier
+27:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖</div>ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖</div>`  prettier/prettier
+28:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖</div>ΓÉì` with `┬╖┬╖┬╖┬╖</div>`  prettier/prettier
+29:3  Error: Replace `┬╖┬╖);ΓÉì` with `);`  prettier/prettier
+30:2  Error: Delete `ΓÉì`  prettier/prettier
+
+./lib/mock-data.ts
+152:6  Error: Replace `┬╖id:┬╖"n1",┬╖title:┬╖`[INIT]┬╖${symbol┬╖||┬╖"AAPL"}┬╖quarterly┬╖variance┬╖report:┬╖-0.4%┬╖delta┬╖vs┬╖expectations`,┬╖url:┬╖null` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖id:┬╖"n1",ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖title:┬╖`[INIT]┬╖${symbol┬╖||┬╖"AAPL"}┬╖quarterly┬╖variance┬╖report:┬╖-0.4%┬╖delta┬╖vs┬╖expectations`,ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖url:┬╖null,ΓÅÄ┬╖┬╖┬╖`  prettier/prettier
+159:6  Error: Replace `┬╖id:┬╖"n4",┬╖title:┬╖"[INIT]┬╖Global┬╖liquidity┬╖flow┬╖analysis┬╖indicates┬╖capital┬╖flight┬╖to┬╖high-yield┬╖bonds",┬╖url:┬╖null` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖id:┬╖"n4",ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖title:┬╖"[INIT]┬╖Global┬╖liquidity┬╖flow┬╖analysis┬╖indicates┬╖capital┬╖flight┬╖to┬╖high-yield┬╖bonds",ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖url:┬╖null,ΓÅÄ┬╖┬╖┬╖`  prettier/prettier
+160:6  Error: Replace `┬╖id:┬╖"n5",┬╖title:┬╖`[WARN]┬╖Analyst┬╖downgrade┬╖cycle┬╖initiated┬╖for┬╖${symbol┬╖||┬╖"AAPL"}`,┬╖url:┬╖null` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖id:┬╖"n5",ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖title:┬╖`[WARN]┬╖Analyst┬╖downgrade┬╖cycle┬╖initiated┬╖for┬╖${symbol┬╖||┬╖"AAPL"}`,ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖url:┬╖null,ΓÅÄ┬╖┬╖┬╖`  prettier/prettier
+171:19  Error: Delete `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+193:19  Error: Delete `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+249:19  Error: Replace `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖"How┬╖should┬╖I┬╖diversify?",ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖"Explain┬╖risk┬╖metrics",ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖"What┬╖is┬╖market┬╖analysis?",ΓÅÄ┬╖┬╖┬╖┬╖` with `"How┬╖should┬╖I┬╖diversify?",┬╖"Explain┬╖risk┬╖metrics",┬╖"What┬╖is┬╖market┬╖analysis?"`  prettier/prettier
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.

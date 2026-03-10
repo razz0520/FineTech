@@ -1,463 +1,262 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import {
-  PieChart,
-  Pie,
-  Cell,
+  AreaChart,
+  Area,
   ResponsiveContainer,
-  Legend,
   Tooltip,
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
 } from "recharts";
 
 import { API_BASE } from "@/lib/api";
-import { mockPortfolios, mockRiskMetrics, mockSnapshots } from "@/lib/mock-data";
+import {
+  mockPortfolios,
+  mockRiskMetrics,
+  mockSnapshots,
+  type MockPortfolio,
+} from "@/lib/mock-data";
+import { StrategicRealityCheck } from "@/components/reality-check";
+
 const DEV_USER_ID = process.env.NEXT_PUBLIC_DEV_USER_ID || "00000000-0000-0000-0000-000000000001";
 const headers = { "X-User-Id": DEV_USER_ID };
 
-const COLORS = ["#06b6d4", "#8b5cf6", "#f472b6", "#fbbf24", "#10b981"];
+const RISK_BADGES: Record<string, { label: string; class: string }> = {
+  sharpe: {
+    label: "[OK] Sharpe Ratio",
+    class: "text-emerald-400 bg-emerald-500/5 border-emerald-500/20",
+  },
+  var: { label: "[CALC] VaR (95%)", class: "text-violet-400 bg-violet-500/5 border-violet-500/20" },
+  vol: { label: "[INIT] Volatility", class: "text-cyan-400 bg-cyan-500/5 border-cyan-500/20" },
+};
 
 export default function PortfolioPage() {
-  const [portfolios, setPortfolios] = useState<
-    { id: string; name: string; base_currency: string }[]
-  >([]);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [detail, setDetail] = useState<{
-    positions: { symbol: string; quantity: number; cost_basis: number }[];
-    total_value: number;
-  } | null>(null);
-  const [risk, setRisk] = useState<{
-    sharpe_ratio: number | null;
-    var_95: number | null;
-    volatility: number | null;
-  } | null>(null);
-  const [snapshots, setSnapshots] = useState<{ date: string; total_value: number }[]>([]);
-  const [symbol, setSymbol] = useState("");
-  const [side, setSide] = useState<"buy" | "sell">("buy");
-  const [quantity, setQuantity] = useState("");
-  const [price, setPrice] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [usingMock, setUsingMock] = useState(false);
+  const [portfolios, setPortfolios] = useState<MockPortfolio[]>([]);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [history, setHistory] = useState<{ date: string; total_value: number }[]>([]);
+  const [metrics, setMetrics] = useState({ sharpe_ratio: 0, var_95: 0, volatility: 0 });
+  const [loading, setLoading] = useState(true);
 
-  // Load portfolios
   useEffect(() => {
-    fetch(`${API_BASE}/api/portfolio/`, { headers })
-      .then((r) => r.json())
-      .then((list: { id: string; name: string; base_currency: string }[]) => {
-        setPortfolios(list);
-        setSelected((prev) => prev || (list.length ? list[0].id : null));
-      })
-      .catch(() => {
-        // Use mock data
+    async function load() {
+      try {
+        const res = await fetch(`${API_BASE}/api/portfolio/`, { headers });
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        if (data && data.length > 0) {
+          setPortfolios(data);
+          setSelectedId(data[0].id);
+        } else {
+          const mocks = mockPortfolios();
+          setPortfolios(mocks);
+          setSelectedId(mocks[0].id);
+        }
+      } catch {
         const mocks = mockPortfolios();
-        setPortfolios(
-          mocks.map((p) => ({ id: p.id, name: p.name, base_currency: p.base_currency })),
-        );
-        setSelected(mocks[0]?.id || null);
-        setUsingMock(true);
-      });
+        setPortfolios(mocks);
+        setSelectedId(mocks[0].id);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
   }, []);
 
-  // Load portfolio detail
-  const loadDetail = useCallback(
-    (id: string) => {
-      if (usingMock) {
-        const mock = mockPortfolios().find((p) => p.id === id);
-        if (mock) {
-          setDetail({ positions: mock.positions, total_value: mock.total_value });
-          setRisk(mockRiskMetrics());
-          setSnapshots(mockSnapshots());
-        }
-        return;
-      }
-
-      Promise.all([
-        fetch(`${API_BASE}/api/portfolio/${id}`, { headers }).then((r) => r.json()),
-        fetch(`${API_BASE}/api/portfolio/${id}/risk`, { headers }).then((r) => r.json()),
-        fetch(`${API_BASE}/api/portfolio/${id}/snapshots?days=30`, { headers }).then((r) =>
-          r.json(),
-        ),
-      ])
-        .then(([d, r, s]) => {
-          setDetail(d);
-          setRisk(r);
-          setSnapshots(
-            Array.isArray(s)
-              ? s.map((x: { date: string; total_value: number }) => ({
-                  date: x.date,
-                  total_value: x.total_value,
-                }))
-              : [],
-          );
-        })
-        .catch(() => {
-          const mock = mockPortfolios().find((p) => p.id === id) || mockPortfolios()[0];
-          setDetail({ positions: mock.positions, total_value: mock.total_value });
-          setRisk(mockRiskMetrics());
-          setSnapshots(mockSnapshots());
-          setUsingMock(true);
-        });
-    },
-    [usingMock],
-  );
-
   useEffect(() => {
-    if (selected) loadDetail(selected);
-  }, [selected, loadDetail]);
-
-  const createPortfolio = () => {
-    if (usingMock) {
-      const id = crypto.randomUUID();
-      setPortfolios((prev) => [
-        ...prev,
-        { id, name: `Portfolio ${prev.length + 1}`, base_currency: "USD" },
-      ]);
-      setSelected(id);
-      setDetail({ positions: [], total_value: 0 });
-      setRisk(mockRiskMetrics());
-      setSnapshots([]);
-      return;
-    }
-    fetch(`${API_BASE}/api/portfolio/`, {
-      method: "POST",
-      headers: { ...headers, "Content-Type": "application/json" },
-      body: JSON.stringify({}),
-    })
-      .then((r) => r.json())
-      .then((p: { id: string }) => {
-        setPortfolios((prev) => [...prev, { id: p.id, name: "Default", base_currency: "USD" }]);
-        setSelected(p.id);
-      })
-      .catch(() => {
-        // Fallback
-        const id = crypto.randomUUID();
-        setPortfolios((prev) => [
-          ...prev,
-          { id, name: `Portfolio ${prev.length + 1}`, base_currency: "USD" },
+    if (!selectedId) return;
+    setLoading(true);
+    async function loadDetail() {
+      try {
+        const [histRes, metrRes] = await Promise.all([
+          fetch(`${API_BASE}/api/portfolio/${selectedId}/history`, { headers }),
+          fetch(`${API_BASE}/api/portfolio/${selectedId}/metrics`, { headers }),
         ]);
-        setSelected(id);
-        setDetail({ positions: [], total_value: 0 });
-      });
-  };
-
-  const submitTrade = () => {
-    if (!selected || !symbol || !quantity || !price) return;
-    setSubmitting(true);
-
-    const newPosition = {
-      symbol: symbol.toUpperCase(),
-      quantity: Number(quantity),
-      cost_basis: Number(price),
-    };
-
-    if (usingMock) {
-      // Handle locally
-      setDetail((prev) => {
-        if (!prev) return prev;
-        const existing = prev.positions.find((p) => p.symbol === newPosition.symbol);
-        let positions;
-        if (side === "buy") {
-          if (existing) {
-            positions = prev.positions.map((p) =>
-              p.symbol === newPosition.symbol
-                ? {
-                    ...p,
-                    quantity: p.quantity + newPosition.quantity,
-                    cost_basis: newPosition.cost_basis,
-                  }
-                : p,
-            );
-          } else {
-            positions = [...prev.positions, newPosition];
-          }
-        } else {
-          positions = prev.positions
-            .map((p) =>
-              p.symbol === newPosition.symbol
-                ? { ...p, quantity: p.quantity - newPosition.quantity }
-                : p,
-            )
-            .filter((p) => p.quantity > 0);
-        }
-        const total_value = positions.reduce((s, p) => s + p.quantity * p.cost_basis, 0);
-        return { positions, total_value };
-      });
-      setSymbol("");
-      setQuantity("");
-      setPrice("");
-      setSubmitting(false);
-      return;
+        if (histRes.ok) setHistory(await histRes.json());
+        else setHistory(mockSnapshots());
+        if (metrRes.ok) setMetrics(await metrRes.json());
+        else setMetrics(mockRiskMetrics());
+      } catch {
+        setHistory(mockSnapshots());
+        setMetrics(mockRiskMetrics());
+      } finally {
+        setLoading(false);
+      }
     }
+    loadDetail();
+  }, [selectedId]);
 
-    fetch(`${API_BASE}/api/portfolio/${selected}/transaction`, {
-      method: "POST",
-      headers: { ...headers, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        symbol: symbol.toUpperCase(),
-        side,
-        quantity: Number(quantity),
-        price: Number(price),
-      }),
-    })
-      .then(() => {
-        setSymbol("");
-        setQuantity("");
-        setPrice("");
-        if (selected) loadDetail(selected);
-      })
-      .catch(() => {
-        // Fallback to local state
-        setDetail((prev) => {
-          if (!prev) return prev;
-          const positions =
-            side === "buy"
-              ? [...prev.positions, newPosition]
-              : prev.positions.filter((p) => p.symbol !== newPosition.symbol);
-          const total_value = positions.reduce((s, p) => s + p.quantity * p.cost_basis, 0);
-          return { positions, total_value };
-        });
-        setSymbol("");
-        setQuantity("");
-        setPrice("");
-      })
-      .finally(() => setSubmitting(false));
-  };
-
-  const allocationData =
-    detail?.positions?.map((p, i) => ({
-      name: p.symbol,
-      value: p.quantity * p.cost_basis,
-      color: COLORS[i % COLORS.length],
-    })) ?? [];
+  const activePortfolio = portfolios.find((p) => p.id === selectedId);
+  const isTechConcentrated =
+    activePortfolio?.positions.some((p) =>
+      ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA"].includes(p.symbol),
+    ) || false;
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 animate-fade-in font-mono">
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-bold tracking-tight">
-          <span className="gradient-text">Portfolio Analyzer</span>
+        <h2 className="text-2xl font-bold tracking-tight text-white uppercase">
+          [INIT] Risk Officer Console
         </h2>
-        <p className="text-sm text-slate-400 mt-1.5">
-          Paper-trading portfolios with allocation, performance, and risk metrics.
+        <p className="text-[10px] text-slate-500 mt-2 uppercase tracking-widest leading-relaxed">
+          Capital allocation and performance verification sub-system.
         </p>
-        {usingMock && (
-          <p className="text-[11px] text-amber-400/70 mt-1 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400/50" />
-            Running in demo mode — trades are stored locally
-          </p>
-        )}
       </div>
+
+      {isTechConcentrated && (
+        <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-none animate-pulse">
+          <p className="text-[10px] text-rose-400 font-bold uppercase tracking-widest">
+            [WARN] TECH CONCENTRATION RISK DETECTED
+          </p>
+          <p className="text-[10px] text-slate-500 mt-1 uppercase">
+            Current allocation indicates high dependency on structural tech sector volatility. Alpha
+            targets at risk due to positive correlation across top-tier equity positions.
+          </p>
+        </div>
+      )}
 
       {/* Portfolio selector */}
-      <div className="glass-card p-5">
-        <div className="flex flex-wrap gap-4 items-end">
-          <label className="flex flex-col gap-1.5">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">
-              Portfolio
-            </span>
-            <select
-              value={selected ?? ""}
-              onChange={(e) => setSelected(e.target.value || null)}
-              className="input-glass min-w-[200px]"
-            >
-              <option value="">Select portfolio</option>
-              {portfolios.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button type="button" onClick={createPortfolio} className="btn-primary">
-            + New Portfolio
+      <div className="flex flex-wrap gap-4">
+        {portfolios.map((p) => (
+          <button
+            key={p.id}
+            onClick={() => setSelectedId(p.id)}
+            className={`px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition-all ${selectedId === p.id ? "bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold" : "bg-slate-900/50 text-slate-500 border border-white/5 hover:border-white/10"}`}
+          >
+            {p.name}
           </button>
-        </div>
+        ))}
       </div>
 
-      {detail && (
-        <>
-          {/* Charts row */}
-          <div className="grid gap-6 md:grid-cols-2">
-            {/* Allocation */}
-            <div className="glass-card p-5">
-              <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
-                Allocation
-              </h3>
-              <div className="h-52">
-                {allocationData.length > 0 ? (
-                  <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                      <Pie
-                        data={allocationData}
-                        dataKey="value"
-                        nameKey="name"
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={70}
-                        label={(e) => e.name}
-                        strokeWidth={0}
-                      >
-                        {allocationData.map((_, i) => (
-                          <Cell key={i} fill={COLORS[i % COLORS.length]} />
-                        ))}
-                      </Pie>
-                      <Tooltip
-                        contentStyle={{
-                          backgroundColor: "rgba(15,23,42,0.9)",
-                          border: "1px solid rgba(148,163,184,0.1)",
-                          borderRadius: "12px",
-                        }}
-                      />
-                      <Legend wrapperStyle={{ fontSize: "12px", color: "#94a3b8" }} />
-                    </PieChart>
-                  </ResponsiveContainer>
-                ) : (
-                  <div className="h-full flex items-center justify-center">
-                    <p className="text-slate-500 text-sm">No positions. Add a trade below.</p>
-                  </div>
-                )}
-              </div>
-              <div className="mt-3 pt-3 border-t border-white/5">
-                <p className="text-xs text-slate-400">
-                  Total value:{" "}
-                  <span className="text-white font-semibold text-sm">
-                    ${detail.total_value.toFixed(2)}
-                  </span>
-                </p>
-              </div>
+      {loading ? (
+        <div className="grid gap-6 lg:grid-cols-3">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="glass-card h-40 animate-pulse bg-slate-900/20" />
+          ))}
+        </div>
+      ) : activePortfolio ? (
+        <div className="space-y-6">
+          {/* Main metrics */}
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="glass-card p-5 border-t border-emerald-500/20">
+              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">
+                {RISK_BADGES.sharpe.label}
+              </p>
+              <p className="text-2xl font-bold text-emerald-400">
+                {metrics.sharpe_ratio.toFixed(2)}
+              </p>
+              <p className="text-[10px] text-slate-500 uppercase mt-1">Efficiency Baseline: 1.0</p>
             </div>
-
-            {/* Risk metrics */}
-            <div className="glass-card p-5">
-              <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
-                Risk Metrics
-              </h3>
-              <div className="space-y-4">
-                <RiskMetric
-                  label="Sharpe Ratio"
-                  value={risk?.sharpe_ratio != null ? risk.sharpe_ratio.toFixed(2) : "—"}
-                  color="cyan"
-                />
-                <RiskMetric
-                  label="VaR (95%)"
-                  value={risk?.var_95 != null ? (risk.var_95 * 100).toFixed(2) + "%" : "—"}
-                  color="violet"
-                />
-                <RiskMetric
-                  label="Volatility"
-                  value={risk?.volatility != null ? risk.volatility.toFixed(4) : "—"}
-                  color="amber"
-                />
-              </div>
+            <div className="glass-card p-5 border-t border-violet-500/20">
+              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">
+                {RISK_BADGES.var.label}
+              </p>
+              <p className="text-2xl font-bold text-violet-400">
+                {(metrics.var_95 * 100).toFixed(2)}%
+              </p>
+              <p className="text-[10px] text-slate-500 uppercase mt-1">Probabilistic Floor</p>
+            </div>
+            <div className="glass-card p-5 border-t border-cyan-500/20">
+              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">
+                {RISK_BADGES.vol.label}
+              </p>
+              <p className="text-2xl font-bold text-cyan-400">
+                {(metrics.volatility * 100).toFixed(2)}%
+              </p>
+              <p className="text-[10px] text-slate-500 uppercase mt-1">Systemic Noise Index</p>
             </div>
           </div>
 
-          {/* Equity curve */}
-          {snapshots.length > 1 && (
-            <div className="glass-card p-5">
-              <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
-                Equity Curve
+          <div className="grid gap-6 lg:grid-cols-3">
+            {/* Chart */}
+            <div className="lg:col-span-2 glass-card p-5 border-t border-white/5">
+              <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">
+                [OK] Historic Telemetry: {activePortfolio.name}
               </h3>
-              <div className="h-52">
+              <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={snapshots}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.08)" />
-                    <XAxis dataKey="date" stroke="#475569" fontSize={10} tickLine={false} />
-                    <YAxis stroke="#475569" fontSize={10} tickLine={false} />
-                    <Line
+                  <AreaChart data={history}>
+                    <defs>
+                      <linearGradient id="valGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#0ea5e9" stopOpacity={0.1} />
+                        <stop offset="95%" stopColor="#0ea5e9" stopOpacity={0} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.05)" />
+                    <XAxis
+                      dataKey="date"
+                      stroke="#334155"
+                      fontSize={9}
+                      tickLine={false}
+                      tickFormatter={(val) => val.split("-").slice(1).join("/")}
+                    />
+                    <YAxis stroke="#334155" fontSize={9} tickLine={false} hide />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "rgba(2,6,23,0.95)",
+                        border: "1px solid rgba(148,163,184,0.1)",
+                        borderRadius: "0px",
+                        fontSize: "10px",
+                        fontFamily: "monospace",
+                      }}
+                    />
+                    <Area
                       type="monotone"
                       dataKey="total_value"
-                      stroke="#10b981"
-                      dot={false}
-                      strokeWidth={2}
-                      name="Value"
+                      stroke="#0ea5e9"
+                      fillOpacity={1}
+                      fill="url(#valGradient)"
+                      strokeWidth={1.5}
                     />
-                  </LineChart>
+                  </AreaChart>
                 </ResponsiveContainer>
               </div>
             </div>
-          )}
 
-          {/* Trade form */}
-          <div className="glass-card p-5">
-            <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
-              Simulated Trade
-            </h3>
-            <div className="flex flex-wrap gap-3 items-end">
-              <label className="flex flex-col gap-1">
-                <span className="text-[10px] text-slate-500 uppercase">Symbol</span>
-                <input
-                  placeholder="AAPL"
-                  value={symbol}
-                  onChange={(e) => setSymbol(e.target.value)}
-                  className="input-glass w-24"
-                />
-              </label>
-              <label className="flex flex-col gap-1">
-                <span className="text-[10px] text-slate-500 uppercase">Side</span>
-                <select
-                  value={side}
-                  onChange={(e) => setSide(e.target.value as "buy" | "sell")}
-                  className="input-glass"
-                >
-                  <option value="buy">Buy</option>
-                  <option value="sell">Sell</option>
-                </select>
-              </label>
-              <label className="flex flex-col gap-1">
-                <span className="text-[10px] text-slate-500 uppercase">Qty</span>
-                <input
-                  type="number"
-                  placeholder="10"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                  className="input-glass w-20"
-                />
-              </label>
-              <label className="flex flex-col gap-1">
-                <span className="text-[10px] text-slate-500 uppercase">Price</span>
-                <input
-                  type="number"
-                  placeholder="150.00"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                  className="input-glass w-24"
-                />
-              </label>
-              <button
-                type="button"
-                onClick={submitTrade}
-                disabled={submitting}
-                className="btn-primary"
-              >
-                {submitting ? "…" : "Execute Trade"}
-              </button>
+            {/* Positions */}
+            <div className="glass-card p-5 border-t border-white/5">
+              <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">
+                [INIT] Liquidity Units
+              </h3>
+              <div className="space-y-3">
+                {activePortfolio.positions.map((p) => {
+                  const currentPrice = 200; // Mock price
+                  const value = p.quantity * currentPrice;
+                  const pl = value - p.quantity * p.cost_basis;
+                  const plPerc = (pl / (p.quantity * p.cost_basis)) * 100;
+                  return (
+                    <div key={p.symbol} className="p-3 bg-slate-900/40 border border-white/5">
+                      <div className="flex justify-between items-start mb-1">
+                        <span className="text-xs font-bold text-white uppercase">{p.symbol}</span>
+                        <span
+                          className={`text-[10px] font-bold ${pl >= 0 ? "text-emerald-400" : "text-rose-400"}`}
+                        >
+                          {pl >= 0 ? "+" : ""}
+                          {plPerc.toFixed(2)}%
+                        </span>
+                      </div>
+                      <div className="flex justify-between text-[10px] text-slate-500 uppercase tracking-tight">
+                        <span>Units: {p.quantity}</span>
+                        <span>Value: ${value.toLocaleString()}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </>
+        </div>
+      ) : (
+        <div className="glass-card p-10 text-center border-dashed border-rose-500/20">
+          <p className="text-rose-400 font-bold uppercase tracking-widest">
+            [ERROR] NO OPERATIONAL PORTFOLIO
+          </p>
+        </div>
       )}
-    </div>
-  );
-}
 
-function RiskMetric({ label, value, color }: { label: string; value: string; color: string }) {
-  const colorMap: Record<string, string> = {
-    cyan: "text-cyan-400 bg-cyan-500/10",
-    violet: "text-violet-400 bg-violet-500/10",
-    amber: "text-amber-400 bg-amber-500/10",
-  };
-  const cls = colorMap[color] || colorMap.cyan;
-  return (
-    <div className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
-      <span className="text-sm text-slate-400">{label}</span>
-      <span className={`text-sm font-mono font-semibold px-2.5 py-0.5 rounded-lg ${cls}`}>
-        {value}
-      </span>
+      <StrategicRealityCheck />
     </div>
   );
 }

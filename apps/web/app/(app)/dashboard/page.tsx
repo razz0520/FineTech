@@ -8,11 +8,13 @@ import { mockDashboardStats } from "@/lib/mock-data";
 const DEV_USER_ID = process.env.NEXT_PUBLIC_DEV_USER_ID || "00000000-0000-0000-0000-000000000001";
 const headers = { "X-User-Id": DEV_USER_ID };
 
+import { StrategicRealityCheck } from "@/components/reality-check";
+
 const STAT_CARDS = [
   {
     key: "enrollments",
-    title: "Enrolled Courses",
-    subtitle: "active enrollments",
+    title: "[INIT] Enrolled Courses",
+    subtitle: "active operational context",
     icon: (
       <svg
         width="20"
@@ -32,8 +34,8 @@ const STAT_CARDS = [
   },
   {
     key: "xp",
-    title: "XP Points",
-    subtitle: "from quizzes & activities",
+    title: "[CALC] XP Metrics",
+    subtitle: "academic velocity per session",
     icon: (
       <svg
         width="20"
@@ -52,8 +54,8 @@ const STAT_CARDS = [
   },
   {
     key: "portfolio",
-    title: "Portfolio Value",
-    subtitle: "first portfolio total",
+    title: "[OK] Portfolio Liquidity",
+    subtitle: "mark-to-market valuation",
     icon: (
       <svg
         width="20"
@@ -73,8 +75,8 @@ const STAT_CARDS = [
   },
   {
     key: "news",
-    title: "News Articles",
-    subtitle: "recent headlines",
+    title: "[INIT] News Ingestion",
+    subtitle: "unfiltered market telemetry",
     icon: (
       <svg
         width="20"
@@ -98,8 +100,8 @@ const STAT_CARDS = [
 const QUICK_LINKS = [
   {
     href: "/learn",
-    title: "Learn",
-    description: "Browse courses, lessons, and quizzes to build financial literacy.",
+    title: "[INIT] Curriculum",
+    description: "Operational knowledge ingestion modules for professional mastery.",
     icon: (
       <svg
         width="22"
@@ -118,8 +120,8 @@ const QUICK_LINKS = [
   },
   {
     href: "/playground",
-    title: "Prediction Playground",
-    description: "Run LSTM+attention forecasts with explainable AI narratives.",
+    title: "[CALC] Prediction Playground",
+    description: "Cold-engine LSTM+Attention simulators for market dependency verification.",
     icon: (
       <svg
         width="22"
@@ -137,8 +139,8 @@ const QUICK_LINKS = [
   },
   {
     href: "/portfolio",
-    title: "Portfolio",
-    description: "Manage paper-trading portfolios with allocation and risk analytics.",
+    title: "[OK] Risk Management",
+    description: "Capital allocation and Sharpe-ratio boundary analysis controllers.",
     icon: (
       <svg
         width="22"
@@ -256,21 +258,36 @@ export default function DashboardPage() {
     portfolio: loading
       ? "—"
       : portfolioValue !== null
-        ? `$${portfolioValue.toFixed(2)}`
+        ? `$${portfolioValue.toLocaleString()}`
         : "No portfolio",
     news: loading ? "—" : `${newsCount}`,
   };
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 animate-fade-in font-mono">
       {/* Page header */}
       <div>
         <h2 className="text-2xl font-bold tracking-tight">
-          <span className="gradient-text">Dashboard</span>
+          <span className="text-white">[INIT] Operator Dashboard: Rahul</span>
         </h2>
-        <p className="text-sm text-slate-400 mt-1.5">
-          Overview of your learning progress, prediction experiments, and portfolio performance.
-        </p>
+        <div className="flex items-center gap-2 mt-2">
+          <p className="text-xs text-slate-500 uppercase tracking-widest">
+            System Status: <span className="text-emerald-500">[OPERATIONAL]</span>
+          </p>
+          <div className="w-1 h-1 rounded-full bg-slate-700" />
+          <p className="text-xs text-slate-500 uppercase tracking-widest">
+            Identity: <span className="text-white">RAHUL_0520</span>
+          </p>
+        </div>
+        {totalPoints <= 1250 && !loading && (
+          <div className="mt-4 p-3 bg-rose-500/5 border border-rose-500/20 rounded-xl">
+            <p className="text-xs text-rose-400 font-bold tracking-tight">
+              {
+                "[WARN] OPPORTUNITY COST DETECTED: XP has remained stagnant for 24+ hours. The gap between current performance and 12 LPA baseline is widening. Resume 'Machine Learning in Finance' immediately."
+              }
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Stat cards */}
@@ -280,7 +297,7 @@ export default function DashboardPage() {
           return (
             <div key={card.key} className={`glass-card p-5 border-t-2 ${colors.topBorder}`}>
               <div className="flex items-start justify-between mb-3">
-                <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                   {card.title}
                 </p>
                 <div className={`p-2 rounded-lg ${colors.iconBg}`}>
@@ -292,7 +309,9 @@ export default function DashboardPage() {
               >
                 {values[card.key]}
               </p>
-              <p className="text-xs text-slate-500 mt-1">{card.subtitle}</p>
+              <p className="text-[10px] text-slate-500 uppercase tracking-tight mt-1">
+                {card.subtitle}
+              </p>
             </div>
           );
         })}
@@ -300,7 +319,9 @@ export default function DashboardPage() {
 
       {/* Quick links */}
       <div>
-        <h3 className="text-sm font-semibold text-slate-300 mb-3">Quick access</h3>
+        <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">
+          [INIT] Logic Controllers
+        </h3>
         <div className="grid gap-4 md:grid-cols-3 stagger-children">
           {QUICK_LINKS.map((link) => (
             <Link
@@ -309,18 +330,23 @@ export default function DashboardPage() {
               className="glass-card gradient-border p-5 block group hover:translate-y-[-2px] transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 group-hover:bg-cyan-500/20 transition-colors">
+                <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 group-hover:bg-cyan-500/20 transition-colors border border-cyan-500/20">
                   {link.icon}
                 </div>
-                <h3 className="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors">
+                <h3 className="text-xs font-bold text-slate-200 group-hover:text-white transition-colors uppercase tracking-tight">
                   {link.title}
                 </h3>
               </div>
-              <p className="text-xs text-slate-500 leading-relaxed">{link.description}</p>
+              <p className="text-[11px] text-slate-500 leading-relaxed font-sans">
+                {link.description}
+              </p>
             </Link>
           ))}
         </div>
       </div>
+
+      {/* Reality Check */}
+      <StrategicRealityCheck />
     </div>
   );
 }

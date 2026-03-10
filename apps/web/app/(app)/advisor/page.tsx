@@ -1,66 +1,103 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useRef } from "react";
 import { API_BASE } from "@/lib/api";
 import { mockAdvisorResponse } from "@/lib/mock-data";
+import { StrategicRealityCheck } from "@/components/reality-check";
+
 const DEV_USER_ID = process.env.NEXT_PUBLIC_DEV_USER_ID || "00000000-0000-0000-0000-000000000001";
 const hdrs = { "Content-Type": "application/json", "X-User-Id": DEV_USER_ID };
 
 interface Message {
+  id: string;
   role: "user" | "assistant";
   content: string;
+  timestamp: string;
   citations?: string[];
   suggestions?: string[];
 }
 
+interface AdvisorResponse {
+  answer: string;
+  citations?: string[];
+  suggestions?: string[];
+}
+
+const SUGGESTIONS = [
+  { text: "How should I diversify?", type: "diversif" },
+  { text: "Explain risk metrics", type: "risk" },
+  { text: "What is market analysis?", type: "market" },
+];
+
 export default function AdvisorPage() {
-  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
-  const [portfolioId, setPortfolioId] = useState<string | null>(null);
-  const [portfolios, setPortfolios] = useState<{ id: string; name: string }[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: "m0",
+      role: "assistant",
+      content:
+        "[INIT] Zero-G Advisor initialized. Your status as 'Operator Rahul' is confirmed. Query the system for capital allocation optimization or risk boundary verification.",
+      timestamp: new Date().toISOString(),
+      suggestions: SUGGESTIONS.map((s) => s.text),
+    },
+  ]);
   const [loading, setLoading] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/portfolio/`, { headers: { "X-User-Id": DEV_USER_ID } })
-      .then((r) => r.json())
-      .then((list: { id: string; name: string }[]) => setPortfolios(list))
-      .catch(() => setPortfolios([{ id: "demo-portfolio-1", name: "Growth Portfolio" }]));
-  }, []);
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages]);
 
-  const send = async () => {
-    const q = input.trim();
-    if (!q || loading) return;
+  const sendMessage = async (content: string) => {
+    if (!content.trim()) return;
+
+    const userMsg: Message = {
+      id: Date.now().toString(),
+      role: "user",
+      content,
+      timestamp: new Date().toISOString(),
+    };
+    setMessages((prev) => [...prev, userMsg]);
     setInput("");
-    setMessages((prev) => [...prev, { role: "user", content: q }]);
     setLoading(true);
+
     try {
-      const res = await fetch(`${API_BASE}/api/advisor/query`, {
-        method: "POST",
-        headers: hdrs,
-        body: JSON.stringify({ question: q, portfolio_id: portfolioId || null }),
-      });
-      if (!res.ok) throw new Error("API error");
-      const data = await res.json();
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: data.answer,
-          citations: data.citations,
-          suggestions: data.suggestions,
-        },
-      ]);
+      // Small delay for psychological "calculation" effect
+      await new Promise((r) => setTimeout(r, 600));
+
+      let responseData: AdvisorResponse;
+      try {
+        const res = await fetch(`${API_BASE}/api/advisor/chat`, {
+          method: "POST",
+          headers: hdrs,
+          body: JSON.stringify({ question: content, history: messages }),
+        });
+        if (!res.ok) throw new Error();
+        responseData = (await res.json()) as AdvisorResponse;
+      } catch {
+        responseData = mockAdvisorResponse(content) as AdvisorResponse;
+      }
+
+      const assistantMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant",
+        content: responseData.answer,
+        timestamp: new Date().toISOString(),
+        citations: responseData.citations,
+        suggestions: responseData.suggestions,
+      };
+      setMessages((prev) => [...prev, assistantMsg]);
     } catch {
-      // Fallback to client-side mock response
-      const mock = mockAdvisorResponse(q);
       setMessages((prev) => [
         ...prev,
         {
+          id: (Date.now() + 1).toString(),
           role: "assistant",
-          content: mock.answer,
-          citations: mock.citations,
-          suggestions: mock.suggestions,
+          content:
+            "[ERROR] SYSTEM FAULT: High-latency connection to inference engine. Review local telemetry.",
+          timestamp: new Date().toISOString(),
         },
       ]);
     } finally {
@@ -69,171 +106,118 @@ export default function AdvisorPage() {
   };
 
   return (
-    <div className="space-y-6 max-w-3xl animate-fade-in">
-      {/* Header */}
-      <div>
-        <h2 className="text-2xl font-bold tracking-tight">
-          <span className="gradient-text">AI Financial Advisor</span>
-        </h2>
-        <p className="text-sm text-slate-400 mt-1.5">
-          Ask questions about your portfolio and get educational, non-advice responses grounded in
-          your data.
-        </p>
-      </div>
-
-      {/* Portfolio selector */}
-      <div className="flex gap-3 items-center">
-        <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">
-          Portfolio context
-        </span>
-        <select
-          value={portfolioId ?? ""}
-          onChange={(e) => setPortfolioId(e.target.value || null)}
-          className="input-glass text-xs"
-        >
-          <option value="">None</option>
-          {portfolios.map((p) => (
-            <option key={p.id} value={p.id}>
-              {p.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Chat area */}
-      <div className="glass-card flex flex-col min-h-[420px] overflow-hidden">
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-5 space-y-4">
-          {messages.length === 0 && (
-            <div className="h-full flex flex-col items-center justify-center text-center py-10">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 flex items-center justify-center mb-4">
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="text-cyan-400"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M12 2a8 8 0 0 0-8 8c0 3.4 2.1 6.3 5 7.4V20a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-2.6c2.9-1.1 5-4 5-7.4a8 8 0 0 0-8-8z" />
-                  <line x1="10" y1="22" x2="14" y2="22" />
-                </svg>
-              </div>
-              <p className="text-sm text-slate-300 font-medium mb-1">Financial Advisor Ready</p>
-              <p className="text-xs text-slate-500 max-w-xs">
-                Ask about investing strategies, risk management, or get insights on your portfolio.
-              </p>
-              {/* Quick suggestion chips */}
-              <div className="flex flex-wrap gap-2 mt-4 justify-center">
-                {[
-                  "How should I diversify?",
-                  "Explain risk metrics",
-                  "What is market analysis?",
-                ].map((q) => (
-                  <button
-                    key={q}
-                    onClick={() => {
-                      setInput(q);
-                    }}
-                    className="text-[11px] px-3 py-1.5 rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all"
-                  >
-                    {q}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-          {messages.map((m, i) => (
+    <div className="flex flex-col h-[calc(100vh-10rem)] max-w-4xl mx-auto font-mono">
+      {/* Messages */}
+      <div
+        ref={scrollRef}
+        className="flex-1 overflow-y-auto pr-4 mb-6 space-y-6 scrollbar-thin scrollbar-thumb-slate-800"
+      >
+        {messages.map((m) => (
+          <div
+            key={m.id}
+            className={`flex ${m.role === "user" ? "justify-end" : "justify-start"} animate-fade-in`}
+          >
             <div
-              key={i}
-              className={`flex ${m.role === "user" ? "justify-end" : "justify-start"} animate-slide-up`}
+              className={`max-w-[85%] p-4 rounded-none border-l-2 ${
+                m.role === "user"
+                  ? "bg-slate-900/50 border-slate-500/50 text-slate-300"
+                  : "bg-cyan-500/5 border-cyan-500/30 text-white"
+              }`}
             >
-              <div
-                className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
-                  m.role === "user"
-                    ? "bg-gradient-to-r from-cyan-500/15 to-emerald-500/15 text-slate-200 border border-cyan-500/10"
-                    : "bg-white/[0.03] text-slate-300 border border-white/5"
-                }`}
-              >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                  {m.role === "user" ? "[OPERATOR]" : "[ZERO-G]"}
+                </span>
+                <span className="text-[9px] text-slate-600">
+                  {new Date(m.timestamp).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </span>
+              </div>
+              <p className="text-xs leading-relaxed italic border-l border-white/5 pl-3">
                 {m.content}
-                {m.suggestions && m.suggestions.length > 0 && (
-                  <div className="mt-3 pt-2 border-t border-white/5">
-                    <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">
-                      Suggestions
-                    </p>
-                    <ul className="space-y-1">
-                      {m.suggestions.map((s, j) => (
-                        <li key={j}>
-                          <button
-                            onClick={() => setInput(s)}
-                            className="text-xs text-slate-400 flex items-start gap-1.5 hover:text-cyan-400 transition-colors text-left"
-                          >
-                            <span className="text-cyan-500 mt-0.5">→</span> {s}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {m.citations && m.citations.length > 0 && (
-                  <p className="mt-2 text-[10px] text-slate-600 italic">{m.citations[0]}</p>
-                )}
-              </div>
-            </div>
-          ))}
-          {loading && (
-            <div className="flex justify-start">
-              <div className="bg-white/[0.03] border border-white/5 rounded-2xl px-4 py-3 flex items-center gap-1.5">
-                <span
-                  className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce"
-                  style={{ animationDelay: "0ms" }}
-                />
-                <span
-                  className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce"
-                  style={{ animationDelay: "150ms" }}
-                />
-                <span
-                  className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce"
-                  style={{ animationDelay: "300ms" }}
-                />
-              </div>
-            </div>
-          )}
-        </div>
+              </p>
 
-        {/* Input */}
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            send();
-          }}
-          className="p-4 border-t border-white/5 flex gap-2 bg-slate-950/30"
+              {m.citations && m.citations.length > 0 && (
+                <div className="mt-4 pt-3 border-t border-white/5">
+                  <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">
+                    [OK] Sources
+                  </p>
+                  <ul className="space-y-1">
+                    {m.citations.map((c, i) => (
+                      <li key={i} className="text-[9px] text-slate-600 truncate italic">
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {m.suggestions && m.suggestions.length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {m.suggestions.map((s, i) => (
+                    <button
+                      key={i}
+                      onClick={() => sendMessage(s)}
+                      className="text-[10px] px-2 py-1 bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all uppercase tracking-tighter"
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+        {loading && (
+          <div className="flex justify-start">
+            <div className="bg-cyan-500/5 border-l-2 border-cyan-500/30 p-4">
+              <span className="text-[10px] font-bold text-cyan-400 animate-pulse uppercase tracking-[0.2em]">
+                [CALC] PROCESSING_QUERY…
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Input */}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          sendMessage(input);
+        }}
+        className="glass-card p-2 flex items-center gap-2 border-t border-white/5"
+      >
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="[INIT] ENTER_QUERY…"
+          className="flex-1 bg-transparent border-none focus:ring-0 text-xs font-mono placeholder:text-slate-600 uppercase"
+        />
+        <button
+          type="submit"
+          disabled={loading || !input.trim()}
+          className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 disabled:opacity-50 transition-colors"
         >
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask a financial question…"
-            className="input-glass flex-1"
-          />
-          <button type="submit" disabled={loading} className="btn-primary px-5">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="22" y1="2" x2="11" y2="13" />
-              <polygon points="22 2 15 22 11 13 2 9 22 2" />
-            </svg>
-          </button>
-        </form>
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="22" y1="2" x2="11" y2="13" />
+            <polygon points="22 2 15 22 11 13 2 9 22 2" />
+          </svg>
+        </button>
+      </form>
+
+      <div className="mt-8">
+        <StrategicRealityCheck />
       </div>
     </div>
   );

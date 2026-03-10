@@ -5,49 +5,90 @@
    ▲ Next.js 15.5.12
 
    Creating an optimized production build ...
-
-[1m[33mwarn[39m[22m - Your `content` configuration includes a pattern which looks like it's accidentally matching all of `node_modules` and can cause serious performance issues.
-[1m[33mwarn[39m[22m - Pattern: `..\..\packages\ui\**\*.ts`
-[1m[33mwarn[39m[22m - See our documentation for recommendations:
-[1m[33mwarn[39m[22m - https://tailwindcss.com/docs/content-configuration#pattern-recommendations
- ✓ Compiled successfully in 4.4s
+ ✓ Compiled successfully in 7.2s
    Linting and checking validity of types ...
-   Collecting page data ...
-   Generating static pages (0/10) ...
-   Generating static pages (2/10) 
-   Generating static pages (4/10) 
-   Generating static pages (7/10) 
- ✓ Generating static pages (10/10)
-   Finalizing page optimization ...
-   Collecting build traces ...
- ⚠ Failed to copy traced files for C:\Users\ASUS\FineTech\apps\web\.next\server\pages\_app.js [Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\react@18.3.1\node_modules\react' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\apps\web\node_modules\react'] {
-  errno: -4048,
-  code: 'EPERM',
-  syscall: 'symlink',
-  path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\react@18.3.1\\node_modules\\react',
-  dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\apps\\web\\node_modules\\react'
-}
- ⚠ Failed to copy traced files for C:\Users\ASUS\FineTech\apps\web\.next\server\pages\_error.js [Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\react@18.3.1\node_modules\react' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\node_modules\.pnpm\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\react'] {
-  errno: -4048,
-  code: 'EPERM',
-  syscall: 'symlink',
-  path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\react@18.3.1\\node_modules\\react',
-  dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\node_modules\\.pnpm\\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\\node_modules\\react'
-}
- ⚠ Failed to copy traced files for C:\Users\ASUS\FineTech\apps\web\.next\server\pages\_document.js [Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\apps\web\node_modules\next'] {
-  errno: -4048,
-  code: 'EPERM',
-  syscall: 'symlink',
-  path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\\node_modules\\next',
-  dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\apps\\web\\node_modules\\next'
-}
 
-> Build error occurred
-[Error: EPERM: operation not permitted, symlink 'C:\Users\ASUS\FineTech\node_modules\.pnpm\@next+env@15.5.12\node_modules\@next\env' -> 'C:\Users\ASUS\FineTech\apps\web\.next\standalone\node_modules\.pnpm\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\@next\env'] {
-  errno: -4048,
-  code: 'EPERM',
-  syscall: 'symlink',
-  path: 'C:\\Users\\ASUS\\FineTech\\node_modules\\.pnpm\\@next+env@15.5.12\\node_modules\\@next\\env',
-  dest: 'C:\\Users\\ASUS\\FineTech\\apps\\web\\.next\\standalone\\node_modules\\.pnpm\\next@15.5.12_@babel+core@7.29.0_react-dom@18.3.1_react@18.3.1__react@18.3.1\\node_modules\\@next\\env'
-}
+Failed to compile.
+
+./app/(app)/advisor/page.tsx
+64:25  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+92:19  Error: Insert `⏎···········`  prettier/prettier
+114:69  Error: Insert `⏎················`  prettier/prettier
+117:1  Error: Delete `··`  prettier/prettier
+
+./app/(app)/dashboard/page.tsx
+285:88  Error: Insert `·The·gap`  prettier/prettier
+286:14  Error: Replace `·The·gap·between·current·performance·and·12·LPA·baseline·is·widening.⏎··············Resume·'Machine·Learning` with `·between·current·performance·and·12·LPA·baseline·is·widening.·Resume·'Machine·Learning⏎·············`  prettier/prettier
+287:22  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+287:50  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./app/(app)/learn/page.tsx
+43:83  Error: Replace `[ERROR]·NO·MODULES·FOUND` with `⏎··············[ERROR]·NO·MODULES·FOUND⏎············`  prettier/prettier
+74:24  Error: Replace `·className={`text-[10px]·font-bold·px-2·py-0.5·rounded·uppercase·tracking-tighter·${diff.class}`}` with `⏎····················className={`text-[10px]·font-bold·px-2·py-0.5·rounded·uppercase·tracking-tighter·${diff.class}`}⏎··················`  prettier/prettier
+
+./app/(app)/playground/page.tsx
+12:3  Error: 'Legend' is defined but never used.  @typescript-eslint/no-unused-vars
+44:75  Error: Replace `⏎··············{a.title}⏎············` with `{a.title}`  prettier/prettier
+252:25  Error: Replace `⏎····················stroke="#334155"⏎····················fontSize={9}⏎····················tickLine={false}⏎····················domain={["auto",·"auto"]}⏎·················` with `·stroke="#334155"·fontSize={9}·tickLine={false}·domain={["auto",·"auto"]}`  prettier/prettier
+264:46  Error: Insert `,`  prettier/prettier
+314:39  Error: Insert `,`  prettier/prettier
+317:24  Error: Replace `·type="monotone"·dataKey="weight"·stroke="#8b5cf6"·name="Attention"·strokeWidth={2}·dot={{·r:·2·}}` with `⏎····················type="monotone"⏎····················dataKey="weight"⏎····················stroke="#8b5cf6"⏎····················name="Attention"⏎····················strokeWidth={2}⏎····················dot={{·r:·2·}}⏎·················`  prettier/prettier
+341:77  Error: Replace `{prediction.direction}` with `⏎················{prediction.direction}⏎··············`  prettier/prettier
+345:54  Error: Replace `⏎················{prediction.predicted_return.toFixed(6)}⏎··············` with `{prediction.predicted_return.toFixed(6)}`  prettier/prettier
+351:54  Error: Replace `⏎················{prediction.uncertainty.toFixed(4)}⏎··············` with `{prediction.uncertainty.toFixed(4)}`  prettier/prettier
+
+./app/(app)/portfolio/page.tsx
+3:31  Error: 'useCallback' is defined but never used.  @typescript-eslint/no-unused-vars
+15:9  Error: Replace `·mockPortfolios,·mockRiskMetrics,·mockSnapshots,·type·MockPortfolio·` with `⏎··mockPortfolios,⏎··mockRiskMetrics,⏎··mockSnapshots,⏎··type·MockPortfolio,⏎`  prettier/prettier
+22:12  Error: Replace `·label:·"[OK]·Sharpe·Ratio",·class:·"text-emerald-400·bg-emerald-500/5·border-emerald-500/20"` with `⏎····label:·"[OK]·Sharpe·Ratio",⏎····class:·"text-emerald-400·bg-emerald-500/5·border-emerald-500/20",⏎·`  prettier/prettier
+84:43  Error: Replace `·["AAPL",·"MSFT",·"GOOGL",·"AMZN",·"NVDA"].includes(p.symbol)` with `⏎······["AAPL",·"MSFT",·"GOOGL",·"AMZN",·"NVDA"].includes(p.symbol),⏎····`  prettier/prettier
+104:95  Error: Insert `·Alpha`  prettier/prettier
+105:12  Error: Delete `·Alpha`  prettier/prettier
+137:66  Error: Replace `{metrics.sharpe_ratio.toFixed(2)}` with `⏎················{metrics.sharpe_ratio.toFixed(2)}⏎··············`  prettier/prettier
+190:48  Error: Insert `,`  prettier/prettier
+241:76  Error: Replace `[ERROR]·NO·OPERATIONAL·PORTFOLIO` with `⏎············[ERROR]·NO·OPERATIONAL·PORTFOLIO⏎··········`  prettier/prettier
+
+./components/reality-check.tsx
+1:14  Error: Delete `␍`  prettier/prettier
+2:1  Error: Delete `␍`  prettier/prettier
+3:47  Error: Delete `␍`  prettier/prettier
+4:1  Error: Delete `␍`  prettier/prettier
+5:39  Error: Delete `␍`  prettier/prettier
+6:1  Error: Replace `····"/dashboard":·"You·are·confusing·nominal·balance·with·actual·wealth;·without·automated·savings,·your·'net·worth'·is·merely·a·transient·accounting·error.",␍` with `··"/dashboard":⏎····"You·are·confusing·nominal·balance·with·actual·wealth;·without·automated·savings,·your·'net·worth'·is·merely·a·transient·accounting·error.",`  prettier/prettier
+7:1  Error: Replace `····"/learn":·"Theoretical·knowledge·without·capital·deployment·is·just·entertainment;·your·1250·XP·is·worth·exactly·$0·in·a·liquidity·crisis.",␍` with `··"/learn":⏎····"Theoretical·knowledge·without·capital·deployment·is·just·entertainment;·your·1250·XP·is·worth·exactly·$0·in·a·liquidity·crisis.",`  prettier/prettier
+8:1  Error: Replace `····"/playground":·"A·predictive·model·with·0.82·confidence·is·still·a·coin·flip·in·a·black-swan·event;·the·market·does·not·care·about·your·'Attention·Weights'.",␍` with `··"/playground":⏎····"A·predictive·model·with·0.82·confidence·is·still·a·coin·flip·in·a·black-swan·event;·the·market·does·not·care·about·your·'Attention·Weights'.",`  prettier/prettier
+9:1  Error: Replace `····"/portfolio":·"Your·Tech·Concentration·Risk·is·at·100%.·Diversification·is·the·only·free·lunch,·and·you·are·currently·starving·by·choice.",␍` with `··"/portfolio":⏎····"Your·Tech·Concentration·Risk·is·at·100%.·Diversification·is·the·only·free·lunch,·and·you·are·currently·starving·by·choice.",`  prettier/prettier
+10:1  Error: Replace `····"/advisor":·"Seeking·advice·is·a·signal·of·uncertainty.·In·high-stakes·finance,·uncertainty·is·the·primary·driver·of·liquidation.",␍` with `··"/advisor":⏎····"Seeking·advice·is·a·signal·of·uncertainty.·In·high-stakes·finance,·uncertainty·is·the·primary·driver·of·liquidation.",`  prettier/prettier
+11:3  Error: Replace `··"default":·"The·spreadsheet·does·not·lie,·but·your·perception·does.·Performance·is·the·only·metric·that·survives·the·audit."␍` with `default:⏎····"The·spreadsheet·does·not·lie,·but·your·perception·does.·Performance·is·the·only·metric·that·survives·the·audit.",`  prettier/prettier
+12:3  Error: Delete `␍`  prettier/prettier
+13:1  Error: Delete `␍`  prettier/prettier
+14:42  Error: Delete `␍`  prettier/prettier
+15:1  Error: Replace `····const·pathname·=·usePathname();␍` with `··const·pathname·=·usePathname();`  prettier/prettier
+16:1  Error: Replace `····const·truth·=·DATA[pathname]·||·DATA.default;␍` with `··const·truth·=·DATA[pathname]·||·DATA.default;`  prettier/prettier
+17:1  Error: Delete `␍`  prettier/prettier
+18:1  Error: Replace `····return·(␍` with `··return·(`  prettier/prettier
+19:5  Error: Replace `····<div·className="mt-12·pt-8·border-t·border-white/5·animate-fade-in">␍` with `<div·className="mt-12·pt-8·border-t·border-white/5·animate-fade-in">`  prettier/prettier
+20:1  Error: Replace `············<h3·className="text-[10px]·font-bold·text-slate-500·uppercase·tracking-[0.2em]·mb-4">␍` with `······<h3·className="text-[10px]·font-bold·text-slate-500·uppercase·tracking-[0.2em]·mb-4">`  prettier/prettier
+21:1  Error: Replace `················[CALC]·Strategic·Reality·Check␍` with `········[CALC]·Strategic·Reality·Check`  prettier/prettier
+22:1  Error: Replace `············</h3>␍` with `······</h3>`  prettier/prettier
+23:1  Error: Replace `············<div·className="glass-panel·p-6·rounded-2xl·border-rose-500/10·bg-rose-500/5·group·hover:bg-rose-500/10·transition-all·duration-500">␍` with `······<div·className="glass-panel·p-6·rounded-2xl·border-rose-500/10·bg-rose-500/5·group·hover:bg-rose-500/10·transition-all·duration-500">`  prettier/prettier
+24:1  Error: Replace `················<p·className="text-sm·font-mono·text-slate-400·leading-relaxed·italic·group-hover:text-slate-300·transition-colors">␍` with `········<p·className="text-sm·font-mono·text-slate-400·leading-relaxed·italic·group-hover:text-slate-300·transition-colors">`  prettier/prettier
+25:1  Error: Replace `····················"{truth}"␍` with `··········"{truth}"`  prettier/prettier
+25:21  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+25:29  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+26:1  Error: Replace `················</p>␍` with `········</p>`  prettier/prettier
+27:1  Error: Replace `············</div>␍` with `······</div>`  prettier/prettier
+28:1  Error: Replace `········</div>␍` with `····</div>`  prettier/prettier
+29:3  Error: Replace `··);␍` with `);`  prettier/prettier
+30:2  Error: Delete `␍`  prettier/prettier
+
+./lib/mock-data.ts
+152:6  Error: Replace `·id:·"n1",·title:·`[INIT]·${symbol·||·"AAPL"}·quarterly·variance·report:·-0.4%·delta·vs·expectations`,·url:·null` with `⏎······id:·"n1",⏎······title:·`[INIT]·${symbol·||·"AAPL"}·quarterly·variance·report:·-0.4%·delta·vs·expectations`,⏎······url:·null,⏎···`  prettier/prettier
+159:6  Error: Replace `·id:·"n4",·title:·"[INIT]·Global·liquidity·flow·analysis·indicates·capital·flight·to·high-yield·bonds",·url:·null` with `⏎······id:·"n4",⏎······title:·"[INIT]·Global·liquidity·flow·analysis·indicates·capital·flight·to·high-yield·bonds",⏎······url:·null,⏎···`  prettier/prettier
+160:6  Error: Replace `·id:·"n5",·title:·`[WARN]·Analyst·downgrade·cycle·initiated·for·${symbol·||·"AAPL"}`,·url:·null` with `⏎······id:·"n5",⏎······title:·`[WARN]·Analyst·downgrade·cycle·initiated·for·${symbol·||·"AAPL"}`,⏎······url:·null,⏎···`  prettier/prettier
+171:19  Error: Delete `⏎·······`  prettier/prettier
+193:19  Error: Delete `⏎·······`  prettier/prettier
+249:19  Error: Replace `⏎······"How·should·I·diversify?",⏎······"Explain·risk·metrics",⏎······"What·is·market·analysis?",⏎····` with `"How·should·I·diversify?",·"Explain·risk·metrics",·"What·is·market·analysis?"`  prettier/prettier
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
  ELIFECYCLE  Command failed with exit code 1.
