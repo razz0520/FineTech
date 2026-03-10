@@ -73,14 +73,26 @@ export default function SignupPage() {
             Master Your <span className="gradient-text">Financial Future</span>
           </h1>
           <p className="text-lg text-slate-400 mb-8 animate-slide-up [animation-delay:0.2s]">
-            Join thousands of users using FineTech to build portfolios, learn technical analysis, and predict market trends with AI.
+            Join thousands of users using FineTech to build portfolios, learn technical analysis,
+            and predict market trends with AI.
           </p>
 
           <div className="grid grid-cols-2 gap-4 animate-slide-up [animation-delay:0.3s]">
             <div className="glass-panel p-4 rounded-2xl text-left border-white/5 hover:border-cyan-500/30 transition-colors group">
               <div className="text-cyan-400 mb-2 group-hover:scale-110 transition-transform">
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M12 6V12M12 12L15 15M12 12L9 15" strokeLinecap="round" strokeLinejoin="round" />
+                <svg
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 6V12M12 12L15 15M12 12L9 15"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                   <circle cx="12" cy="12" r="9" />
                 </svg>
               </div>
@@ -89,9 +101,20 @@ export default function SignupPage() {
             </div>
             <div className="glass-panel p-4 rounded-2xl text-left border-white/5 hover:border-emerald-500/30 transition-colors group">
               <div className="text-emerald-400 mb-2 group-hover:scale-110 transition-transform">
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M3 3V21H21" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M19 9L13.5 14.5L8.5 9.5L3.5 14.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path
+                    d="M19 9L13.5 14.5L8.5 9.5L3.5 14.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </div>
               <div className="text-sm font-semibold text-white">Learn to Trade</div>
@@ -171,14 +194,36 @@ export default function SignupPage() {
             >
               {isLoading ? (
                 <svg className="animate-spin h-5 w-5 text-slate-900" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
                 </svg>
               ) : (
                 <>
                   Start Growing
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <svg
+                    className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
                   </svg>
                 </>
               )}

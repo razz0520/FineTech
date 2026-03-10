@@ -68,14 +68,26 @@ export default function LoginPage() {
             Welcome <span className="gradient-text">Back to Finetech</span>
           </h1>
           <p className="text-lg text-slate-400 mb-8 animate-slide-up [animation-delay:0.2s]">
-            Continue your journey in mastering the markets with our unified financial intelligence platform.
+            Continue your journey in mastering the markets with our unified financial intelligence
+            platform.
           </p>
 
           <div className="grid grid-cols-2 gap-4 animate-slide-up [animation-delay:0.3s]">
             <div className="glass-panel p-4 rounded-2xl text-left border-white/5 hover:border-cyan-500/30 transition-colors group">
               <div className="text-cyan-400 mb-2 group-hover:scale-110 transition-transform">
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round" />
+                <svg
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </div>
               <div className="text-sm font-semibold text-white">Market Intel</div>
@@ -83,8 +95,24 @@ export default function LoginPage() {
             </div>
             <div className="glass-panel p-4 rounded-2xl text-left border-white/5 hover:border-emerald-500/30 transition-colors group">
               <div className="text-emerald-400 mb-2 group-hover:scale-110 transition-transform">
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" strokeLinecap="round" strokeLinejoin="round" />
+                <svg
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <rect
+                    x="3"
+                    y="11"
+                    width="18"
+                    height="11"
+                    rx="2"
+                    ry="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                   <path d="M7 11V7a5 5 0 0110 0v4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
@@ -133,7 +161,12 @@ export default function LoginPage() {
                 <label className="text-xs font-semibold text-slate-400 uppercase tracking-widest">
                   Password
                 </label>
-                <Link href="#" className="text-[11px] text-cyan-400 hover:text-cyan-300 font-medium">Forgot?</Link>
+                <Link
+                  href="#"
+                  className="text-[11px] text-cyan-400 hover:text-cyan-300 font-medium"
+                >
+                  Forgot?
+                </Link>
               </div>
               <input
                 type="password"
@@ -153,14 +186,36 @@ export default function LoginPage() {
             >
               {isLoading ? (
                 <svg className="animate-spin h-5 w-5 text-slate-900" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
                 </svg>
               ) : (
                 <>
                   Sign In
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 16l4-4m0 0l-4-4m4 4H9" />
+                  <svg
+                    className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M11 16l4-4m0 0l-4-4m4 4H9"
+                    />
                   </svg>
                 </>
               )}
