@@ -13,6 +13,14 @@ import {
 } from "recharts";
 
 import { API_BASE } from "@/lib/api";
+import {
+  mockMarketHistory,
+  MOCK_SYMBOLS,
+  mockPrediction,
+  mockExplain,
+  mockNarrative,
+  mockNews,
+} from "@/lib/mock-data";
 
 function NewsWidget({ symbol }: { symbol: string }) {
   const [articles, setArticles] = useState<{ id: string; title: string; url: string | null }[]>([]);
@@ -20,7 +28,7 @@ function NewsWidget({ symbol }: { symbol: string }) {
     fetch(`${API_BASE}/api/news/latest?symbol=${symbol}&limit=5`)
       .then((r) => r.json())
       .then(setArticles)
-      .catch(() => setArticles([]));
+      .catch(() => setArticles(mockNews(symbol)));
   }, [symbol]);
   if (articles.length === 0) return null;
   return (
@@ -59,20 +67,17 @@ interface OHLCV {
   close: number;
   volume?: number;
 }
-
 interface PredictionResult {
   predicted_return: number;
   direction: string;
   uncertainty: number;
   attention_weights: number[];
 }
-
 interface ExplainResult {
   predicted_return: number;
   attention_weights: number[];
   feature_contributions: { timestep: number; attention: number; description: string }[];
 }
-
 interface NarrativeResult {
   narrative: string;
   bullet_points: string[];
@@ -94,7 +99,7 @@ export default function PlaygroundPage() {
     fetch(`${API_BASE}/api/market/symbols`)
       .then((r) => r.json())
       .then(setSymbols)
-      .catch(() => setSymbols([]));
+      .catch(() => setSymbols(MOCK_SYMBOLS));
   }, []);
 
   useEffect(() => {
@@ -107,7 +112,12 @@ export default function PlaygroundPage() {
         setExplain(null);
         setNarrative(null);
       })
-      .catch(() => setHistory([]))
+      .catch(() => {
+        setHistory(mockMarketHistory(symbol, 90));
+        setPrediction(null);
+        setExplain(null);
+        setNarrative(null);
+      })
       .finally(() => setLoading(false));
   }, [symbol]);
 
@@ -115,29 +125,31 @@ export default function PlaygroundPage() {
     const series = history.map((h) => h.close);
     if (series.length < 2) return;
     setLoading(true);
+
+    const body = JSON.stringify({ symbol, horizon_days: horizon, series });
+    const hdr = { "Content-Type": "application/json" };
+
     Promise.all([
-      fetch(`${API_BASE}/api/prediction/run`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ symbol, horizon_days: horizon, series }),
-      }).then((r) => r.json()) as Promise<PredictionResult>,
-      fetch(`${API_BASE}/api/prediction/explain`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ symbol, horizon_days: horizon, series }),
-      }).then((r) => r.json()) as Promise<ExplainResult>,
-      fetch(`${API_BASE}/api/prediction/narrative`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ symbol, horizon_days: horizon, series }),
-      }).then((r) => r.json()) as Promise<NarrativeResult>,
+      fetch(`${API_BASE}/api/prediction/run`, { method: "POST", headers: hdr, body })
+        .then((r) => r.json())
+        .catch(() => mockPrediction(series)) as Promise<PredictionResult>,
+      fetch(`${API_BASE}/api/prediction/explain`, { method: "POST", headers: hdr, body })
+        .then((r) => r.json())
+        .catch(() => mockExplain(series)) as Promise<ExplainResult>,
+      fetch(`${API_BASE}/api/prediction/narrative`, { method: "POST", headers: hdr, body })
+        .then((r) => r.json())
+        .catch(() => mockNarrative(series)) as Promise<NarrativeResult>,
     ])
       .then(([p, e, n]) => {
         setPrediction(p);
         setExplain(e);
         setNarrative(n);
       })
-      .catch(() => {})
+      .catch(() => {
+        setPrediction(mockPrediction(series));
+        setExplain(mockExplain(series));
+        setNarrative(mockNarrative(series));
+      })
       .finally(() => setLoading(false));
   };
 

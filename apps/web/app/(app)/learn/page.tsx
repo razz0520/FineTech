@@ -1,11 +1,17 @@
-import { apiFetch, type Course } from "@/lib/api";
 import Link from "next/link";
+import { API_BASE, type Course } from "@/lib/api";
+import { mockCourses } from "@/lib/mock-data";
 
 async function getCourses(): Promise<Course[]> {
   try {
-    return await apiFetch<Course[]>("/lms/courses");
+    const res = await fetch(`${API_BASE}/api/lms/courses`, {
+      headers: { "Content-Type": "application/json" },
+      next: { revalidate: 60 },
+    });
+    if (!res.ok) throw new Error("API error");
+    return await res.json();
   } catch {
-    return [];
+    return mockCourses();
   }
 }
 

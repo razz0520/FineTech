@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { API_BASE } from "@/lib/api";
+import { mockDashboardStats } from "@/lib/mock-data";
 const DEV_USER_ID = process.env.NEXT_PUBLIC_DEV_USER_ID || "00000000-0000-0000-0000-000000000001";
 const headers = { "X-User-Id": DEV_USER_ID };
 
@@ -194,8 +195,11 @@ export default function DashboardPage() {
           fetch(`${API_BASE}/api/news/latest?limit=50`).then((r) => r.json()),
         ]);
 
+        let gotData = false;
+
         if (enrollResp.status === "fulfilled" && Array.isArray(enrollResp.value)) {
           setEnrollments(enrollResp.value.length);
+          gotData = true;
         }
         if (portfolioResp.status === "fulfilled" && Array.isArray(portfolioResp.value)) {
           const portfolios = portfolioResp.value as { id: string }[];
@@ -205,6 +209,7 @@ export default function DashboardPage() {
                 headers,
               }).then((r) => r.json());
               setPortfolioValue(detail.total_value ?? 0);
+              gotData = true;
             } catch {
               setPortfolioValue(0);
             }
@@ -216,12 +221,28 @@ export default function DashboardPage() {
             0,
           );
           setTotalPoints(total);
+          gotData = true;
         }
         if (newsResp.status === "fulfilled" && Array.isArray(newsResp.value)) {
           setNewsCount(newsResp.value.length);
+          gotData = true;
+        }
+
+        // If no API data came through, use mocks
+        if (!gotData) {
+          const mock = mockDashboardStats();
+          setEnrollments(mock.enrollments);
+          setTotalPoints(mock.xp);
+          setPortfolioValue(mock.portfolioValue);
+          setNewsCount(mock.newsCount);
         }
       } catch {
-        // fallback to defaults
+        // Fallback to mock data
+        const mock = mockDashboardStats();
+        setEnrollments(mock.enrollments);
+        setTotalPoints(mock.xp);
+        setPortfolioValue(mock.portfolioValue);
+        setNewsCount(mock.newsCount);
       } finally {
         setLoading(false);
       }

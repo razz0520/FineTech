@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 
 import { API_BASE } from "@/lib/api";
+import { mockAdvisorResponse } from "@/lib/mock-data";
 const DEV_USER_ID = process.env.NEXT_PUBLIC_DEV_USER_ID || "00000000-0000-0000-0000-000000000001";
-const headers = { "Content-Type": "application/json", "X-User-Id": DEV_USER_ID };
+const hdrs = { "Content-Type": "application/json", "X-User-Id": DEV_USER_ID };
 
 interface Message {
   role: "user" | "assistant";
@@ -24,7 +25,7 @@ export default function AdvisorPage() {
     fetch(`${API_BASE}/api/portfolio/`, { headers: { "X-User-Id": DEV_USER_ID } })
       .then((r) => r.json())
       .then((list: { id: string; name: string }[]) => setPortfolios(list))
-      .catch(() => {});
+      .catch(() => setPortfolios([{ id: "demo-portfolio-1", name: "Growth Portfolio" }]));
   }, []);
 
   const send = async () => {
@@ -36,9 +37,10 @@ export default function AdvisorPage() {
     try {
       const res = await fetch(`${API_BASE}/api/advisor/query`, {
         method: "POST",
-        headers,
+        headers: hdrs,
         body: JSON.stringify({ question: q, portfolio_id: portfolioId || null }),
       });
+      if (!res.ok) throw new Error("API error");
       const data = await res.json();
       setMessages((prev) => [
         ...prev,
@@ -50,9 +52,16 @@ export default function AdvisorPage() {
         },
       ]);
     } catch {
+      // Fallback to client-side mock response
+      const mock = mockAdvisorResponse(q);
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Sorry, the advisor is unavailable. Try again later." },
+        {
+          role: "assistant",
+          content: mock.answer,
+          citations: mock.citations,
+          suggestions: mock.suggestions,
+        },
       ]);
     } finally {
       setLoading(false);
@@ -117,6 +126,24 @@ export default function AdvisorPage() {
               <p className="text-xs text-slate-500 max-w-xs">
                 Ask about investing strategies, risk management, or get insights on your portfolio.
               </p>
+              {/* Quick suggestion chips */}
+              <div className="flex flex-wrap gap-2 mt-4 justify-center">
+                {[
+                  "How should I diversify?",
+                  "Explain risk metrics",
+                  "What is market analysis?",
+                ].map((q) => (
+                  <button
+                    key={q}
+                    onClick={() => {
+                      setInput(q);
+                    }}
+                    className="text-[11px] px-3 py-1.5 rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all"
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
           {messages.map((m, i) => (
@@ -139,8 +166,13 @@ export default function AdvisorPage() {
                     </p>
                     <ul className="space-y-1">
                       {m.suggestions.map((s, j) => (
-                        <li key={j} className="text-xs text-slate-400 flex items-start gap-1.5">
-                          <span className="text-cyan-500 mt-0.5">→</span> {s}
+                        <li key={j}>
+                          <button
+                            onClick={() => setInput(s)}
+                            className="text-xs text-slate-400 flex items-start gap-1.5 hover:text-cyan-400 transition-colors text-left"
+                          >
+                            <span className="text-cyan-500 mt-0.5">→</span> {s}
+                          </button>
                         </li>
                       ))}
                     </ul>

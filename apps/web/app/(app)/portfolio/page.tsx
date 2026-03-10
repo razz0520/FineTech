@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import {
   PieChart,
   Pie,
@@ -16,6 +16,7 @@ import {
 } from "recharts";
 
 import { API_BASE } from "@/lib/api";
+import { mockPortfolios, mockRiskMetrics, mockSnapshots } from "@/lib/mock-data";
 const DEV_USER_ID = process.env.NEXT_PUBLIC_DEV_USER_ID || "00000000-0000-0000-0000-000000000001";
 const headers = { "X-User-Id": DEV_USER_ID };
 
@@ -41,7 +42,9 @@ export default function PortfolioPage() {
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [usingMock, setUsingMock] = useState(false);
 
+  // Load portfolios
   useEffect(() => {
     fetch(`${API_BASE}/api/portfolio/`, { headers })
       .then((r) => r.json())
@@ -49,38 +52,77 @@ export default function PortfolioPage() {
         setPortfolios(list);
         setSelected((prev) => prev || (list.length ? list[0].id : null));
       })
-      .catch(() => setPortfolios([]));
+      .catch(() => {
+        // Use mock data
+        const mocks = mockPortfolios();
+        setPortfolios(
+          mocks.map((p) => ({ id: p.id, name: p.name, base_currency: p.base_currency })),
+        );
+        setSelected(mocks[0]?.id || null);
+        setUsingMock(true);
+      });
   }, []);
 
+  // Load portfolio detail
+  const loadDetail = useCallback(
+    (id: string) => {
+      if (usingMock) {
+        const mock = mockPortfolios().find((p) => p.id === id);
+        if (mock) {
+          setDetail({ positions: mock.positions, total_value: mock.total_value });
+          setRisk(mockRiskMetrics());
+          setSnapshots(mockSnapshots());
+        }
+        return;
+      }
+
+      Promise.all([
+        fetch(`${API_BASE}/api/portfolio/${id}`, { headers }).then((r) => r.json()),
+        fetch(`${API_BASE}/api/portfolio/${id}/risk`, { headers }).then((r) => r.json()),
+        fetch(`${API_BASE}/api/portfolio/${id}/snapshots?days=30`, { headers }).then((r) =>
+          r.json(),
+        ),
+      ])
+        .then(([d, r, s]) => {
+          setDetail(d);
+          setRisk(r);
+          setSnapshots(
+            Array.isArray(s)
+              ? s.map((x: { date: string; total_value: number }) => ({
+                  date: x.date,
+                  total_value: x.total_value,
+                }))
+              : [],
+          );
+        })
+        .catch(() => {
+          const mock = mockPortfolios().find((p) => p.id === id) || mockPortfolios()[0];
+          setDetail({ positions: mock.positions, total_value: mock.total_value });
+          setRisk(mockRiskMetrics());
+          setSnapshots(mockSnapshots());
+          setUsingMock(true);
+        });
+    },
+    [usingMock],
+  );
+
   useEffect(() => {
-    if (!selected) return;
-    Promise.all([
-      fetch(`${API_BASE}/api/portfolio/${selected}`, { headers }).then((r) => r.json()),
-      fetch(`${API_BASE}/api/portfolio/${selected}/risk`, { headers }).then((r) => r.json()),
-      fetch(`${API_BASE}/api/portfolio/${selected}/snapshots?days=30`, { headers }).then((r) =>
-        r.json(),
-      ),
-    ])
-      .then(([d, r, s]) => {
-        setDetail(d);
-        setRisk(r);
-        setSnapshots(
-          Array.isArray(s)
-            ? s.map((x: { date: string; total_value: number }) => ({
-                date: x.date,
-                total_value: x.total_value,
-              }))
-            : [],
-        );
-      })
-      .catch(() => {
-        setDetail(null);
-        setRisk(null);
-        setSnapshots([]);
-      });
-  }, [selected]);
+    if (selected) loadDetail(selected);
+  }, [selected, loadDetail]);
 
   const createPortfolio = () => {
+    if (usingMock) {
+      const id = crypto.randomUUID();
+      setPortfolios((prev) => [
+        ...prev,
+        { id, name: `Portfolio ${prev.length + 1}`, base_currency: "USD" },
+      ]);
+      setSelected(id);
+      setDetail({ positions: [], total_value: 0 });
+      setRisk(mockRiskMetrics());
+      setSnapshots([]);
+      return;
+    }
     fetch(`${API_BASE}/api/portfolio/`, {
       method: "POST",
       headers: { ...headers, "Content-Type": "application/json" },
@@ -91,12 +133,67 @@ export default function PortfolioPage() {
         setPortfolios((prev) => [...prev, { id: p.id, name: "Default", base_currency: "USD" }]);
         setSelected(p.id);
       })
-      .catch(() => {});
+      .catch(() => {
+        // Fallback
+        const id = crypto.randomUUID();
+        setPortfolios((prev) => [
+          ...prev,
+          { id, name: `Portfolio ${prev.length + 1}`, base_currency: "USD" },
+        ]);
+        setSelected(id);
+        setDetail({ positions: [], total_value: 0 });
+      });
   };
 
   const submitTrade = () => {
     if (!selected || !symbol || !quantity || !price) return;
     setSubmitting(true);
+
+    const newPosition = {
+      symbol: symbol.toUpperCase(),
+      quantity: Number(quantity),
+      cost_basis: Number(price),
+    };
+
+    if (usingMock) {
+      // Handle locally
+      setDetail((prev) => {
+        if (!prev) return prev;
+        const existing = prev.positions.find((p) => p.symbol === newPosition.symbol);
+        let positions;
+        if (side === "buy") {
+          if (existing) {
+            positions = prev.positions.map((p) =>
+              p.symbol === newPosition.symbol
+                ? {
+                    ...p,
+                    quantity: p.quantity + newPosition.quantity,
+                    cost_basis: newPosition.cost_basis,
+                  }
+                : p,
+            );
+          } else {
+            positions = [...prev.positions, newPosition];
+          }
+        } else {
+          positions = prev.positions
+            .map((p) =>
+              p.symbol === newPosition.symbol
+                ? { ...p, quantity: p.quantity - newPosition.quantity }
+                : p,
+            )
+            .filter((p) => p.quantity > 0);
+        }
+        const total_value = positions.reduce((s, p) => s + p.quantity * p.cost_basis, 0);
+        return { positions, total_value };
+      });
+      setSymbol("");
+      setQuantity("");
+      setPrice("");
+      setSubmitting(false);
+      return;
+    }
+
     fetch(`${API_BASE}/api/portfolio/${selected}/transaction`, {
       method: "POST",
       headers: { ...headers, "Content-Type": "application/json" },
@@ -111,11 +208,22 @@ export default function PortfolioPage() {
         setSymbol("");
         setQuantity("");
         setPrice("");
-        if (selected) {
-          fetch(`${API_BASE}/api/portfolio/${selected}`, { headers })
-            .then((r) => r.json())
-            .then(setDetail);
-        }
+        if (selected) loadDetail(selected);
+      })
+      .catch(() => {
+        // Fallback to local state
+        setDetail((prev) => {
+          if (!prev) return prev;
+          const positions =
+            side === "buy"
+              ? [...prev.positions, newPosition]
+              : prev.positions.filter((p) => p.symbol !== newPosition.symbol);
+          const total_value = positions.reduce((s, p) => s + p.quantity * p.cost_basis, 0);
+          return { positions, total_value };
+        });
+        setSymbol("");
+        setQuantity("");
+        setPrice("");
       })
       .finally(() => setSubmitting(false));
   };
@@ -137,6 +245,12 @@ export default function PortfolioPage() {
         <p className="text-sm text-slate-400 mt-1.5">
           Paper-trading portfolios with allocation, performance, and risk metrics.
         </p>
+        {usingMock && (
+          <p className="text-[11px] text-amber-400/70 mt-1 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400/50" />
+            Running in demo mode — trades are stored locally
+          </p>
+        )}
       </div>
 
       {/* Portfolio selector */}

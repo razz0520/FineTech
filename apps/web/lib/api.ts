@@ -20,6 +20,36 @@ export async function apiFetch<T>(
   return res.json() as Promise<T>;
 }
 
+/**
+ * Tries the real API first; on any failure falls back to the provided mock data.
+ * This ensures the UI always renders with data even when the backend is down.
+ */
+export async function safeFetch<T>(
+  path: string,
+  fallback: T,
+  options?: Omit<RequestInit, "headers"> & { headers?: Record<string, string> },
+): Promise<T> {
+  try {
+    return await apiFetch<T>(path, options);
+  } catch {
+    return fallback;
+  }
+}
+
+/**
+ * POST variant of safeFetch — tries the API then falls back.
+ */
+export async function safePost<T>(path: string, body: unknown, fallback: T): Promise<T> {
+  try {
+    return await apiFetch<T>(path, {
+      method: "POST",
+      body: JSON.stringify(body),
+    });
+  } catch {
+    return fallback;
+  }
+}
+
 export interface Course {
   id: string;
   title: string;
