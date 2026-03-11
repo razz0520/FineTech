@@ -20,6 +20,9 @@ const config: Config = {
       borderRadius: {
         xl: "16px",
       },
+      boxShadow: {
+        premium: "0 0 20px rgba(6, 182, 212, 0.4)",
+      },
       animation: {
         "fade-in": "fadeIn 0.5s ease-out both",
         "slide-up": "slideUp 0.6s ease-out both",

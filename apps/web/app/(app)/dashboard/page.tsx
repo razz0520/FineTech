@@ -362,8 +362,8 @@ export default function DashboardPage() {
               </div>
             </div>
             <p className="text-sm text-slate-300 leading-relaxed mb-6">
-              &quot;I&apos;ve analyzed your current risk exposure. Would you like to see the optimization
-              report for your tech holdings?&quot;
+              &quot;I&apos;ve analyzed your current risk exposure. Would you like to see the
+              optimization report for your tech holdings?&quot;
             </p>
             <Link href="/advisor" className="btn-premium w-full text-sm">
               Initiate Consultation
