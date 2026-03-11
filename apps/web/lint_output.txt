@@ -1,0 +1,91 @@
+
+> @finetech/web@0.1.0 lint
+> next lint
+
+`next lint` is deprecated and will be removed in Next.js 16.
+For new projects, use create-next-app to choose your preferred linter.
+For existing projects, migrate to the ESLint CLI:
+npx @next/codemod@canary next-lint-to-eslint-cli .
+
+
+./app/(app)/dashboard/page.tsx
+18:11  Error: Replace `┬╖width="20"┬╖height="20"┬╖viewBox="0┬╖0┬╖24┬╖24"┬╖fill="none"┬╖stroke="currentColor"┬╖strokeWidth="2"┬╖strokeLinecap="round"┬╖strokeLinejoin="round"` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖width="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖height="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖viewBox="0┬╖0┬╖24┬╖24"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖fill="none"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖stroke="currentColor"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeWidth="2"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinecap="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinejoin="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+23:18  Error: Insert `,`  prettier/prettier
+30:11  Error: Replace `┬╖width="20"┬╖height="20"┬╖viewBox="0┬╖0┬╖24┬╖24"┬╖fill="none"┬╖stroke="currentColor"┬╖strokeWidth="2"┬╖strokeLinecap="round"┬╖strokeLinejoin="round"` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖width="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖height="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖viewBox="0┬╖0┬╖24┬╖24"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖fill="none"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖stroke="currentColor"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeWidth="2"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinecap="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinejoin="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+34:21  Error: Insert `,`  prettier/prettier
+41:11  Error: Replace `┬╖width="20"┬╖height="20"┬╖viewBox="0┬╖0┬╖24┬╖24"┬╖fill="none"┬╖stroke="currentColor"┬╖strokeWidth="2"┬╖strokeLinecap="round"┬╖strokeLinejoin="round"` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖width="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖height="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖viewBox="0┬╖0┬╖24┬╖24"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖fill="none"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖stroke="currentColor"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeWidth="2"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinecap="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinejoin="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+46:20  Error: Insert `,`  prettier/prettier
+63:92  Error: Replace `┬╖r.json()` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖r.json(),ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+76:92  Error: Replace `┬╖headers` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖headers,ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+85:75  Error: Replace `(s,┬╖p)┬╖=>┬╖s┬╖+┬╖p.amount,┬╖0` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖(s,┬╖p)┬╖=>┬╖s┬╖+┬╖p.amount,ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖0,ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+123:98  Error: Insert `{"┬╖"}ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+123:108  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+129:89  Error: Replace `Active┬╖Analysis` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖Active┬╖AnalysisΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+139:19  Error: Replace `┬╖width="20"┬╖height="20"┬╖viewBox="0┬╖0┬╖24┬╖24"┬╖fill="none"┬╖stroke="currentColor"┬╖strokeWidth="2"┬╖strokeLinecap="round"┬╖strokeLinejoin="round"><path┬╖d="M4┬╖19.5A2.5┬╖2.5┬╖0┬╖0┬╖1┬╖6.5┬╖17H20"┬╖/><path┬╖d="M6.5┬╖2H20v20H6.5A2.5┬╖2.5┬╖0┬╖0┬╖1┬╖4┬╖19.5v-15A2.5┬╖2.5┬╖0┬╖0┬╖1┬╖6.5┬╖2z"┬╖/>` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖width="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖height="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖viewBox="0┬╖0┬╖24┬╖24"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖fill="none"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖stroke="currentColor"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeWidth="2"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinecap="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinejoin="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<path┬╖d="M4┬╖19.5A2.5┬╖2.5┬╖0┬╖0┬╖1┬╖6.5┬╖17H20"┬╖/>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<path┬╖d="M6.5┬╖2H20v20H6.5A2.5┬╖2.5┬╖0┬╖0┬╖1┬╖4┬╖19.5v-15A2.5┬╖2.5┬╖0┬╖0┬╖1┬╖6.5┬╖2z"┬╖/>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+141:93  Error: Replace `Enrollments` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖EnrollmentsΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+150:19  Error: Replace `┬╖width="20"┬╖height="20"┬╖viewBox="0┬╖0┬╖24┬╖24"┬╖fill="none"┬╖stroke="currentColor"┬╖strokeWidth="2"┬╖strokeLinecap="round"┬╖strokeLinejoin="round"><polygon┬╖points="12┬╖2┬╖15.09┬╖8.26┬╖22┬╖9.27┬╖17┬╖14.14┬╖18.18┬╖21.02┬╖12┬╖17.77┬╖5.82┬╖21.02┬╖7┬╖14.14┬╖2┬╖9.27┬╖8.91┬╖8.26┬╖12┬╖2"┬╖/>` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖width="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖height="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖viewBox="0┬╖0┬╖24┬╖24"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖fill="none"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖stroke="currentColor"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeWidth="2"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinecap="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinejoin="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<polygon┬╖points="12┬╖2┬╖15.09┬╖8.26┬╖22┬╖9.27┬╖17┬╖14.14┬╖18.18┬╖21.02┬╖12┬╖17.77┬╖5.82┬╖21.02┬╖7┬╖14.14┬╖2┬╖9.27┬╖8.91┬╖8.26┬╖12┬╖2"┬╖/>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+152:93  Error: Replace `Experience` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖ExperienceΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+154:63  Error: Replace `{loading┬╖?┬╖"ΓÇö"┬╖:┬╖totalPoints.toLocaleString()}` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖{loading┬╖?┬╖"ΓÇö"┬╖:┬╖totalPoints.toLocaleString()}ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+161:19  Error: Replace `┬╖width="20"┬╖height="20"┬╖viewBox="0┬╖0┬╖24┬╖24"┬╖fill="none"┬╖stroke="currentColor"┬╖strokeWidth="2"┬╖strokeLinecap="round"┬╖strokeLinejoin="round"><line┬╖x1="12"┬╖y1="1"┬╖x2="12"┬╖y2="23"┬╖/><path┬╖d="M17┬╖5H9.5a3.5┬╖3.5┬╖0┬╖0┬╖0┬╖0┬╖7h5a3.5┬╖3.5┬╖0┬╖0┬╖1┬╖0┬╖7H6"┬╖/>` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖width="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖height="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖viewBox="0┬╖0┬╖24┬╖24"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖fill="none"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖stroke="currentColor"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeWidth="2"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinecap="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinejoin="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<line┬╖x1="12"┬╖y1="1"┬╖x2="12"┬╖y2="23"┬╖/>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<path┬╖d="M17┬╖5H9.5a3.5┬╖3.5┬╖0┬╖0┬╖0┬╖0┬╖7h5a3.5┬╖3.5┬╖0┬╖0┬╖1┬╖0┬╖7H6"┬╖/>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+163:93  Error: Replace `Liquidity` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖LiquidityΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+165:63  Error: Replace `{loading┬╖?┬╖"ΓÇö"┬╖:┬╖(portfolioValue┬╖!==┬╖null┬╖?┬╖`$${portfolioValue.toLocaleString()}`┬╖:┬╖"$0")}` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖{loading┬╖?┬╖"ΓÇö"┬╖:┬╖portfolioValue┬╖!==┬╖null┬╖?┬╖`$${portfolioValue.toLocaleString()}`┬╖:┬╖"$0"}ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+172:19  Error: Replace `┬╖width="20"┬╖height="20"┬╖viewBox="0┬╖0┬╖24┬╖24"┬╖fill="none"┬╖stroke="currentColor"┬╖strokeWidth="2"┬╖strokeLinecap="round"┬╖strokeLinejoin="round"><path┬╖d="M19┬╖20H5a2┬╖2┬╖0┬╖0┬╖1-2-2V6a2┬╖2┬╖0┬╖0┬╖1┬╖2-2h10a2┬╖2┬╖0┬╖0┬╖1┬╖2┬╖2v1"┬╖/><path┬╖d="M21┬╖12a9┬╖9┬╖0┬╖0┬╖0-9-9"┬╖/><path┬╖d="M21┬╖12H12V3"┬╖/>` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖width="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖height="20"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖viewBox="0┬╖0┬╖24┬╖24"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖fill="none"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖stroke="currentColor"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeWidth="2"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinecap="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinejoin="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<path┬╖d="M19┬╖20H5a2┬╖2┬╖0┬╖0┬╖1-2-2V6a2┬╖2┬╖0┬╖0┬╖1┬╖2-2h10a2┬╖2┬╖0┬╖0┬╖1┬╖2┬╖2v1"┬╖/>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<path┬╖d="M21┬╖12a9┬╖9┬╖0┬╖0┬╖0-9-9"┬╖/>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<path┬╖d="M21┬╖12H12V3"┬╖/>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+174:93  Error: Replace `Intelligence` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖IntelligenceΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+188:53  Error: Replace `Real-time┬╖performance┬╖tracking┬╖and┬╖predictive┬╖modeling.` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖Real-time┬╖performance┬╖tracking┬╖and┬╖predictive┬╖modeling.ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+191:207  Error: Replace `1W` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖1WΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+192:160  Error: Replace `1M` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖1MΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+193:207  Error: Replace `1Y` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖1YΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+204:102  Error: Replace `Intelligence┬╖Visualization┬╖Engine┬╖Loading...` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖Intelligence┬╖Visualization┬╖Engine┬╖Loading...ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+209:98  Error: Replace `Volatily┬╖Index` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖Volatily┬╖IndexΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+210:59  Error: Replace `12.4%┬╖<span┬╖className="text-[10px]┬╖text-emerald-400┬╖font-bold┬╖ml-1">LOW</span>` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖12.4%┬╖<span┬╖className="text-[10px]┬╖text-emerald-400┬╖font-bold┬╖ml-1">LOW</span>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+213:98  Error: Replace `Sharpe┬╖Ratio` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖Sharpe┬╖RatioΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+214:59  Error: Replace `2.84┬╖<span┬╖className="text-[10px]┬╖text-emerald-400┬╖font-bold┬╖ml-1">GOOD</span>` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖2.84┬╖<span┬╖className="text-[10px]┬╖text-emerald-400┬╖font-bold┬╖ml-1">GOOD</span>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+217:98  Error: Replace `Alpha┬╖Projection` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖Alpha┬╖ProjectionΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+227:21  Error: Replace `┬╖width="24"┬╖height="24"┬╖viewBox="0┬╖0┬╖24┬╖24"┬╖fill="none"┬╖stroke="currentColor"┬╖strokeWidth="2.5"┬╖strokeLinecap="round"┬╖strokeLinejoin="round"><path┬╖d="M21┬╖15a2┬╖2┬╖0┬╖0┬╖1-2┬╖2H7l-4┬╖4V5a2┬╖2┬╖0┬╖0┬╖1┬╖2-2h14a2┬╖2┬╖0┬╖0┬╖1┬╖2┬╖2z"┬╖/>` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖width="24"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖height="24"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖viewBox="0┬╖0┬╖24┬╖24"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖fill="none"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖stroke="currentColor"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeWidth="2.5"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinecap="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinejoin="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<path┬╖d="M21┬╖15a2┬╖2┬╖0┬╖0┬╖1-2┬╖2H7l-4┬╖4V5a2┬╖2┬╖0┬╖0┬╖1┬╖2-2h14a2┬╖2┬╖0┬╖0┬╖1┬╖2┬╖2z"┬╖/>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+231:113  Error: Replace `Ready┬╖for┬╖inquiry` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖Ready┬╖for┬╖inquiryΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+235:15  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+235:17  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+235:96  Error: Insert `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+235:127  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+243:30  Error: Replace `link` with `(link)`  prettier/prettier
+248:27  Error: Replace `┬╖className={`p-2.5┬╖rounded-xl┬╖bg-${link.color}-500/10┬╖text-${link.color}-400┬╖ring-1┬╖ring-${link.color}-500/20┬╖group-hover:scale-110┬╖transition-transform`}` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖className={`p-2.5┬╖rounded-xl┬╖bg-${link.color}-500/10┬╖text-${link.color}-400┬╖ring-1┬╖ring-${link.color}-500/20┬╖group-hover:scale-110┬╖transition-transform`}ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+252:107  Error: Replace `{link.title}` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖{link.title}ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+253:90  Error: Replace `{link.description}` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖{link.description}ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+256:25  Error: Replace `┬╖width="16"┬╖height="16"┬╖viewBox="0┬╖0┬╖24┬╖24"┬╖fill="none"┬╖stroke="currentColor"┬╖strokeWidth="2.5"┬╖strokeLinecap="round"┬╖strokeLinejoin="round"┬╖className="text-slate-600┬╖group-hover:text-white┬╖animate-pulse┬╖group-hover:translate-x-1┬╖transition-all"><polyline┬╖points="9┬╖18┬╖15┬╖12┬╖9┬╖6"┬╖/>` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖width="16"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖height="16"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖viewBox="0┬╖0┬╖24┬╖24"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖fill="none"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖stroke="currentColor"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeWidth="2.5"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinecap="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖strokeLinejoin="round"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖className="text-slate-600┬╖group-hover:text-white┬╖animate-pulse┬╖group-hover:translate-x-1┬╖transition-all"ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<polyline┬╖points="9┬╖18┬╖15┬╖12┬╖9┬╖6"┬╖/>ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+
+./app/sidebar-nav.tsx
+129:19  Error: Insert `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+130:1  Error: Insert `┬╖┬╖`  prettier/prettier
+131:1  Error: Insert `┬╖┬╖`  prettier/prettier
+164:87  Error: Replace `{user.name}` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖{user.name}ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+167:94  Error: Replace `Active` with `ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖ActiveΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖`  prettier/prettier
+
+./components/ui/premium-card.tsx
+1:35  Error: Delete `ΓÉì`  prettier/prettier
+2:46  Error: Delete `ΓÉì`  prettier/prettier
+3:1  Error: Delete `ΓÉì`  prettier/prettier
+4:39  Error: Delete `ΓÉì`  prettier/prettier
+5:3  Error: Replace `┬╖┬╖return┬╖clsx(inputs);ΓÉì` with `return┬╖clsx(inputs);`  prettier/prettier
+6:2  Error: Delete `ΓÉì`  prettier/prettier
+7:1  Error: Delete `ΓÉì`  prettier/prettier
+8:29  Error: Delete `ΓÉì`  prettier/prettier
+9:3  Error: Replace `┬╖┬╖children:┬╖ReactNode;ΓÉì` with `children:┬╖ReactNode;`  prettier/prettier
+10:3  Error: Replace `┬╖┬╖className?:┬╖string;ΓÉì` with `className?:┬╖string;`  prettier/prettier
+11:1  Error: Replace `┬╖┬╖┬╖┬╖gradient?:┬╖boolean;ΓÉì` with `┬╖┬╖gradient?:┬╖boolean;`  prettier/prettier
+12:2  Error: Delete `ΓÉì`  prettier/prettier
+13:1  Error: Delete `ΓÉì`  prettier/prettier
+14:91  Error: Delete `ΓÉì`  prettier/prettier
+15:1  Error: Replace `┬╖┬╖┬╖┬╖return┬╖(ΓÉì` with `┬╖┬╖return┬╖(`  prettier/prettier
+16:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<divΓÉì` with `┬╖┬╖┬╖┬╖<div`  prettier/prettier
+17:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖className={cn(ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖className={cn(`  prettier/prettier
+18:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖"premium-card┬╖p-6",ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖"premium-card┬╖p-6",`  prettier/prettier
+19:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖gradient┬╖&&┬╖"after:absolute┬╖after:inset-0┬╖after:bg-gradient-to-br┬╖after:from-cyan-500/5┬╖after:to-emerald-500/5┬╖after:opacity-100",ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖gradient┬╖&&ΓÅÄ┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖"after:absolute┬╖after:inset-0┬╖after:bg-gradient-to-br┬╖after:from-cyan-500/5┬╖after:to-emerald-500/5┬╖after:opacity-100",`  prettier/prettier
+20:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖classNameΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖className,`  prettier/prettier
+21:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖)}ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖)}`  prettier/prettier
+22:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖>ΓÉì` with `┬╖┬╖┬╖┬╖>`  prettier/prettier
+23:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖<div┬╖className="relative┬╖z-10">{children}</div>ΓÉì` with `┬╖┬╖┬╖┬╖┬╖┬╖<div┬╖className="relative┬╖z-10">{children}</div>`  prettier/prettier
+24:1  Error: Replace `┬╖┬╖┬╖┬╖┬╖┬╖┬╖┬╖</div>ΓÉì` with `┬╖┬╖┬╖┬╖</div>`  prettier/prettier
+25:1  Error: Replace `┬╖┬╖┬╖┬╖);ΓÉì` with `┬╖┬╖);`  prettier/prettier
+26:2  Error: Delete `ΓÉì`  prettier/prettier
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules

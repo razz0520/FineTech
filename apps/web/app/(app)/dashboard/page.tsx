@@ -2,19 +2,18 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { PremiumCard } from "@/components/ui/premium-card";
 
 import { API_BASE } from "@/lib/api";
 import { mockDashboardStats } from "@/lib/mock-data";
 const DEV_USER_ID = process.env.NEXT_PUBLIC_DEV_USER_ID || "00000000-0000-0000-0000-000000000001";
 const headers = { "X-User-Id": DEV_USER_ID };
 
-import { StrategicRealityCheck } from "@/components/reality-check";
-
-const STAT_CARDS = [
+const QUICK_LINKS = [
   {
-    key: "enrollments",
-    title: "[INIT] Enrolled Courses",
-    subtitle: "active operational context",
+    href: "/learn",
+    title: "Curriculum",
+    description: "Master financial concepts with our structured learning modules.",
     icon: (
       <svg
         width="20"
@@ -22,7 +21,7 @@ const STAT_CARDS = [
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.8"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
@@ -33,122 +32,37 @@ const STAT_CARDS = [
     color: "cyan",
   },
   {
-    key: "xp",
-    title: "[CALC] XP Metrics",
-    subtitle: "academic velocity per session",
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-      </svg>
-    ),
-    color: "emerald",
-  },
-  {
-    key: "portfolio",
-    title: "[OK] Portfolio Liquidity",
-    subtitle: "mark-to-market valuation",
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <line x1="12" y1="1" x2="12" y2="23" />
-        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-      </svg>
-    ),
-    color: "violet",
-  },
-  {
-    key: "news",
-    title: "[INIT] News Ingestion",
-    subtitle: "unfiltered market telemetry",
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1" />
-        <path d="M21 12a9 9 0 0 0-9-9" />
-        <path d="M21 12H12V3" />
-      </svg>
-    ),
-    color: "amber",
-  },
-];
-
-const QUICK_LINKS = [
-  {
-    href: "/learn",
-    title: "[INIT] Curriculum",
-    description: "Operational knowledge ingestion modules for professional mastery.",
-    icon: (
-      <svg
-        width="22"
-        height="22"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-      </svg>
-    ),
-  },
-  {
     href: "/playground",
-    title: "[CALC] Prediction Playground",
-    description: "Cold-engine LSTM+Attention simulators for market dependency verification.",
+    title: "Playground",
+    description: "Test your strategies in a risk-free simulated environment.",
     icon: (
       <svg
-        width="22"
-        height="22"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.8"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
       </svg>
     ),
+    color: "emerald",
   },
   {
     href: "/portfolio",
-    title: "[OK] Risk Management",
-    description: "Capital allocation and Sharpe-ratio boundary analysis controllers.",
+    title: "Portfolio",
+    description: "Analyze your assets and optimize your capital allocation.",
     icon: (
       <svg
-        width="22"
-        height="22"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.8"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
@@ -156,27 +70,9 @@ const QUICK_LINKS = [
         <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
       </svg>
     ),
+    color: "violet",
   },
 ];
-
-const COLOR_MAP: Record<string, { iconBg: string; iconText: string; topBorder: string }> = {
-  cyan: { iconBg: "bg-cyan-500/10", iconText: "text-cyan-400", topBorder: "border-t-cyan-500/50" },
-  emerald: {
-    iconBg: "bg-emerald-500/10",
-    iconText: "text-emerald-400",
-    topBorder: "border-t-emerald-500/50",
-  },
-  violet: {
-    iconBg: "bg-violet-500/10",
-    iconText: "text-violet-400",
-    topBorder: "border-t-violet-500/50",
-  },
-  amber: {
-    iconBg: "bg-amber-500/10",
-    iconText: "text-amber-400",
-    topBorder: "border-t-amber-500/50",
-  },
-};
 
 export default function DashboardPage() {
   const [enrollments, setEnrollments] = useState(0);
@@ -198,7 +94,6 @@ export default function DashboardPage() {
         ]);
 
         let gotData = false;
-
         if (enrollResp.status === "fulfilled" && Array.isArray(enrollResp.value)) {
           setEnrollments(enrollResp.value.length);
           gotData = true;
@@ -230,7 +125,6 @@ export default function DashboardPage() {
           gotData = true;
         }
 
-        // If no API data came through, use mocks
         if (!gotData) {
           const mock = mockDashboardStats();
           setEnrollments(mock.enrollments);
@@ -239,7 +133,6 @@ export default function DashboardPage() {
           setNewsCount(mock.newsCount);
         }
       } catch {
-        // Fallback to mock data
         const mock = mockDashboardStats();
         setEnrollments(mock.enrollments);
         setTotalPoints(mock.xp);
@@ -252,101 +145,271 @@ export default function DashboardPage() {
     load();
   }, []);
 
-  const values: Record<string, string> = {
-    enrollments: loading ? "—" : `${enrollments}`,
-    xp: loading ? "—" : `${totalPoints}`,
-    portfolio: loading
-      ? "—"
-      : portfolioValue !== null
-        ? `$${portfolioValue.toLocaleString()}`
-        : "No portfolio",
-    news: loading ? "—" : `${newsCount}`,
-  };
-
   return (
-    <div className="space-y-8 animate-fade-in font-mono">
-      {/* Page header */}
-      <div>
-        <h2 className="text-2xl font-bold tracking-tight">
-          <span className="text-white">[INIT] Operator Dashboard: Rahul</span>
-        </h2>
-        <div className="flex items-center gap-2 mt-2">
-          <p className="text-xs text-slate-500 uppercase tracking-widest">
-            System Status: <span className="text-emerald-500">[OPERATIONAL]</span>
-          </p>
-          <div className="w-1 h-1 rounded-full bg-slate-700" />
-          <p className="text-xs text-slate-500 uppercase tracking-widest">
-            Identity: <span className="text-white">RAHUL_0520</span>
+    <div className="max-w-6xl mx-auto space-y-10 py-6 animate-fade-in font-sans">
+      {/* Welcome Header */}
+      <header className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h2 className="text-4xl font-extrabold tracking-tight text-white mb-2">
+            Welcome back, <span className="text-gradient">Rahul</span>
+          </h2>
+          <p className="text-slate-400 font-medium">
+            Your intelligence engine is <span className="text-emerald-400">fully optimized</span>{" "}
+            for today&apos;s market telemetry.
           </p>
         </div>
-        {totalPoints <= 1250 && !loading && (
-          <div className="mt-4 p-3 bg-rose-500/5 border border-rose-500/20 rounded-xl">
-            <p className="text-xs text-rose-400 font-bold tracking-tight">
-              {
-                "[WARN] OPPORTUNITY COST DETECTED: XP has remained stagnant for 24+ hours. The gap between current performance and 12 LPA baseline is widening. Resume 'Machine Learning in Finance' immediately."
-              }
-            </p>
-          </div>
-        )}
-      </div>
+        <div className="flex items-center gap-3">
+          <PremiumCard className="py-2.5 px-4 rounded-2xl flex items-center gap-2 border-cyan-500/20 bg-cyan-500/5 shadow-cyan-500/10">
+            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+            <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest">
+              Active Analysis
+            </span>
+          </PremiumCard>
+        </div>
+      </header>
 
-      {/* Stat cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 stagger-children">
-        {STAT_CARDS.map((card) => {
-          const colors = COLOR_MAP[card.color];
-          return (
-            <div key={card.key} className={`glass-card p-5 border-t-2 ${colors.topBorder}`}>
-              <div className="flex items-start justify-between mb-3">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                  {card.title}
-                </p>
-                <div className={`p-2 rounded-lg ${colors.iconBg}`}>
-                  <span className={colors.iconText}>{card.icon}</span>
-                </div>
-              </div>
-              <p
-                className={`text-2xl font-bold ${loading ? "animate-pulse text-slate-600" : "text-white"}`}
+      {/* Main Stats Grid */}
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <PremiumCard gradient className="group">
+          <div className="flex items-center justify-between mb-4">
+            <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 ring-1 ring-cyan-500/20">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                {values[card.key]}
-              </p>
-              <p className="text-[10px] text-slate-500 uppercase tracking-tight mt-1">
-                {card.subtitle}
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+            </div>
+            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+              Enrollments
+            </div>
+          </div>
+          <div className="text-3xl font-bold text-white mb-1">{loading ? "—" : enrollments}</div>
+          <div className="text-xs text-slate-500 font-medium">Active operational courses</div>
+        </PremiumCard>
+
+        <PremiumCard gradient className="group">
+          <div className="flex items-center justify-between mb-4">
+            <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500/20">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+              Experience
+            </div>
+          </div>
+          <div className="text-3xl font-bold text-white mb-1">
+            {loading ? "—" : totalPoints.toLocaleString()}
+          </div>
+          <div className="text-xs text-slate-500 font-medium">Academic velocity score</div>
+        </PremiumCard>
+
+        <PremiumCard gradient className="group">
+          <div className="flex items-center justify-between mb-4">
+            <div className="p-2.5 rounded-xl bg-violet-500/10 text-violet-400 ring-1 ring-violet-500/20">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="12" y1="1" x2="12" y2="23" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </div>
+            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+              Liquidity
+            </div>
+          </div>
+          <div className="text-3xl font-bold text-white mb-1">
+            {loading ? "—" : portfolioValue !== null ? `$${portfolioValue.toLocaleString()}` : "$0"}
+          </div>
+          <div className="text-xs text-slate-500 font-medium">Net-worth valuation</div>
+        </PremiumCard>
+
+        <PremiumCard gradient className="group">
+          <div className="flex items-center justify-between mb-4">
+            <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 ring-1 amber-emerald-500/20">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1" />
+                <path d="M21 12a9 9 0 0 0-9-9" />
+                <path d="M21 12H12V3" />
+              </svg>
+            </div>
+            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+              Intelligence
+            </div>
+          </div>
+          <div className="text-3xl font-bold text-white mb-1">{loading ? "—" : newsCount}</div>
+          <div className="text-xs text-slate-500 font-medium">Market telemetry streams</div>
+        </PremiumCard>
+      </section>
+
+      {/* Portfolio Intelligence & Analysis Area */}
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <PremiumCard className="lg:col-span-2 relative min-h-[400px] flex flex-col justify-between overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-[100px] -mr-32 -mt-32" />
+          <div className="relative z-10 flex items-center justify-between mb-8">
+            <div>
+              <h3 className="text-2xl font-bold text-white">Portfolio Intelligence</h3>
+              <p className="text-sm text-slate-500">
+                Real-time performance tracking and predictive modeling.
               </p>
             </div>
-          );
-        })}
-      </div>
+            <div className="flex gap-2">
+              <button className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-white/10 transition-colors">
+                1W
+              </button>
+              <button className="px-3 py-1.5 rounded-lg bg-cyan-500/20 border border-cyan-500/50 text-[10px] font-bold uppercase tracking-wider text-cyan-400">
+                1M
+              </button>
+              <button className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-white/10 transition-colors">
+                1Y
+              </button>
+            </div>
+          </div>
 
-      {/* Quick links */}
-      <div>
-        <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">
-          [INIT] Logic Controllers
-        </h3>
-        <div className="grid gap-4 md:grid-cols-3 stagger-children">
-          {QUICK_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="glass-card gradient-border p-5 block group hover:translate-y-[-2px] transition-all duration-300"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 group-hover:bg-cyan-500/20 transition-colors border border-cyan-500/20">
-                  {link.icon}
-                </div>
-                <h3 className="text-xs font-bold text-slate-200 group-hover:text-white transition-colors uppercase tracking-tight">
-                  {link.title}
-                </h3>
-              </div>
-              <p className="text-[11px] text-slate-500 leading-relaxed font-sans">
-                {link.description}
+          {/* Placeholder for chart */}
+          <div className="flex-1 flex items-center justify-center relative">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-full h-[1px] bg-white/5" />
+              <div className="h-full w-[1px] bg-white/5" />
+            </div>
+            <div className="w-full h-48 bg-gradient-to-t from-cyan-500/10 to-emerald-500/5 clip-path-chart" />
+            <div className="absolute text-slate-600 text-[10px] font-bold uppercase tracking-widest">
+              Intelligence Visualization Engine Loading...
+            </div>
+          </div>
+
+          <div className="relative z-10 mt-8 grid grid-cols-3 gap-4 border-t border-white/5 pt-6">
+            <div>
+              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">
+                Volatily Index
               </p>
-            </Link>
-          ))}
-        </div>
-      </div>
+              <p className="text-lg font-bold text-white">
+                12.4% <span className="text-[10px] text-emerald-400 font-bold ml-1">LOW</span>
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">
+                Sharpe Ratio
+              </p>
+              <p className="text-lg font-bold text-white">
+                2.84 <span className="text-[10px] text-emerald-400 font-bold ml-1">GOOD</span>
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">
+                Alpha Projection
+              </p>
+              <p className="text-lg font-bold text-cyan-400">+14.2%</p>
+            </div>
+          </div>
+        </PremiumCard>
 
-      {/* Reality Check */}
-      <StrategicRealityCheck />
+        <div className="space-y-6">
+          <PremiumCard className="bg-gradient-to-br from-indigo-500/10 to-purple-500/5 border-indigo-500/20 shadow-indigo-500/5">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="p-3 rounded-2xl bg-indigo-500/20 text-indigo-400 shadow-lg shadow-indigo-500/10 ring-1 ring-indigo-500/30">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-bold text-white tracking-tight">AI Advisor</h4>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-none mt-1">
+                  Ready for inquiry
+                </p>
+              </div>
+            </div>
+            <p className="text-sm text-slate-300 leading-relaxed mb-6">
+              &quot;I&apos;ve analyzed your current risk exposure. Would you like to see the optimization
+              report for your tech holdings?&quot;
+            </p>
+            <Link href="/advisor" className="btn-premium w-full text-sm">
+              Initiate Consultation
+            </Link>
+          </PremiumCard>
+
+          <div className="grid grid-cols-1 gap-4">
+            {QUICK_LINKS.map((link) => (
+              <Link key={link.href} href={link.href} className="group">
+                <PremiumCard className="p-4 group-hover:bg-white/[0.06] transition-colors border-white/5 group-hover:border-white/10">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div
+                        className={`p-2.5 rounded-xl bg-${link.color}-500/10 text-${link.color}-400 ring-1 ring-${link.color}-500/20 group-hover:scale-110 transition-transform`}
+                      >
+                        {link.icon}
+                      </div>
+                      <div>
+                        <h5 className="font-bold text-slate-200 group-hover:text-white transition-colors">
+                          {link.title}
+                        </h5>
+                        <p className="text-[11px] text-slate-500 truncate max-w-[150px]">
+                          {link.description}
+                        </p>
+                      </div>
+                    </div>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-slate-600 group-hover:text-white animate-pulse group-hover:translate-x-1 transition-all"
+                    >
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </div>
+                </PremiumCard>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

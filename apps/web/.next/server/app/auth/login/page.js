@@ -1,2 +1,1071 @@
-(()=>{var a={};a.id=859,a.ids=[859],a.modules={261:a=>{"use strict";a.exports=require("next/dist/shared/lib/router/utils/app-paths")},3295:a=>{"use strict";a.exports=require("next/dist/server/app-render/after-task-async-storage.external.js")},10846:a=>{"use strict";a.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},16193:(a,b,c)=>{"use strict";c.r(b),c.d(b,{default:()=>d});let d=(0,c(38676).registerClientReference)(function(){throw Error("Attempted to call the default export of \"C:\\\\Users\\\\ASUS\\\\FineTech\\\\apps\\\\web\\\\app\\\\auth\\\\login\\\\page.tsx\" from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\auth\\login\\page.tsx","default")},19121:a=>{"use strict";a.exports=require("next/dist/server/app-render/action-async-storage.external.js")},26713:a=>{"use strict";a.exports=require("next/dist/shared/lib/router/utils/is-bot")},28354:a=>{"use strict";a.exports=require("util")},29294:a=>{"use strict";a.exports=require("next/dist/server/app-render/work-async-storage.external.js")},33873:a=>{"use strict";a.exports=require("path")},38022:(a,b,c)=>{Promise.resolve().then(c.bind(c,16193))},41025:a=>{"use strict";a.exports=require("next/dist/server/app-render/dynamic-access-async-storage.external.js")},63033:a=>{"use strict";a.exports=require("next/dist/server/app-render/work-unit-async-storage.external.js")},75707:(a,b,c)=>{"use strict";c.r(b),c.d(b,{default:()=>j});var d=c(64242),e=c(48299),f=c(82481),g=c.n(f),h=c(39444),i=c(10821);function j(){let{login:a}=(0,i.A)(),b=(0,h.useRouter)(),[c,f]=(0,e.useState)(""),[j,k]=(0,e.useState)(""),[l,m]=(0,e.useState)(null),[n,o]=(0,e.useState)(!1),p=async d=>{if(d.preventDefault(),m(null),o(!0),!c||!j){m("Please fill in all fields."),o(!1);return}await new Promise(a=>setTimeout(a,800));let e=a(c,j);e.success?b.push("/dashboard"):(m(e.error||"Login failed."),o(!1))};return(0,d.jsxs)("div",{className:"min-h-screen grid lg:grid-cols-2 bg-slate-950 overflow-hidden",children:[(0,d.jsxs)("div",{className:"hidden lg:flex relative flex-col items-center justify-center p-12 mesh-gradient overflow-hidden",children:[(0,d.jsx)("div",{className:"absolute inset-0 bg-slate-950/20 backdrop-blur-[2px]"}),(0,d.jsx)("div",{className:"absolute top-1/4 -right-12 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"}),(0,d.jsx)("div",{className:"absolute bottom-1/4 -left-12 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-700"}),(0,d.jsxs)("div",{className:"relative z-10 max-w-md text-center",children:[(0,d.jsx)("div",{className:"w-20 h-20 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mx-auto mb-8 shadow-2xl animate-slide-up",children:(0,d.jsxs)("svg",{width:"40",height:"40",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"1.5",strokeLinecap:"round",strokeLinejoin:"round",className:"text-emerald-400",children:[(0,d.jsx)("path",{d:"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"}),(0,d.jsx)("polyline",{points:"10 17 15 12 10 7"}),(0,d.jsx)("line",{x1:"15",y1:"12",x2:"3",y2:"12"})]})}),(0,d.jsxs)("h1",{className:"text-4xl font-extrabold tracking-tight text-white mb-6 animate-slide-up [animation-delay:0.1s]",children:["Welcome ",(0,d.jsx)("span",{className:"gradient-text",children:"Back to Finetech"})]}),(0,d.jsx)("p",{className:"text-lg text-slate-400 mb-8 animate-slide-up [animation-delay:0.2s]",children:"Continue your journey in mastering the markets with our unified financial intelligence platform."}),(0,d.jsxs)("div",{className:"grid grid-cols-2 gap-4 animate-slide-up [animation-delay:0.3s]",children:[(0,d.jsxs)("div",{className:"glass-panel p-4 rounded-2xl text-left border-white/5 hover:border-cyan-500/30 transition-colors group",children:[(0,d.jsx)("div",{className:"text-cyan-400 mb-2 group-hover:scale-110 transition-transform",children:(0,d.jsx)("svg",{width:"20",height:"20",fill:"none",stroke:"currentColor",strokeWidth:"2",viewBox:"0 0 24 24",children:(0,d.jsx)("path",{d:"M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",strokeLinecap:"round",strokeLinejoin:"round"})})}),(0,d.jsx)("div",{className:"text-sm font-semibold text-white",children:"Market Intel"}),(0,d.jsx)("div",{className:"text-xs text-slate-500",children:"Scan live opportunities"})]}),(0,d.jsxs)("div",{className:"glass-panel p-4 rounded-2xl text-left border-white/5 hover:border-emerald-500/30 transition-colors group",children:[(0,d.jsx)("div",{className:"text-emerald-400 mb-2 group-hover:scale-110 transition-transform",children:(0,d.jsxs)("svg",{width:"20",height:"20",fill:"none",stroke:"currentColor",strokeWidth:"2",viewBox:"0 0 24 24",children:[(0,d.jsx)("rect",{x:"3",y:"11",width:"18",height:"11",rx:"2",ry:"2",strokeLinecap:"round",strokeLinejoin:"round"}),(0,d.jsx)("path",{d:"M7 11V7a5 5 0 0110 0v4",strokeLinecap:"round",strokeLinejoin:"round"})]})}),(0,d.jsx)("div",{className:"text-sm font-semibold text-white",children:"Secure Access"}),(0,d.jsx)("div",{className:"text-xs text-slate-500",children:"Encrypted data protection"})]})]})]})]}),(0,d.jsxs)("div",{className:"flex items-center justify-center p-8 lg:p-12 relative",children:[(0,d.jsx)("div",{className:"lg:hidden absolute inset-0 mesh-gradient opacity-30"}),(0,d.jsxs)("div",{className:"w-full max-w-sm relative z-10",children:[(0,d.jsxs)("div",{className:"text-center mb-10 stagger-children",children:[(0,d.jsx)("h2",{className:"text-3xl font-bold text-white mb-2",children:"Login"}),(0,d.jsx)("p",{className:"text-slate-400",children:"Access your professional dashboard"})]}),(0,d.jsxs)("form",{onSubmit:p,className:"space-y-5 stagger-children",children:[l&&(0,d.jsx)("div",{className:"rounded-xl bg-rose-500/10 border border-rose-500/20 px-4 py-3 text-sm text-rose-400 animate-fade-in",children:l}),(0,d.jsxs)("div",{className:"space-y-1.5",children:[(0,d.jsx)("label",{className:"text-xs font-semibold text-slate-400 uppercase tracking-widest ml-1",children:"Email Address"}),(0,d.jsx)("input",{type:"email",value:c,onChange:a=>f(a.target.value),placeholder:"name@company.com",className:"input-glass w-full py-3.5 px-4 bg-slate-900/50 border-white/5 focus:border-cyan-500/50 transition-all rounded-xl shadow-inner",autoComplete:"email",disabled:n})]}),(0,d.jsxs)("div",{className:"space-y-1.5",children:[(0,d.jsxs)("div",{className:"flex justify-between items-end mb-1 px-1",children:[(0,d.jsx)("label",{className:"text-xs font-semibold text-slate-400 uppercase tracking-widest",children:"Password"}),(0,d.jsx)(g(),{href:"#",className:"text-[11px] text-cyan-400 hover:text-cyan-300 font-medium",children:"Forgot?"})]}),(0,d.jsx)("input",{type:"password",value:j,onChange:a=>k(a.target.value),placeholder:"••••••••",className:"input-glass w-full py-3.5 px-4 bg-slate-900/50 border-white/5 focus:border-cyan-500/50 transition-all rounded-xl shadow-inner",autoComplete:"current-password",disabled:n})]}),(0,d.jsx)("button",{type:"submit",disabled:n,className:"btn-primary w-full py-4 rounded-xl text-base shadow-lg shadow-cyan-500/10 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group",children:n?(0,d.jsxs)("svg",{className:"animate-spin h-5 w-5 text-slate-900",viewBox:"0 0 24 24",children:[(0,d.jsx)("circle",{className:"opacity-25",cx:"12",cy:"12",r:"10",stroke:"currentColor",strokeWidth:"4",fill:"none"}),(0,d.jsx)("path",{className:"opacity-75",fill:"currentColor",d:"M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"})]}):(0,d.jsxs)(d.Fragment,{children:["Sign In",(0,d.jsx)("svg",{className:"w-5 h-5 group-hover:translate-x-1 transition-transform",fill:"none",stroke:"currentColor",viewBox:"0 0 24 24",children:(0,d.jsx)("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"2",d:"M11 16l4-4m0 0l-4-4m4 4H9"})})]})})]}),(0,d.jsx)("div",{className:"mt-8 text-center animate-fade-in [animation-delay:0.5s]",children:(0,d.jsxs)("p",{className:"text-slate-500 text-sm",children:["Don't have an account?"," ",(0,d.jsx)(g(),{href:"/auth/signup",className:"text-cyan-400 hover:text-cyan-300 transition-colors font-semibold",children:"Sign Up"})]})})]})]})]})}},78534:(a,b,c)=>{"use strict";c.r(b),c.d(b,{GlobalError:()=>C.default,__next_app__:()=>I,handler:()=>K,pages:()=>H,routeModule:()=>J,tree:()=>G});var d=c(85752),e=c(47719),f=c(29025),g=c(72590),h=c(10096),i=c(51970),j=c(43785),k=c(47050),l=c(72048),m=c(11866),n=c(65188),o=c(93171),p=c(15367),q=c(83532),r=c(261),s=c(67971),t=c(61248),u=c(26713),v=c(82538),w=c(13855),x=c(50899),y=c(52212),z=c(5780),A=c(79060),B=c(86439),C=c(37827),D=c(53712),E=c(65129),F={};for(let a in D)0>["default","tree","pages","GlobalError","__next_app__","routeModule","handler"].indexOf(a)&&(F[a]=()=>D[a]);c.d(b,F);let G={children:["",{children:["auth",{children:["login",{children:["__PAGE__",{},{page:[()=>Promise.resolve().then(c.bind(c,16193)),"C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\auth\\login\\page.tsx"]}]},{}]},{}]},{layout:[()=>Promise.resolve().then(c.bind(c,66715)),"C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\layout.tsx"],error:[()=>Promise.resolve().then(c.bind(c,873)),"C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\error.tsx"],"global-error":[()=>Promise.resolve().then(c.bind(c,37827)),"C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\global-error.tsx"],"not-found":[()=>Promise.resolve().then(c.bind(c,46043)),"C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\not-found.tsx"],forbidden:[()=>Promise.resolve().then(c.t.bind(c,37579,23)),"next/dist/client/components/builtin/forbidden.js"],unauthorized:[()=>Promise.resolve().then(c.t.bind(c,42846,23)),"next/dist/client/components/builtin/unauthorized.js"]}]}.children,H=["C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\auth\\login\\page.tsx"],I={require:c,loadChunk:()=>Promise.resolve()},J=new d.AppPageRouteModule({definition:{kind:e.RouteKind.APP_PAGE,page:"/auth/login/page",pathname:"/auth/login",bundlePath:"",filename:"",appPaths:[]},userland:{loaderTree:G},distDir:".next",relativeProjectDir:""});async function K(a,b,d){var F;let L="/auth/login/page";"/index"===L&&(L="/");let M=(0,h.getRequestMeta)(a,"postponed"),N=(0,h.getRequestMeta)(a,"minimalMode"),O=await J.prepare(a,b,{srcPage:L,multiZoneDraftMode:!1});if(!O)return b.statusCode=400,b.end("Bad Request"),null==d.waitUntil||d.waitUntil.call(d,Promise.resolve()),null;let{buildId:P,query:Q,params:R,parsedUrl:S,pageIsDynamic:T,buildManifest:U,nextFontManifest:V,reactLoadableManifest:W,serverActionsManifest:X,clientReferenceManifest:Y,subresourceIntegrityManifest:Z,prerenderManifest:$,isDraftMode:_,resolvedPathname:aa,revalidateOnlyGenerated:ab,routerServerContext:ac,nextConfig:ad,interceptionRoutePatterns:ae}=O,af=S.pathname||"/",ag=(0,r.normalizeAppPath)(L),{isOnDemandRevalidate:ah}=O,ai=J.match(af,$),aj=!!$.routes[aa],ak=!!(ai||aj||$.routes[ag]),al=a.headers["user-agent"]||"",am=(0,u.getBotType)(al),an=(0,p.isHtmlBotRequest)(a),ao=(0,h.getRequestMeta)(a,"isPrefetchRSCRequest")??"1"===a.headers[t.NEXT_ROUTER_PREFETCH_HEADER],ap=(0,h.getRequestMeta)(a,"isRSCRequest")??!!a.headers[t.RSC_HEADER],aq=(0,s.getIsPossibleServerAction)(a),ar=(0,m.checkIsAppPPREnabled)(ad.experimental.ppr)&&(null==(F=$.routes[ag]??$.dynamicRoutes[ag])?void 0:F.renderingMode)==="PARTIALLY_STATIC",as=!1,at=!1,au=ar?M:void 0,av=ar&&ap&&!ao,aw=(0,h.getRequestMeta)(a,"segmentPrefetchRSCRequest"),ax=!al||(0,p.shouldServeStreamingMetadata)(al,ad.htmlLimitedBots);an&&ar&&(ak=!1,ax=!1);let ay=!0===J.isDev||!ak||"string"==typeof M||av,az=an&&ar,aA=null;_||!ak||ay||aq||au||av||(aA=aa);let aB=aA;!aB&&J.isDev&&(aB=aa),J.isDev||_||!ak||!ap||av||(0,k.d)(a.headers);let aC={...D,tree:G,pages:H,GlobalError:C.default,handler:K,routeModule:J,__next_app__:I};X&&Y&&(0,o.setReferenceManifestsSingleton)({page:L,clientReferenceManifest:Y,serverActionsManifest:X,serverModuleMap:(0,q.createServerModuleMap)({serverActionsManifest:X})});let aD=a.method||"GET",aE=(0,g.getTracer)(),aF=aE.getActiveScopeSpan();try{let f=J.getVaryHeader(aa,ae);b.setHeader("Vary",f);let k=async(c,d)=>{let e=new l.NodeNextRequest(a),f=new l.NodeNextResponse(b);return J.render(e,f,d).finally(()=>{if(!c)return;c.setAttributes({"http.status_code":b.statusCode,"next.rsc":!1});let d=aE.getRootSpanAttributes();if(!d)return;if(d.get("next.span_type")!==i.BaseServerSpan.handleRequest)return void console.warn(`Unexpected root span type '${d.get("next.span_type")}'. Please report this Next.js issue https://github.com/vercel/next.js`);let e=d.get("next.route");if(e){let a=`${aD} ${e}`;c.setAttributes({"next.route":e,"http.route":e,"next.span_name":a}),c.updateName(a)}else c.updateName(`${aD} ${a.url}`)})},m=async({span:e,postponed:f,fallbackRouteParams:g})=>{let i={query:Q,params:R,page:ag,sharedContext:{buildId:P},serverComponentsHmrCache:(0,h.getRequestMeta)(a,"serverComponentsHmrCache"),fallbackRouteParams:g,renderOpts:{App:()=>null,Document:()=>null,pageConfig:{},ComponentMod:aC,Component:(0,j.T)(aC),params:R,routeModule:J,page:L,postponed:f,shouldWaitOnAllReady:az,serveStreamingMetadata:ax,supportsDynamicResponse:"string"==typeof f||ay,buildManifest:U,nextFontManifest:V,reactLoadableManifest:W,subresourceIntegrityManifest:Z,serverActionsManifest:X,clientReferenceManifest:Y,setIsrStatus:null==ac?void 0:ac.setIsrStatus,dir:c(33873).join(process.cwd(),J.relativeProjectDir),isDraftMode:_,isRevalidate:ak&&!f&&!av,botType:am,isOnDemandRevalidate:ah,isPossibleServerAction:aq,assetPrefix:ad.assetPrefix,nextConfigOutput:ad.output,crossOrigin:ad.crossOrigin,trailingSlash:ad.trailingSlash,previewProps:$.preview,deploymentId:ad.deploymentId,enableTainting:ad.experimental.taint,htmlLimitedBots:ad.htmlLimitedBots,devtoolSegmentExplorer:ad.experimental.devtoolSegmentExplorer,reactMaxHeadersLength:ad.reactMaxHeadersLength,multiZoneDraftMode:!1,incrementalCache:(0,h.getRequestMeta)(a,"incrementalCache"),cacheLifeProfiles:ad.experimental.cacheLife,basePath:ad.basePath,serverActions:ad.experimental.serverActions,...as?{nextExport:!0,supportsDynamicResponse:!1,isStaticGeneration:!0,isRevalidate:!0,isDebugDynamicAccesses:as}:{},experimental:{isRoutePPREnabled:ar,expireTime:ad.expireTime,staleTimes:ad.experimental.staleTimes,cacheComponents:!!ad.experimental.cacheComponents,clientSegmentCache:!!ad.experimental.clientSegmentCache,clientParamParsing:!!ad.experimental.clientParamParsing,dynamicOnHover:!!ad.experimental.dynamicOnHover,inlineCss:!!ad.experimental.inlineCss,authInterrupts:!!ad.experimental.authInterrupts,clientTraceMetadata:ad.experimental.clientTraceMetadata||[]},waitUntil:d.waitUntil,onClose:a=>{b.on("close",a)},onAfterTaskError:()=>{},onInstrumentationRequestError:(b,c,d)=>J.onRequestError(a,b,d,ac),err:(0,h.getRequestMeta)(a,"invokeError"),dev:J.isDev}},l=await k(e,i),{metadata:m}=l,{cacheControl:n,headers:o={},fetchTags:p}=m;if(p&&(o[y.NEXT_CACHE_TAGS_HEADER]=p),a.fetchMetrics=m.fetchMetrics,ak&&(null==n?void 0:n.revalidate)===0&&!J.isDev&&!ar){let a=m.staticBailoutInfo,b=Object.defineProperty(Error(`Page changed from static to dynamic at runtime ${aa}${(null==a?void 0:a.description)?`, reason: ${a.description}`:""}
-see more here https://nextjs.org/docs/messages/app-static-to-dynamic-error`),"__NEXT_ERROR_CODE",{value:"E132",enumerable:!1,configurable:!0});if(null==a?void 0:a.stack){let c=a.stack;b.stack=b.message+c.substring(c.indexOf("\n"))}throw b}return{value:{kind:v.CachedRouteKind.APP_PAGE,html:l,headers:o,rscData:m.flightData,postponed:m.postponed,status:m.statusCode,segmentData:m.segmentData},cacheControl:n}},o=async({hasResolved:c,previousCacheEntry:f,isRevalidating:g,span:i})=>{let j,k=!1===J.isDev,l=c||b.writableEnded;if(ah&&ab&&!f&&!N)return(null==ac?void 0:ac.render404)?await ac.render404(a,b):(b.statusCode=404,b.end("This page could not be found")),null;if(ai&&(j=(0,w.parseFallbackField)(ai.fallback)),j===w.FallbackMode.PRERENDER&&(0,u.isBot)(al)&&(!ar||an)&&(j=w.FallbackMode.BLOCKING_STATIC_RENDER),(null==f?void 0:f.isStale)===-1&&(ah=!0),ah&&(j!==w.FallbackMode.NOT_FOUND||f)&&(j=w.FallbackMode.BLOCKING_STATIC_RENDER),!N&&j!==w.FallbackMode.BLOCKING_STATIC_RENDER&&aB&&!l&&!_&&T&&(k||!aj)){let b;if((k||ai)&&j===w.FallbackMode.NOT_FOUND)throw new B.NoFallbackError;if(ar&&!ap){let c="string"==typeof(null==ai?void 0:ai.fallback)?ai.fallback:k?ag:null;if(b=await J.handleResponse({cacheKey:c,req:a,nextConfig:ad,routeKind:e.RouteKind.APP_PAGE,isFallback:!0,prerenderManifest:$,isRoutePPREnabled:ar,responseGenerator:async()=>m({span:i,postponed:void 0,fallbackRouteParams:k||at?(0,n.u)(ag):null}),waitUntil:d.waitUntil}),null===b)return null;if(b)return delete b.cacheControl,b}}let o=ah||g||!au?void 0:au;if(as&&void 0!==o)return{cacheControl:{revalidate:1,expire:void 0},value:{kind:v.CachedRouteKind.PAGES,html:x.default.EMPTY,pageData:{},headers:void 0,status:void 0}};let p=T&&ar&&((0,h.getRequestMeta)(a,"renderFallbackShell")||at)?(0,n.u)(af):null;return m({span:i,postponed:o,fallbackRouteParams:p})},p=async c=>{var f,g,i,j,k;let l,n=await J.handleResponse({cacheKey:aA,responseGenerator:a=>o({span:c,...a}),routeKind:e.RouteKind.APP_PAGE,isOnDemandRevalidate:ah,isRoutePPREnabled:ar,req:a,nextConfig:ad,prerenderManifest:$,waitUntil:d.waitUntil});if(_&&b.setHeader("Cache-Control","private, no-cache, no-store, max-age=0, must-revalidate"),J.isDev&&b.setHeader("Cache-Control","no-store, must-revalidate"),!n){if(aA)throw Object.defineProperty(Error("invariant: cache entry required but not generated"),"__NEXT_ERROR_CODE",{value:"E62",enumerable:!1,configurable:!0});return null}if((null==(f=n.value)?void 0:f.kind)!==v.CachedRouteKind.APP_PAGE)throw Object.defineProperty(Error(`Invariant app-page handler received invalid cache entry ${null==(i=n.value)?void 0:i.kind}`),"__NEXT_ERROR_CODE",{value:"E707",enumerable:!1,configurable:!0});let p="string"==typeof n.value.postponed;ak&&!av&&(!p||ao)&&(N||b.setHeader("x-nextjs-cache",ah?"REVALIDATED":n.isMiss?"MISS":n.isStale?"STALE":"HIT"),b.setHeader(t.NEXT_IS_PRERENDER_HEADER,"1"));let{value:q}=n;if(au)l={revalidate:0,expire:void 0};else if(N&&ap&&!ao&&ar)l={revalidate:0,expire:void 0};else if(!J.isDev)if(_)l={revalidate:0,expire:void 0};else if(ak){if(n.cacheControl)if("number"==typeof n.cacheControl.revalidate){if(n.cacheControl.revalidate<1)throw Object.defineProperty(Error(`Invalid revalidate configuration provided: ${n.cacheControl.revalidate} < 1`),"__NEXT_ERROR_CODE",{value:"E22",enumerable:!1,configurable:!0});l={revalidate:n.cacheControl.revalidate,expire:(null==(j=n.cacheControl)?void 0:j.expire)??ad.expireTime}}else l={revalidate:y.CACHE_ONE_YEAR,expire:void 0}}else b.getHeader("Cache-Control")||(l={revalidate:0,expire:void 0});if(n.cacheControl=l,"string"==typeof aw&&(null==q?void 0:q.kind)===v.CachedRouteKind.APP_PAGE&&q.segmentData){b.setHeader(t.NEXT_DID_POSTPONE_HEADER,"2");let c=null==(k=q.headers)?void 0:k[y.NEXT_CACHE_TAGS_HEADER];N&&ak&&c&&"string"==typeof c&&b.setHeader(y.NEXT_CACHE_TAGS_HEADER,c);let d=q.segmentData.get(aw);return void 0!==d?(0,A.sendRenderResult)({req:a,res:b,generateEtags:ad.generateEtags,poweredByHeader:ad.poweredByHeader,result:x.default.fromStatic(d,t.RSC_CONTENT_TYPE_HEADER),cacheControl:n.cacheControl}):(b.statusCode=204,(0,A.sendRenderResult)({req:a,res:b,generateEtags:ad.generateEtags,poweredByHeader:ad.poweredByHeader,result:x.default.EMPTY,cacheControl:n.cacheControl}))}let r=(0,h.getRequestMeta)(a,"onCacheEntry");if(r&&await r({...n,value:{...n.value,kind:"PAGE"}},{url:(0,h.getRequestMeta)(a,"initURL")}))return null;if(p&&au)throw Object.defineProperty(Error("Invariant: postponed state should not be present on a resume request"),"__NEXT_ERROR_CODE",{value:"E396",enumerable:!1,configurable:!0});if(q.headers){let a={...q.headers};for(let[c,d]of(N&&ak||delete a[y.NEXT_CACHE_TAGS_HEADER],Object.entries(a)))if(void 0!==d)if(Array.isArray(d))for(let a of d)b.appendHeader(c,a);else"number"==typeof d&&(d=d.toString()),b.appendHeader(c,d)}let s=null==(g=q.headers)?void 0:g[y.NEXT_CACHE_TAGS_HEADER];if(N&&ak&&s&&"string"==typeof s&&b.setHeader(y.NEXT_CACHE_TAGS_HEADER,s),!q.status||ap&&ar||(b.statusCode=q.status),!N&&q.status&&E.RedirectStatusCode[q.status]&&ap&&(b.statusCode=200),p&&b.setHeader(t.NEXT_DID_POSTPONE_HEADER,"1"),ap&&!_){if(void 0===q.rscData){if(q.postponed)throw Object.defineProperty(Error("Invariant: Expected postponed to be undefined"),"__NEXT_ERROR_CODE",{value:"E372",enumerable:!1,configurable:!0});return(0,A.sendRenderResult)({req:a,res:b,generateEtags:ad.generateEtags,poweredByHeader:ad.poweredByHeader,result:q.html,cacheControl:av?{revalidate:0,expire:void 0}:n.cacheControl})}return(0,A.sendRenderResult)({req:a,res:b,generateEtags:ad.generateEtags,poweredByHeader:ad.poweredByHeader,result:x.default.fromStatic(q.rscData,t.RSC_CONTENT_TYPE_HEADER),cacheControl:n.cacheControl})}let u=q.html;if(!p||N||ap)return(0,A.sendRenderResult)({req:a,res:b,generateEtags:ad.generateEtags,poweredByHeader:ad.poweredByHeader,result:u,cacheControl:n.cacheControl});if(as)return u.push(new ReadableStream({start(a){a.enqueue(z.ENCODED_TAGS.CLOSED.BODY_AND_HTML),a.close()}})),(0,A.sendRenderResult)({req:a,res:b,generateEtags:ad.generateEtags,poweredByHeader:ad.poweredByHeader,result:u,cacheControl:{revalidate:0,expire:void 0}});let w=new TransformStream;return u.push(w.readable),m({span:c,postponed:q.postponed,fallbackRouteParams:null}).then(async a=>{var b,c;if(!a)throw Object.defineProperty(Error("Invariant: expected a result to be returned"),"__NEXT_ERROR_CODE",{value:"E463",enumerable:!1,configurable:!0});if((null==(b=a.value)?void 0:b.kind)!==v.CachedRouteKind.APP_PAGE)throw Object.defineProperty(Error(`Invariant: expected a page response, got ${null==(c=a.value)?void 0:c.kind}`),"__NEXT_ERROR_CODE",{value:"E305",enumerable:!1,configurable:!0});await a.value.html.pipeTo(w.writable)}).catch(a=>{w.writable.abort(a).catch(a=>{console.error("couldn't abort transformer",a)})}),(0,A.sendRenderResult)({req:a,res:b,generateEtags:ad.generateEtags,poweredByHeader:ad.poweredByHeader,result:u,cacheControl:{revalidate:0,expire:void 0}})};if(!aF)return await aE.withPropagatedContext(a.headers,()=>aE.trace(i.BaseServerSpan.handleRequest,{spanName:`${aD} ${a.url}`,kind:g.SpanKind.SERVER,attributes:{"http.method":aD,"http.target":a.url}},p));await p(aF)}catch(b){throw b instanceof B.NoFallbackError||await J.onRequestError(a,b,{routerKind:"App Router",routePath:L,routeType:"render",revalidateReason:(0,f.c)({isRevalidate:ak,isOnDemandRevalidate:ah})},ac),b}}},86439:a=>{"use strict";a.exports=require("next/dist/shared/lib/no-fallback-error.external")},98702:(a,b,c)=>{Promise.resolve().then(c.bind(c,75707))}};var b=require("../../../webpack-runtime.js");b.C(a);var c=b.X(0,[142,525],()=>b(b.s=78534));module.exports=c})();
+(() => {
+  var a = {};
+  ((a.id = 859),
+    (a.ids = [859]),
+    (a.modules = {
+      261: (a) => {
+        "use strict";
+        a.exports = require("next/dist/shared/lib/router/utils/app-paths");
+      },
+      3295: (a) => {
+        "use strict";
+        a.exports = require("next/dist/server/app-render/after-task-async-storage.external.js");
+      },
+      10846: (a) => {
+        "use strict";
+        a.exports = require("next/dist/compiled/next-server/app-page.runtime.prod.js");
+      },
+      16193: (a, b, c) => {
+        "use strict";
+        (c.r(b), c.d(b, { default: () => d }));
+        let d = (0, c(38676).registerClientReference)(
+          function () {
+            throw Error(
+              "Attempted to call the default export of \"C:\\\\Users\\\\ASUS\\\\FineTech\\\\apps\\\\web\\\\app\\\\auth\\\\login\\\\page.tsx\" from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.",
+            );
+          },
+          "C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\auth\\login\\page.tsx",
+          "default",
+        );
+      },
+      19121: (a) => {
+        "use strict";
+        a.exports = require("next/dist/server/app-render/action-async-storage.external.js");
+      },
+      26713: (a) => {
+        "use strict";
+        a.exports = require("next/dist/shared/lib/router/utils/is-bot");
+      },
+      28354: (a) => {
+        "use strict";
+        a.exports = require("util");
+      },
+      29294: (a) => {
+        "use strict";
+        a.exports = require("next/dist/server/app-render/work-async-storage.external.js");
+      },
+      33873: (a) => {
+        "use strict";
+        a.exports = require("path");
+      },
+      38022: (a, b, c) => {
+        Promise.resolve().then(c.bind(c, 16193));
+      },
+      41025: (a) => {
+        "use strict";
+        a.exports = require("next/dist/server/app-render/dynamic-access-async-storage.external.js");
+      },
+      63033: (a) => {
+        "use strict";
+        a.exports = require("next/dist/server/app-render/work-unit-async-storage.external.js");
+      },
+      75707: (a, b, c) => {
+        "use strict";
+        (c.r(b), c.d(b, { default: () => j }));
+        var d = c(64242),
+          e = c(48299),
+          f = c(82481),
+          g = c.n(f),
+          h = c(39444),
+          i = c(10821);
+        function j() {
+          let { login: a } = (0, i.A)(),
+            b = (0, h.useRouter)(),
+            [c, f] = (0, e.useState)(""),
+            [j, k] = (0, e.useState)(""),
+            [l, m] = (0, e.useState)(null),
+            [n, o] = (0, e.useState)(!1),
+            p = async (d) => {
+              if ((d.preventDefault(), m(null), o(!0), !c || !j)) {
+                (m("Please fill in all fields."), o(!1));
+                return;
+              }
+              await new Promise((a) => setTimeout(a, 800));
+              let e = a(c, j);
+              e.success ? b.push("/dashboard") : (m(e.error || "Login failed."), o(!1));
+            };
+          return (0, d.jsxs)("div", {
+            className: "min-h-screen grid lg:grid-cols-2 bg-slate-950 overflow-hidden",
+            children: [
+              (0, d.jsxs)("div", {
+                className:
+                  "hidden lg:flex relative flex-col items-center justify-center p-12 mesh-gradient overflow-hidden",
+                children: [
+                  (0, d.jsx)("div", {
+                    className: "absolute inset-0 bg-slate-950/20 backdrop-blur-[2px]",
+                  }),
+                  (0, d.jsx)("div", {
+                    className:
+                      "absolute top-1/4 -right-12 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse",
+                  }),
+                  (0, d.jsx)("div", {
+                    className:
+                      "absolute bottom-1/4 -left-12 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-700",
+                  }),
+                  (0, d.jsxs)("div", {
+                    className: "relative z-10 max-w-md text-center",
+                    children: [
+                      (0, d.jsx)("div", {
+                        className:
+                          "w-20 h-20 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mx-auto mb-8 shadow-2xl animate-slide-up",
+                        children: (0, d.jsxs)("svg", {
+                          width: "40",
+                          height: "40",
+                          viewBox: "0 0 24 24",
+                          fill: "none",
+                          stroke: "currentColor",
+                          strokeWidth: "1.5",
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          className: "text-emerald-400",
+                          children: [
+                            (0, d.jsx)("path", { d: "M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" }),
+                            (0, d.jsx)("polyline", { points: "10 17 15 12 10 7" }),
+                            (0, d.jsx)("line", { x1: "15", y1: "12", x2: "3", y2: "12" }),
+                          ],
+                        }),
+                      }),
+                      (0, d.jsxs)("h1", {
+                        className:
+                          "text-4xl font-extrabold tracking-tight text-white mb-6 animate-slide-up [animation-delay:0.1s]",
+                        children: [
+                          "Welcome ",
+                          (0, d.jsx)("span", {
+                            className: "gradient-text",
+                            children: "Back to Finetech",
+                          }),
+                        ],
+                      }),
+                      (0, d.jsx)("p", {
+                        className:
+                          "text-lg text-slate-400 mb-8 animate-slide-up [animation-delay:0.2s]",
+                        children:
+                          "Continue your journey in mastering the markets with our unified financial intelligence platform.",
+                      }),
+                      (0, d.jsxs)("div", {
+                        className: "grid grid-cols-2 gap-4 animate-slide-up [animation-delay:0.3s]",
+                        children: [
+                          (0, d.jsxs)("div", {
+                            className:
+                              "glass-panel p-4 rounded-2xl text-left border-white/5 hover:border-cyan-500/30 transition-colors group",
+                            children: [
+                              (0, d.jsx)("div", {
+                                className:
+                                  "text-cyan-400 mb-2 group-hover:scale-110 transition-transform",
+                                children: (0, d.jsx)("svg", {
+                                  width: "20",
+                                  height: "20",
+                                  fill: "none",
+                                  stroke: "currentColor",
+                                  strokeWidth: "2",
+                                  viewBox: "0 0 24 24",
+                                  children: (0, d.jsx)("path", {
+                                    d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+                                    strokeLinecap: "round",
+                                    strokeLinejoin: "round",
+                                  }),
+                                }),
+                              }),
+                              (0, d.jsx)("div", {
+                                className: "text-sm font-semibold text-white",
+                                children: "Market Intel",
+                              }),
+                              (0, d.jsx)("div", {
+                                className: "text-xs text-slate-500",
+                                children: "Scan live opportunities",
+                              }),
+                            ],
+                          }),
+                          (0, d.jsxs)("div", {
+                            className:
+                              "glass-panel p-4 rounded-2xl text-left border-white/5 hover:border-emerald-500/30 transition-colors group",
+                            children: [
+                              (0, d.jsx)("div", {
+                                className:
+                                  "text-emerald-400 mb-2 group-hover:scale-110 transition-transform",
+                                children: (0, d.jsxs)("svg", {
+                                  width: "20",
+                                  height: "20",
+                                  fill: "none",
+                                  stroke: "currentColor",
+                                  strokeWidth: "2",
+                                  viewBox: "0 0 24 24",
+                                  children: [
+                                    (0, d.jsx)("rect", {
+                                      x: "3",
+                                      y: "11",
+                                      width: "18",
+                                      height: "11",
+                                      rx: "2",
+                                      ry: "2",
+                                      strokeLinecap: "round",
+                                      strokeLinejoin: "round",
+                                    }),
+                                    (0, d.jsx)("path", {
+                                      d: "M7 11V7a5 5 0 0110 0v4",
+                                      strokeLinecap: "round",
+                                      strokeLinejoin: "round",
+                                    }),
+                                  ],
+                                }),
+                              }),
+                              (0, d.jsx)("div", {
+                                className: "text-sm font-semibold text-white",
+                                children: "Secure Access",
+                              }),
+                              (0, d.jsx)("div", {
+                                className: "text-xs text-slate-500",
+                                children: "Encrypted data protection",
+                              }),
+                            ],
+                          }),
+                        ],
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+              (0, d.jsxs)("div", {
+                className: "flex items-center justify-center p-8 lg:p-12 relative",
+                children: [
+                  (0, d.jsx)("div", {
+                    className: "lg:hidden absolute inset-0 mesh-gradient opacity-30",
+                  }),
+                  (0, d.jsxs)("div", {
+                    className: "w-full max-w-sm relative z-10",
+                    children: [
+                      (0, d.jsxs)("div", {
+                        className: "text-center mb-10 stagger-children",
+                        children: [
+                          (0, d.jsx)("h2", {
+                            className: "text-3xl font-bold text-white mb-2",
+                            children: "Login",
+                          }),
+                          (0, d.jsx)("p", {
+                            className: "text-slate-400",
+                            children: "Access your professional dashboard",
+                          }),
+                        ],
+                      }),
+                      (0, d.jsxs)("form", {
+                        onSubmit: p,
+                        className: "space-y-5 stagger-children",
+                        children: [
+                          l &&
+                            (0, d.jsx)("div", {
+                              className:
+                                "rounded-xl bg-rose-500/10 border border-rose-500/20 px-4 py-3 text-sm text-rose-400 animate-fade-in",
+                              children: l,
+                            }),
+                          (0, d.jsxs)("div", {
+                            className: "space-y-1.5",
+                            children: [
+                              (0, d.jsx)("label", {
+                                className:
+                                  "text-xs font-semibold text-slate-400 uppercase tracking-widest ml-1",
+                                children: "Email Address",
+                              }),
+                              (0, d.jsx)("input", {
+                                type: "email",
+                                value: c,
+                                onChange: (a) => f(a.target.value),
+                                placeholder: "name@company.com",
+                                className:
+                                  "input-glass w-full py-3.5 px-4 bg-slate-900/50 border-white/5 focus:border-cyan-500/50 transition-all rounded-xl shadow-inner",
+                                autoComplete: "email",
+                                disabled: n,
+                              }),
+                            ],
+                          }),
+                          (0, d.jsxs)("div", {
+                            className: "space-y-1.5",
+                            children: [
+                              (0, d.jsxs)("div", {
+                                className: "flex justify-between items-end mb-1 px-1",
+                                children: [
+                                  (0, d.jsx)("label", {
+                                    className:
+                                      "text-xs font-semibold text-slate-400 uppercase tracking-widest",
+                                    children: "Password",
+                                  }),
+                                  (0, d.jsx)(g(), {
+                                    href: "#",
+                                    className:
+                                      "text-[11px] text-cyan-400 hover:text-cyan-300 font-medium",
+                                    children: "Forgot?",
+                                  }),
+                                ],
+                              }),
+                              (0, d.jsx)("input", {
+                                type: "password",
+                                value: j,
+                                onChange: (a) => k(a.target.value),
+                                placeholder: "••••••••",
+                                className:
+                                  "input-glass w-full py-3.5 px-4 bg-slate-900/50 border-white/5 focus:border-cyan-500/50 transition-all rounded-xl shadow-inner",
+                                autoComplete: "current-password",
+                                disabled: n,
+                              }),
+                            ],
+                          }),
+                          (0, d.jsx)("button", {
+                            type: "submit",
+                            disabled: n,
+                            className:
+                              "btn-primary w-full py-4 rounded-xl text-base shadow-lg shadow-cyan-500/10 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group",
+                            children: n
+                              ? (0, d.jsxs)("svg", {
+                                  className: "animate-spin h-5 w-5 text-slate-900",
+                                  viewBox: "0 0 24 24",
+                                  children: [
+                                    (0, d.jsx)("circle", {
+                                      className: "opacity-25",
+                                      cx: "12",
+                                      cy: "12",
+                                      r: "10",
+                                      stroke: "currentColor",
+                                      strokeWidth: "4",
+                                      fill: "none",
+                                    }),
+                                    (0, d.jsx)("path", {
+                                      className: "opacity-75",
+                                      fill: "currentColor",
+                                      d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z",
+                                    }),
+                                  ],
+                                })
+                              : (0, d.jsxs)(d.Fragment, {
+                                  children: [
+                                    "Sign In",
+                                    (0, d.jsx)("svg", {
+                                      className:
+                                        "w-5 h-5 group-hover:translate-x-1 transition-transform",
+                                      fill: "none",
+                                      stroke: "currentColor",
+                                      viewBox: "0 0 24 24",
+                                      children: (0, d.jsx)("path", {
+                                        strokeLinecap: "round",
+                                        strokeLinejoin: "round",
+                                        strokeWidth: "2",
+                                        d: "M11 16l4-4m0 0l-4-4m4 4H9",
+                                      }),
+                                    }),
+                                  ],
+                                }),
+                          }),
+                        ],
+                      }),
+                      (0, d.jsx)("div", {
+                        className: "mt-8 text-center animate-fade-in [animation-delay:0.5s]",
+                        children: (0, d.jsxs)("p", {
+                          className: "text-slate-500 text-sm",
+                          children: [
+                            "Don't have an account?",
+                            " ",
+                            (0, d.jsx)(g(), {
+                              href: "/auth/signup",
+                              className:
+                                "text-cyan-400 hover:text-cyan-300 transition-colors font-semibold",
+                              children: "Sign Up",
+                            }),
+                          ],
+                        }),
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+            ],
+          });
+        }
+      },
+      78534: (a, b, c) => {
+        "use strict";
+        (c.r(b),
+          c.d(b, {
+            GlobalError: () => C.default,
+            __next_app__: () => I,
+            handler: () => K,
+            pages: () => H,
+            routeModule: () => J,
+            tree: () => G,
+          }));
+        var d = c(85752),
+          e = c(47719),
+          f = c(29025),
+          g = c(72590),
+          h = c(10096),
+          i = c(51970),
+          j = c(43785),
+          k = c(47050),
+          l = c(72048),
+          m = c(11866),
+          n = c(65188),
+          o = c(93171),
+          p = c(15367),
+          q = c(83532),
+          r = c(261),
+          s = c(67971),
+          t = c(61248),
+          u = c(26713),
+          v = c(82538),
+          w = c(13855),
+          x = c(50899),
+          y = c(52212),
+          z = c(5780),
+          A = c(79060),
+          B = c(86439),
+          C = c(37827),
+          D = c(53712),
+          E = c(65129),
+          F = {};
+        for (let a in D)
+          0 >
+            [
+              "default",
+              "tree",
+              "pages",
+              "GlobalError",
+              "__next_app__",
+              "routeModule",
+              "handler",
+            ].indexOf(a) && (F[a] = () => D[a]);
+        c.d(b, F);
+        let G = {
+            children: [
+              "",
+              {
+                children: [
+                  "auth",
+                  {
+                    children: [
+                      "login",
+                      {
+                        children: [
+                          "__PAGE__",
+                          {},
+                          {
+                            page: [
+                              () => Promise.resolve().then(c.bind(c, 16193)),
+                              "C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\auth\\login\\page.tsx",
+                            ],
+                          },
+                        ],
+                      },
+                      {},
+                    ],
+                  },
+                  {},
+                ],
+              },
+              {
+                layout: [
+                  () => Promise.resolve().then(c.bind(c, 66715)),
+                  "C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\layout.tsx",
+                ],
+                error: [
+                  () => Promise.resolve().then(c.bind(c, 873)),
+                  "C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\error.tsx",
+                ],
+                "global-error": [
+                  () => Promise.resolve().then(c.bind(c, 37827)),
+                  "C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\global-error.tsx",
+                ],
+                "not-found": [
+                  () => Promise.resolve().then(c.bind(c, 46043)),
+                  "C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\not-found.tsx",
+                ],
+                forbidden: [
+                  () => Promise.resolve().then(c.t.bind(c, 37579, 23)),
+                  "next/dist/client/components/builtin/forbidden.js",
+                ],
+                unauthorized: [
+                  () => Promise.resolve().then(c.t.bind(c, 42846, 23)),
+                  "next/dist/client/components/builtin/unauthorized.js",
+                ],
+              },
+            ],
+          }.children,
+          H = ["C:\\Users\\ASUS\\FineTech\\apps\\web\\app\\auth\\login\\page.tsx"],
+          I = { require: c, loadChunk: () => Promise.resolve() },
+          J = new d.AppPageRouteModule({
+            definition: {
+              kind: e.RouteKind.APP_PAGE,
+              page: "/auth/login/page",
+              pathname: "/auth/login",
+              bundlePath: "",
+              filename: "",
+              appPaths: [],
+            },
+            userland: { loaderTree: G },
+            distDir: ".next",
+            relativeProjectDir: "",
+          });
+        async function K(a, b, d) {
+          var F;
+          let L = "/auth/login/page";
+          "/index" === L && (L = "/");
+          let M = (0, h.getRequestMeta)(a, "postponed"),
+            N = (0, h.getRequestMeta)(a, "minimalMode"),
+            O = await J.prepare(a, b, { srcPage: L, multiZoneDraftMode: !1 });
+          if (!O)
+            return (
+              (b.statusCode = 400),
+              b.end("Bad Request"),
+              null == d.waitUntil || d.waitUntil.call(d, Promise.resolve()),
+              null
+            );
+          let {
+              buildId: P,
+              query: Q,
+              params: R,
+              parsedUrl: S,
+              pageIsDynamic: T,
+              buildManifest: U,
+              nextFontManifest: V,
+              reactLoadableManifest: W,
+              serverActionsManifest: X,
+              clientReferenceManifest: Y,
+              subresourceIntegrityManifest: Z,
+              prerenderManifest: $,
+              isDraftMode: _,
+              resolvedPathname: aa,
+              revalidateOnlyGenerated: ab,
+              routerServerContext: ac,
+              nextConfig: ad,
+              interceptionRoutePatterns: ae,
+            } = O,
+            af = S.pathname || "/",
+            ag = (0, r.normalizeAppPath)(L),
+            { isOnDemandRevalidate: ah } = O,
+            ai = J.match(af, $),
+            aj = !!$.routes[aa],
+            ak = !!(ai || aj || $.routes[ag]),
+            al = a.headers["user-agent"] || "",
+            am = (0, u.getBotType)(al),
+            an = (0, p.isHtmlBotRequest)(a),
+            ao =
+              (0, h.getRequestMeta)(a, "isPrefetchRSCRequest") ??
+              "1" === a.headers[t.NEXT_ROUTER_PREFETCH_HEADER],
+            ap = (0, h.getRequestMeta)(a, "isRSCRequest") ?? !!a.headers[t.RSC_HEADER],
+            aq = (0, s.getIsPossibleServerAction)(a),
+            ar =
+              (0, m.checkIsAppPPREnabled)(ad.experimental.ppr) &&
+              (null == (F = $.routes[ag] ?? $.dynamicRoutes[ag]) ? void 0 : F.renderingMode) ===
+                "PARTIALLY_STATIC",
+            as = !1,
+            at = !1,
+            au = ar ? M : void 0,
+            av = ar && ap && !ao,
+            aw = (0, h.getRequestMeta)(a, "segmentPrefetchRSCRequest"),
+            ax = !al || (0, p.shouldServeStreamingMetadata)(al, ad.htmlLimitedBots);
+          an && ar && ((ak = !1), (ax = !1));
+          let ay = !0 === J.isDev || !ak || "string" == typeof M || av,
+            az = an && ar,
+            aA = null;
+          _ || !ak || ay || aq || au || av || (aA = aa);
+          let aB = aA;
+          (!aB && J.isDev && (aB = aa), J.isDev || _ || !ak || !ap || av || (0, k.d)(a.headers));
+          let aC = {
+            ...D,
+            tree: G,
+            pages: H,
+            GlobalError: C.default,
+            handler: K,
+            routeModule: J,
+            __next_app__: I,
+          };
+          X &&
+            Y &&
+            (0, o.setReferenceManifestsSingleton)({
+              page: L,
+              clientReferenceManifest: Y,
+              serverActionsManifest: X,
+              serverModuleMap: (0, q.createServerModuleMap)({ serverActionsManifest: X }),
+            });
+          let aD = a.method || "GET",
+            aE = (0, g.getTracer)(),
+            aF = aE.getActiveScopeSpan();
+          try {
+            let f = J.getVaryHeader(aa, ae);
+            b.setHeader("Vary", f);
+            let k = async (c, d) => {
+                let e = new l.NodeNextRequest(a),
+                  f = new l.NodeNextResponse(b);
+                return J.render(e, f, d).finally(() => {
+                  if (!c) return;
+                  c.setAttributes({ "http.status_code": b.statusCode, "next.rsc": !1 });
+                  let d = aE.getRootSpanAttributes();
+                  if (!d) return;
+                  if (d.get("next.span_type") !== i.BaseServerSpan.handleRequest)
+                    return void console.warn(
+                      `Unexpected root span type '${d.get("next.span_type")}'. Please report this Next.js issue https://github.com/vercel/next.js`,
+                    );
+                  let e = d.get("next.route");
+                  if (e) {
+                    let a = `${aD} ${e}`;
+                    (c.setAttributes({ "next.route": e, "http.route": e, "next.span_name": a }),
+                      c.updateName(a));
+                  } else c.updateName(`${aD} ${a.url}`);
+                });
+              },
+              m = async ({ span: e, postponed: f, fallbackRouteParams: g }) => {
+                let i = {
+                    query: Q,
+                    params: R,
+                    page: ag,
+                    sharedContext: { buildId: P },
+                    serverComponentsHmrCache: (0, h.getRequestMeta)(a, "serverComponentsHmrCache"),
+                    fallbackRouteParams: g,
+                    renderOpts: {
+                      App: () => null,
+                      Document: () => null,
+                      pageConfig: {},
+                      ComponentMod: aC,
+                      Component: (0, j.T)(aC),
+                      params: R,
+                      routeModule: J,
+                      page: L,
+                      postponed: f,
+                      shouldWaitOnAllReady: az,
+                      serveStreamingMetadata: ax,
+                      supportsDynamicResponse: "string" == typeof f || ay,
+                      buildManifest: U,
+                      nextFontManifest: V,
+                      reactLoadableManifest: W,
+                      subresourceIntegrityManifest: Z,
+                      serverActionsManifest: X,
+                      clientReferenceManifest: Y,
+                      setIsrStatus: null == ac ? void 0 : ac.setIsrStatus,
+                      dir: c(33873).join(process.cwd(), J.relativeProjectDir),
+                      isDraftMode: _,
+                      isRevalidate: ak && !f && !av,
+                      botType: am,
+                      isOnDemandRevalidate: ah,
+                      isPossibleServerAction: aq,
+                      assetPrefix: ad.assetPrefix,
+                      nextConfigOutput: ad.output,
+                      crossOrigin: ad.crossOrigin,
+                      trailingSlash: ad.trailingSlash,
+                      previewProps: $.preview,
+                      deploymentId: ad.deploymentId,
+                      enableTainting: ad.experimental.taint,
+                      htmlLimitedBots: ad.htmlLimitedBots,
+                      devtoolSegmentExplorer: ad.experimental.devtoolSegmentExplorer,
+                      reactMaxHeadersLength: ad.reactMaxHeadersLength,
+                      multiZoneDraftMode: !1,
+                      incrementalCache: (0, h.getRequestMeta)(a, "incrementalCache"),
+                      cacheLifeProfiles: ad.experimental.cacheLife,
+                      basePath: ad.basePath,
+                      serverActions: ad.experimental.serverActions,
+                      ...(as
+                        ? {
+                            nextExport: !0,
+                            supportsDynamicResponse: !1,
+                            isStaticGeneration: !0,
+                            isRevalidate: !0,
+                            isDebugDynamicAccesses: as,
+                          }
+                        : {}),
+                      experimental: {
+                        isRoutePPREnabled: ar,
+                        expireTime: ad.expireTime,
+                        staleTimes: ad.experimental.staleTimes,
+                        cacheComponents: !!ad.experimental.cacheComponents,
+                        clientSegmentCache: !!ad.experimental.clientSegmentCache,
+                        clientParamParsing: !!ad.experimental.clientParamParsing,
+                        dynamicOnHover: !!ad.experimental.dynamicOnHover,
+                        inlineCss: !!ad.experimental.inlineCss,
+                        authInterrupts: !!ad.experimental.authInterrupts,
+                        clientTraceMetadata: ad.experimental.clientTraceMetadata || [],
+                      },
+                      waitUntil: d.waitUntil,
+                      onClose: (a) => {
+                        b.on("close", a);
+                      },
+                      onAfterTaskError: () => {},
+                      onInstrumentationRequestError: (b, c, d) => J.onRequestError(a, b, d, ac),
+                      err: (0, h.getRequestMeta)(a, "invokeError"),
+                      dev: J.isDev,
+                    },
+                  },
+                  l = await k(e, i),
+                  { metadata: m } = l,
+                  { cacheControl: n, headers: o = {}, fetchTags: p } = m;
+                if (
+                  (p && (o[y.NEXT_CACHE_TAGS_HEADER] = p),
+                  (a.fetchMetrics = m.fetchMetrics),
+                  ak && (null == n ? void 0 : n.revalidate) === 0 && !J.isDev && !ar)
+                ) {
+                  let a = m.staticBailoutInfo,
+                    b = Object.defineProperty(
+                      Error(`Page changed from static to dynamic at runtime ${aa}${(null == a ? void 0 : a.description) ? `, reason: ${a.description}` : ""}
+see more here https://nextjs.org/docs/messages/app-static-to-dynamic-error`),
+                      "__NEXT_ERROR_CODE",
+                      { value: "E132", enumerable: !1, configurable: !0 },
+                    );
+                  if (null == a ? void 0 : a.stack) {
+                    let c = a.stack;
+                    b.stack = b.message + c.substring(c.indexOf("\n"));
+                  }
+                  throw b;
+                }
+                return {
+                  value: {
+                    kind: v.CachedRouteKind.APP_PAGE,
+                    html: l,
+                    headers: o,
+                    rscData: m.flightData,
+                    postponed: m.postponed,
+                    status: m.statusCode,
+                    segmentData: m.segmentData,
+                  },
+                  cacheControl: n,
+                };
+              },
+              o = async ({ hasResolved: c, previousCacheEntry: f, isRevalidating: g, span: i }) => {
+                let j,
+                  k = !1 === J.isDev,
+                  l = c || b.writableEnded;
+                if (ah && ab && !f && !N)
+                  return (
+                    (null == ac ? void 0 : ac.render404)
+                      ? await ac.render404(a, b)
+                      : ((b.statusCode = 404), b.end("This page could not be found")),
+                    null
+                  );
+                if (
+                  (ai && (j = (0, w.parseFallbackField)(ai.fallback)),
+                  j === w.FallbackMode.PRERENDER &&
+                    (0, u.isBot)(al) &&
+                    (!ar || an) &&
+                    (j = w.FallbackMode.BLOCKING_STATIC_RENDER),
+                  (null == f ? void 0 : f.isStale) === -1 && (ah = !0),
+                  ah &&
+                    (j !== w.FallbackMode.NOT_FOUND || f) &&
+                    (j = w.FallbackMode.BLOCKING_STATIC_RENDER),
+                  !N &&
+                    j !== w.FallbackMode.BLOCKING_STATIC_RENDER &&
+                    aB &&
+                    !l &&
+                    !_ &&
+                    T &&
+                    (k || !aj))
+                ) {
+                  let b;
+                  if ((k || ai) && j === w.FallbackMode.NOT_FOUND) throw new B.NoFallbackError();
+                  if (ar && !ap) {
+                    let c =
+                      "string" == typeof (null == ai ? void 0 : ai.fallback)
+                        ? ai.fallback
+                        : k
+                          ? ag
+                          : null;
+                    if (
+                      ((b = await J.handleResponse({
+                        cacheKey: c,
+                        req: a,
+                        nextConfig: ad,
+                        routeKind: e.RouteKind.APP_PAGE,
+                        isFallback: !0,
+                        prerenderManifest: $,
+                        isRoutePPREnabled: ar,
+                        responseGenerator: async () =>
+                          m({
+                            span: i,
+                            postponed: void 0,
+                            fallbackRouteParams: k || at ? (0, n.u)(ag) : null,
+                          }),
+                        waitUntil: d.waitUntil,
+                      })),
+                      null === b)
+                    )
+                      return null;
+                    if (b) return (delete b.cacheControl, b);
+                  }
+                }
+                let o = ah || g || !au ? void 0 : au;
+                if (as && void 0 !== o)
+                  return {
+                    cacheControl: { revalidate: 1, expire: void 0 },
+                    value: {
+                      kind: v.CachedRouteKind.PAGES,
+                      html: x.default.EMPTY,
+                      pageData: {},
+                      headers: void 0,
+                      status: void 0,
+                    },
+                  };
+                let p =
+                  T && ar && ((0, h.getRequestMeta)(a, "renderFallbackShell") || at)
+                    ? (0, n.u)(af)
+                    : null;
+                return m({ span: i, postponed: o, fallbackRouteParams: p });
+              },
+              p = async (c) => {
+                var f, g, i, j, k;
+                let l,
+                  n = await J.handleResponse({
+                    cacheKey: aA,
+                    responseGenerator: (a) => o({ span: c, ...a }),
+                    routeKind: e.RouteKind.APP_PAGE,
+                    isOnDemandRevalidate: ah,
+                    isRoutePPREnabled: ar,
+                    req: a,
+                    nextConfig: ad,
+                    prerenderManifest: $,
+                    waitUntil: d.waitUntil,
+                  });
+                if (
+                  (_ &&
+                    b.setHeader(
+                      "Cache-Control",
+                      "private, no-cache, no-store, max-age=0, must-revalidate",
+                    ),
+                  J.isDev && b.setHeader("Cache-Control", "no-store, must-revalidate"),
+                  !n)
+                ) {
+                  if (aA)
+                    throw Object.defineProperty(
+                      Error("invariant: cache entry required but not generated"),
+                      "__NEXT_ERROR_CODE",
+                      { value: "E62", enumerable: !1, configurable: !0 },
+                    );
+                  return null;
+                }
+                if ((null == (f = n.value) ? void 0 : f.kind) !== v.CachedRouteKind.APP_PAGE)
+                  throw Object.defineProperty(
+                    Error(
+                      `Invariant app-page handler received invalid cache entry ${null == (i = n.value) ? void 0 : i.kind}`,
+                    ),
+                    "__NEXT_ERROR_CODE",
+                    { value: "E707", enumerable: !1, configurable: !0 },
+                  );
+                let p = "string" == typeof n.value.postponed;
+                ak &&
+                  !av &&
+                  (!p || ao) &&
+                  (N ||
+                    b.setHeader(
+                      "x-nextjs-cache",
+                      ah ? "REVALIDATED" : n.isMiss ? "MISS" : n.isStale ? "STALE" : "HIT",
+                    ),
+                  b.setHeader(t.NEXT_IS_PRERENDER_HEADER, "1"));
+                let { value: q } = n;
+                if (au) l = { revalidate: 0, expire: void 0 };
+                else if (N && ap && !ao && ar) l = { revalidate: 0, expire: void 0 };
+                else if (!J.isDev)
+                  if (_) l = { revalidate: 0, expire: void 0 };
+                  else if (ak) {
+                    if (n.cacheControl)
+                      if ("number" == typeof n.cacheControl.revalidate) {
+                        if (n.cacheControl.revalidate < 1)
+                          throw Object.defineProperty(
+                            Error(
+                              `Invalid revalidate configuration provided: ${n.cacheControl.revalidate} < 1`,
+                            ),
+                            "__NEXT_ERROR_CODE",
+                            { value: "E22", enumerable: !1, configurable: !0 },
+                          );
+                        l = {
+                          revalidate: n.cacheControl.revalidate,
+                          expire:
+                            (null == (j = n.cacheControl) ? void 0 : j.expire) ?? ad.expireTime,
+                        };
+                      } else l = { revalidate: y.CACHE_ONE_YEAR, expire: void 0 };
+                  } else b.getHeader("Cache-Control") || (l = { revalidate: 0, expire: void 0 });
+                if (
+                  ((n.cacheControl = l),
+                  "string" == typeof aw &&
+                    (null == q ? void 0 : q.kind) === v.CachedRouteKind.APP_PAGE &&
+                    q.segmentData)
+                ) {
+                  b.setHeader(t.NEXT_DID_POSTPONE_HEADER, "2");
+                  let c = null == (k = q.headers) ? void 0 : k[y.NEXT_CACHE_TAGS_HEADER];
+                  N && ak && c && "string" == typeof c && b.setHeader(y.NEXT_CACHE_TAGS_HEADER, c);
+                  let d = q.segmentData.get(aw);
+                  return void 0 !== d
+                    ? (0, A.sendRenderResult)({
+                        req: a,
+                        res: b,
+                        generateEtags: ad.generateEtags,
+                        poweredByHeader: ad.poweredByHeader,
+                        result: x.default.fromStatic(d, t.RSC_CONTENT_TYPE_HEADER),
+                        cacheControl: n.cacheControl,
+                      })
+                    : ((b.statusCode = 204),
+                      (0, A.sendRenderResult)({
+                        req: a,
+                        res: b,
+                        generateEtags: ad.generateEtags,
+                        poweredByHeader: ad.poweredByHeader,
+                        result: x.default.EMPTY,
+                        cacheControl: n.cacheControl,
+                      }));
+                }
+                let r = (0, h.getRequestMeta)(a, "onCacheEntry");
+                if (
+                  r &&
+                  (await r(
+                    { ...n, value: { ...n.value, kind: "PAGE" } },
+                    { url: (0, h.getRequestMeta)(a, "initURL") },
+                  ))
+                )
+                  return null;
+                if (p && au)
+                  throw Object.defineProperty(
+                    Error("Invariant: postponed state should not be present on a resume request"),
+                    "__NEXT_ERROR_CODE",
+                    { value: "E396", enumerable: !1, configurable: !0 },
+                  );
+                if (q.headers) {
+                  let a = { ...q.headers };
+                  for (let [c, d] of ((N && ak) || delete a[y.NEXT_CACHE_TAGS_HEADER],
+                  Object.entries(a)))
+                    if (void 0 !== d)
+                      if (Array.isArray(d)) for (let a of d) b.appendHeader(c, a);
+                      else ("number" == typeof d && (d = d.toString()), b.appendHeader(c, d));
+                }
+                let s = null == (g = q.headers) ? void 0 : g[y.NEXT_CACHE_TAGS_HEADER];
+                if (
+                  (N && ak && s && "string" == typeof s && b.setHeader(y.NEXT_CACHE_TAGS_HEADER, s),
+                  !q.status || (ap && ar) || (b.statusCode = q.status),
+                  !N && q.status && E.RedirectStatusCode[q.status] && ap && (b.statusCode = 200),
+                  p && b.setHeader(t.NEXT_DID_POSTPONE_HEADER, "1"),
+                  ap && !_)
+                ) {
+                  if (void 0 === q.rscData) {
+                    if (q.postponed)
+                      throw Object.defineProperty(
+                        Error("Invariant: Expected postponed to be undefined"),
+                        "__NEXT_ERROR_CODE",
+                        { value: "E372", enumerable: !1, configurable: !0 },
+                      );
+                    return (0, A.sendRenderResult)({
+                      req: a,
+                      res: b,
+                      generateEtags: ad.generateEtags,
+                      poweredByHeader: ad.poweredByHeader,
+                      result: q.html,
+                      cacheControl: av ? { revalidate: 0, expire: void 0 } : n.cacheControl,
+                    });
+                  }
+                  return (0, A.sendRenderResult)({
+                    req: a,
+                    res: b,
+                    generateEtags: ad.generateEtags,
+                    poweredByHeader: ad.poweredByHeader,
+                    result: x.default.fromStatic(q.rscData, t.RSC_CONTENT_TYPE_HEADER),
+                    cacheControl: n.cacheControl,
+                  });
+                }
+                let u = q.html;
+                if (!p || N || ap)
+                  return (0, A.sendRenderResult)({
+                    req: a,
+                    res: b,
+                    generateEtags: ad.generateEtags,
+                    poweredByHeader: ad.poweredByHeader,
+                    result: u,
+                    cacheControl: n.cacheControl,
+                  });
+                if (as)
+                  return (
+                    u.push(
+                      new ReadableStream({
+                        start(a) {
+                          (a.enqueue(z.ENCODED_TAGS.CLOSED.BODY_AND_HTML), a.close());
+                        },
+                      }),
+                    ),
+                    (0, A.sendRenderResult)({
+                      req: a,
+                      res: b,
+                      generateEtags: ad.generateEtags,
+                      poweredByHeader: ad.poweredByHeader,
+                      result: u,
+                      cacheControl: { revalidate: 0, expire: void 0 },
+                    })
+                  );
+                let w = new TransformStream();
+                return (
+                  u.push(w.readable),
+                  m({ span: c, postponed: q.postponed, fallbackRouteParams: null })
+                    .then(async (a) => {
+                      var b, c;
+                      if (!a)
+                        throw Object.defineProperty(
+                          Error("Invariant: expected a result to be returned"),
+                          "__NEXT_ERROR_CODE",
+                          { value: "E463", enumerable: !1, configurable: !0 },
+                        );
+                      if ((null == (b = a.value) ? void 0 : b.kind) !== v.CachedRouteKind.APP_PAGE)
+                        throw Object.defineProperty(
+                          Error(
+                            `Invariant: expected a page response, got ${null == (c = a.value) ? void 0 : c.kind}`,
+                          ),
+                          "__NEXT_ERROR_CODE",
+                          { value: "E305", enumerable: !1, configurable: !0 },
+                        );
+                      await a.value.html.pipeTo(w.writable);
+                    })
+                    .catch((a) => {
+                      w.writable.abort(a).catch((a) => {
+                        console.error("couldn't abort transformer", a);
+                      });
+                    }),
+                  (0, A.sendRenderResult)({
+                    req: a,
+                    res: b,
+                    generateEtags: ad.generateEtags,
+                    poweredByHeader: ad.poweredByHeader,
+                    result: u,
+                    cacheControl: { revalidate: 0, expire: void 0 },
+                  })
+                );
+              };
+            if (!aF)
+              return await aE.withPropagatedContext(a.headers, () =>
+                aE.trace(
+                  i.BaseServerSpan.handleRequest,
+                  {
+                    spanName: `${aD} ${a.url}`,
+                    kind: g.SpanKind.SERVER,
+                    attributes: { "http.method": aD, "http.target": a.url },
+                  },
+                  p,
+                ),
+              );
+            await p(aF);
+          } catch (b) {
+            throw (
+              b instanceof B.NoFallbackError ||
+                (await J.onRequestError(
+                  a,
+                  b,
+                  {
+                    routerKind: "App Router",
+                    routePath: L,
+                    routeType: "render",
+                    revalidateReason: (0, f.c)({ isRevalidate: ak, isOnDemandRevalidate: ah }),
+                  },
+                  ac,
+                )),
+              b
+            );
+          }
+        }
+      },
+      86439: (a) => {
+        "use strict";
+        a.exports = require("next/dist/shared/lib/no-fallback-error.external");
+      },
+      98702: (a, b, c) => {
+        Promise.resolve().then(c.bind(c, 75707));
+      },
+    }));
+  var b = require("../../../webpack-runtime.js");
+  b.C(a);
+  var c = b.X(0, [142, 525], () => b((b.s = 78534)));
+  module.exports = c;
+})();

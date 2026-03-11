@@ -112,61 +112,70 @@ export function SidebarNav() {
   const { user, isAuthenticated, logout } = useAuth();
 
   return (
-    <nav className="p-4 space-y-1 flex-1 flex flex-col">
-      <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-3 px-3">
-        Navigation
+    <nav className="p-4 space-y-2 flex-1 flex flex-col font-sans">
+      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-4 px-4">
+        Intelligence Nodes
       </p>
-      {NAV_ITEMS.map((item) => {
-        const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
-        return (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={`
-              group flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
-              transition-all duration-200 relative
-              ${
-                isActive
-                  ? "bg-gradient-to-r from-cyan-500/10 to-emerald-500/10 text-white"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]"
-              }
-            `}
-          >
-            {/* Active indicator bar */}
-            {isActive && (
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-full bg-gradient-to-b from-cyan-400 to-emerald-400" />
-            )}
-            <span
-              className={`${isActive ? "text-cyan-400" : "text-slate-500 group-hover:text-slate-400"} transition-colors`}
+      <div className="space-y-1">
+        {NAV_ITEMS.map((item) => {
+          const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`
+                group flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold
+                transition-all duration-300 relative overflow-hidden
+                ${
+                  isActive
+                    ? "bg-white/[0.04] text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]"
+                    : "text-slate-400 hover:text-slate-200 hover:bg-white/[0.02]"
+                }
+              `}
             >
-              {item.icon}
-            </span>
-            <span>{item.label}</span>
-          </Link>
-        );
-      })}
+              {/* Active indicator bar */}
+              {isActive && (
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-r-full bg-gradient-to-b from-cyan-400 to-emerald-400 shadow-[0_0_12px_rgba(6,182,212,0.4)]" />
+              )}
+              <span
+                className={`${isActive ? "text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.3)]" : "text-slate-500 group-hover:text-slate-400"} transition-all duration-300`}
+              >
+                {item.icon}
+              </span>
+              <span className="relative z-10">{item.label}</span>
+              {isActive && (
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-transparent opacity-50" />
+              )}
+            </Link>
+          );
+        })}
+      </div>
 
       {/* Spacer */}
       <div className="flex-1" />
 
-      {/* Divider */}
-      <div className="border-t border-white/5 my-2" />
-
       {/* Auth section */}
       {isAuthenticated && user ? (
-        <div className="space-y-1">
-          <div className="flex items-center gap-3 px-3 py-2.5">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 flex items-center justify-center text-xs font-bold text-cyan-400 uppercase">
+        <div className="p-2 space-y-2">
+          <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/5 shadow-inner">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 flex items-center justify-center text-sm font-bold text-cyan-400 uppercase ring-1 ring-white/10 shadow-lg shadow-cyan-500/10">
               {user.name.charAt(0)}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-slate-200 truncate">{user.name}</p>
-              <p className="text-[10px] text-slate-500 truncate">{user.email}</p>
+              <p className="text-sm font-bold text-slate-100 truncate tracking-tight">
+                {user.name}
+              </p>
+              <div className="flex items-center gap-1.5">
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">
+                  Active
+                </p>
+              </div>
             </div>
           </div>
           <button
             onClick={logout}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-500 hover:text-rose-400 hover:bg-rose-500/5 transition-all duration-200 w-full"
+            className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-400 hover:text-rose-400 hover:bg-rose-500/5 transition-all duration-300 w-full group"
           >
             <svg
               width="18"
@@ -174,15 +183,16 @@ export function SidebarNav() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1.8"
+              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
+              className="group-hover:rotate-12 transition-transform"
             >
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
               <polyline points="16 17 21 12 16 7" />
               <line x1="21" y1="12" x2="9" y2="12" />
             </svg>
-            <span>Sign out</span>
+            <span>Disconnect</span>
           </button>
         </div>
       ) : (

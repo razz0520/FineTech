@@ -10,7 +10,11 @@ const WS_BASE =
   "ws://localhost:8000";
 
 export function useMarketStream(symbol: string) {
-  const [lastQuote, setLastQuote] = useState<{ symbol: string; close: number | null; timestamp: string | null } | null>(null);
+  const [lastQuote, setLastQuote] = useState<{
+    symbol: string;
+    close: number | null;
+    timestamp: string | null;
+  } | null>(null);
   const [connected, setConnected] = useState(false);
 
   useEffect(() => {
