@@ -1,0 +1,41 @@
+
+> @finetech/web@0.1.0 build
+> next build
+
+   Γû▓ Next.js 15.5.12
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 4.3s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/12) ...
+   Generating static pages (3/12) 
+   Generating static pages (6/12) 
+   Generating static pages (9/12) 
+ Γ£ô Generating static pages (12/12)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS  Revalidate  Expire
+Γöî Γùï /                                      733 B         103 kB
+Γö£ Γùï /_not-found                            124 B         102 kB
+Γö£ Γùï /advisor                             4.87 kB         107 kB
+Γö£ Γùï /auth/login                          2.85 kB         108 kB
+Γö£ Γùï /auth/signup                         2.83 kB         108 kB
+Γö£ Γùï /auth/siwe                           1.23 kB         103 kB
+Γö£ Γùï /dashboard                           5.68 kB         111 kB
+Γö£ Γùï /learn                               1.11 kB         106 kB          1m      1y
+Γö£ ╞Æ /learn/[courseId]                      760 B         106 kB
+Γö£ ╞Æ /learn/lesson/[lessonId]               166 B         105 kB
+Γö£ ╞Æ /learn/quiz/[quizId]                 1.38 kB         103 kB
+Γö£ Γùï /playground                          9.79 kB         213 kB
+Γöö Γùï /portfolio                           9.27 kB         212 kB
++ First Load JS shared by all             102 kB
+  Γö£ chunks/2b318b70-db4e83a9edac0ad5.js  54.2 kB
+  Γö£ chunks/401-22794b6110f7e6b1.js       45.5 kB
+  Γöö other shared chunks (total)          2.04 kB
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+
